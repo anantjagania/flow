@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -31,8 +31,8 @@ public class CompositeNestedIT extends ChromeBrowserTest {
         WebElement name = findElement(By.id(CompositeNestedView.NAME_ID));
         InputTextElement input = $(InputTextElement.class)
                 .id(CompositeNestedView.NAME_FIELD_ID);
-        Assert.assertEquals("Name on server:", name.getText());
+        Assertions.assertEquals("Name on server:", name.getText());
         input.setValue("123");
-        Assert.assertEquals("Name on server: 123", name.getText());
+        Assertions.assertEquals("Name on server: 123", name.getText());
     }
 }

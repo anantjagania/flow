@@ -16,8 +16,8 @@
 
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
@@ -40,18 +40,18 @@ public class TwoWayPolymerBindingIT extends ChromeBrowserTest {
         // now make explicit updates from the client side
         input.clear();
         input.sendKeys("a");
-        Assert.assertEquals("Value: a", getStatusMessage());
+        Assertions.assertEquals("Value: a", getStatusMessage());
 
         input.sendKeys("b");
-        Assert.assertEquals("Value: ab", getStatusMessage());
+        Assertions.assertEquals("Value: ab", getStatusMessage());
 
         // Reset the model value from the server-side
         template.$(TestBenchElement.class).id("reset").click();
-        Assert.assertEquals("Value:", getStatusMessage());
-        Assert.assertEquals("", getValueProperty(input));
+        Assertions.assertEquals("Value:", getStatusMessage());
+        Assertions.assertEquals("", getValueProperty(input));
 
         input.sendKeys("c");
-        Assert.assertEquals("Value: c", getStatusMessage());
+        Assertions.assertEquals("Value: c", getStatusMessage());
     }
 
     private Object getValueProperty(WebElement input) {

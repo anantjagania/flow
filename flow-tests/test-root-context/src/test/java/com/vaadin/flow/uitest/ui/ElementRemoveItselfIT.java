@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -29,7 +29,7 @@ import org.openqa.selenium.By;
  */
 public class ElementRemoveItselfIT extends ChromeBrowserTest {
 
-    @Before
+    @BeforeEach
     public void setUp() {
         open();
     }

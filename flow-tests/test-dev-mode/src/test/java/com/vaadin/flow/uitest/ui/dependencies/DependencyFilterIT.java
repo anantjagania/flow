@@ -1,13 +1,13 @@
 package com.vaadin.flow.uitest.ui.dependencies;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.junit.MatcherAssert.assertThat;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -32,15 +32,15 @@ public class DependencyFilterIT extends ChromeBrowserTest {
 
         boolean found = testMessages.stream()
                 .anyMatch(message -> message.equals("filtered.html"));
-        Assert.assertTrue("filtered.html should be in the page", found);
+        Assertions.assertTrue("filtered.html should be in the page", found);
 
         found = testMessages.stream()
                 .anyMatch(message -> message.equals("eager.js"));
-        Assert.assertTrue("eager.js should be in the page", found);
+        Assertions.assertTrue("eager.js should be in the page", found);
 
         found = testMessages.stream()
                 .anyMatch(message -> message.equals("eager.html"));
-        Assert.assertTrue("eager.html should be in the page", found);
+        Assertions.assertTrue("eager.html should be in the page", found);
     }
 
 }

@@ -1,8 +1,8 @@
 package com.vaadin.flow.testnpmonlyfeatures.nobuildmojo;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -10,7 +10,7 @@ import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
 
 public class MultipleNpmPackageAnnotationsIT extends ChromeBrowserTest {
-    @Before
+    @BeforeEach
     public void init() {
         open();
     }
@@ -21,12 +21,12 @@ public class MultipleNpmPackageAnnotationsIT extends ChromeBrowserTest {
         TestBenchElement paperCheckbox = $("paper-checkbox").first();
 
         // check that elements are on the page
-        Assert.assertNotNull(paperInput);
-        Assert.assertNotNull(paperCheckbox);
+        Assertions.assertNotNull(paperInput);
+        Assertions.assertNotNull(paperCheckbox);
 
         // verify that the paper components are upgraded
-        Assert.assertNotNull(paperInput.$("paper-input-container"));
-        Assert.assertNotNull(paperCheckbox.$("checkboxContainer"));
+        Assertions.assertNotNull(paperInput.$("paper-input-container"));
+        Assertions.assertNotNull(paperCheckbox.$("checkboxContainer"));
     }
 
     // Tests funtionaity of TaskCopyLocalFrontendFiles
@@ -35,6 +35,6 @@ public class MultipleNpmPackageAnnotationsIT extends ChromeBrowserTest {
         waitForElementPresent(By.id("lazy-element"));
         WebElement element = findElement(By.id("lazy-element"));
 
-        Assert.assertTrue("Lazy created element should be displayed", element.isDisplayed());
+        Assertions.assertTrue("Lazy created element should be displayed", element.isDisplayed());
     }
 }

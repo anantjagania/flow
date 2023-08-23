@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
@@ -33,7 +33,7 @@ public class RedirectToPushIT extends ChromeBrowserTest {
 
         $(NativeButtonElement.class).first().click();
 
-        Assert.assertEquals("Push mode: AUTOMATIC",
+        Assertions.assertEquals("Push mode: AUTOMATIC",
                 $(TestBenchElement.class).id("pushMode").getText());
     }
 }

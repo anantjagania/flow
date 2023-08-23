@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -24,7 +24,7 @@ public class RouterIT extends ChromeBrowserTest {
     @Test
     public void rootNavigationTarget() {
         open();
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 ViewTestLayout.BaseNavigationTarget.class.getSimpleName(),
                 findElement(By.id("name-div")).getText());
     }
@@ -32,19 +32,19 @@ public class RouterIT extends ChromeBrowserTest {
     @Test
     public void fooNavigationTarget() {
         openRouteUrl("foo");
-        Assert.assertEquals(FooNavigationTarget.class.getSimpleName(),
+        Assertions.assertEquals(FooNavigationTarget.class.getSimpleName(),
                 findElement(By.id("name-div")).getText());
 
         // Test that url with trailing slash also works
         openRouteUrl("foo/");
-        Assert.assertEquals(FooNavigationTarget.class.getSimpleName(),
+        Assertions.assertEquals(FooNavigationTarget.class.getSimpleName(),
                 findElement(By.id("name-div")).getText());
     }
 
     @Test
     public void fooBarNavigationTarget() {
         openRouteUrl("foo/bar");
-        Assert.assertEquals(FooBarNavigationTarget.class.getSimpleName(),
+        Assertions.assertEquals(FooBarNavigationTarget.class.getSimpleName(),
                 findElement(By.id("name-div")).getText());
     }
 
@@ -52,17 +52,17 @@ public class RouterIT extends ChromeBrowserTest {
     public void childIsInsideRouterLayout() {
         openRouteUrl("baz");
 
-        Assert.assertTrue(isElementPresent(By.id("layout")));
+        Assertions.assertTrue(isElementPresent(By.id("layout")));
         WebElement layout = findElement(By.id("layout"));
 
-        Assert.assertEquals(ChildNavigationTarget.class.getSimpleName(),
+        Assertions.assertEquals(ChildNavigationTarget.class.getSimpleName(),
                 layout.findElement(By.id("name-div")).getText());
     }
 
     @Test
     public void stringRouteParameter() {
         openRouteUrl("greeting/World");
-        Assert.assertEquals("Hello, World!",
+        Assertions.assertEquals("Hello, World!",
                 findElement(By.id("greeting-div")).getText());
     }
 
@@ -70,14 +70,14 @@ public class RouterIT extends ChromeBrowserTest {
     public void targetHasMultipleParentLayouts() {
         openRouteUrl("target");
 
-        Assert.assertTrue("Missing top most level: main layout",
+        Assertions.assertTrue("Missing top most level: main layout",
                 isElementPresent(By.id("mainLayout")));
-        Assert.assertTrue("Missing center layout: middle layout",
+        Assertions.assertTrue("Missing center layout: middle layout",
                 isElementPresent(By.id("middleLayout")));
 
         WebElement layout = findElement(By.id("middleLayout"));
 
-        Assert.assertEquals("Child layout is the wrong class",
+        Assertions.assertEquals("Child layout is the wrong class",
                 RouterTestServlet.TargetLayout.class.getSimpleName(),
                 layout.findElement(By.id("name-div")).getText());
     }
@@ -86,14 +86,14 @@ public class RouterIT extends ChromeBrowserTest {
     public void faultyRouteShowsExpectedErrorScreen() {
         openRouteUrl("exception");
 
-        Assert.assertTrue(getDriver().getPageSource()
+        Assertions.assertTrue(getDriver().getPageSource()
                 .contains("Could not navigate to 'exception'"));
 
-        Assert.assertTrue(getDriver().getPageSource()
+        Assertions.assertTrue(getDriver().getPageSource()
                 .contains(RouterTestServlet.AliasLayout.class
                         .getAnnotation(Route.class).value()));
 
-        Assert.assertTrue(getDriver().getPageSource()
+        Assertions.assertTrue(getDriver().getPageSource()
                 .contains(RouterTestServlet.AliasLayout.class
                         .getAnnotation(RouteAlias.class).value()));
     }
@@ -103,13 +103,13 @@ public class RouterIT extends ChromeBrowserTest {
         openRouteUrl(RouterTestServlet.AliasLayout.class
                 .getAnnotation(Route.class).value());
 
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 "Found parent layouts even though none should be available.",
                 isElementPresent(By.id("mainLayout")));
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 "Found parent layouts even though none should be available.",
                 isElementPresent(By.id("middleLayout")));
-        Assert.assertEquals("Layout content has the wrong class",
+        Assertions.assertEquals("Layout content has the wrong class",
                 RouterTestServlet.AliasLayout.class.getSimpleName(),
                 findElement(By.id("name-div")).getText());
     }
@@ -119,12 +119,12 @@ public class RouterIT extends ChromeBrowserTest {
         openRouteUrl(RouterTestServlet.AliasLayout.class
                 .getAnnotation(RouteAlias.class).value());
 
-        Assert.assertTrue("Missing top most level: main layout.",
+        Assertions.assertTrue("Missing top most level: main layout.",
                 isElementPresent(By.id("mainLayout")));
-        Assert.assertTrue("Missing center layout: middle layout.",
+        Assertions.assertTrue("Missing center layout: middle layout.",
                 isElementPresent(By.id("middleLayout")));
 
-        Assert.assertEquals("Layout content has the wrong class",
+        Assertions.assertEquals("Layout content has the wrong class",
                 RouterTestServlet.AliasLayout.class.getSimpleName(),
                 findElement(By.id("name-div")).getText());
     }

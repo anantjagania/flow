@@ -17,8 +17,8 @@ package com.vaadin.flow.ui;
 
 import java.util.Collection;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.uitest.servlet.ViewClassLocator;
@@ -31,8 +31,8 @@ public class ToStringTest {
         for (Class<? extends Component> viewClass : viewClasses) {
             Component view = viewClass.newInstance();
             String string = view.getElement().toString();
-            Assert.assertNotNull(string);
-            Assert.assertNotEquals("", string);
+            Assertions.assertNotNull(string);
+            Assertions.assertNotEquals("", string);
         }
     }
 

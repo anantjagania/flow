@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -32,13 +32,13 @@ public class ExecJavaScriptIT extends ChromeBrowserTest {
 
         getButton("swapButton").click();
 
-        Assert.assertEquals(focusText, getButton("alertButton").getText());
-        Assert.assertEquals(alertText, getButton("focusButton").getText());
+        Assertions.assertEquals(focusText, getButton("alertButton").getText());
+        Assertions.assertEquals(alertText, getButton("focusButton").getText());
 
         getButton("createButton").click();
 
         WebElement findElement = findElement(By.className("newInput"));
-        Assert.assertEquals("Value from js", findElement.getAttribute("value"));
+        Assertions.assertEquals("Value from js", findElement.getAttribute("value"));
     }
 
     private WebElement getButton(String id) {

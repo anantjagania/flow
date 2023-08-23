@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.testnpmonlyfeatures.general;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -28,7 +28,7 @@ public class ComponentAddedViaInitListenerIT extends ChromeBrowserTest {
 
         TestBenchElement component = $("init-listener-component").first();
         TestBenchElement div = component.$("div").first();
-        org.junit.Assert.assertEquals("Init Listener Component", div.getText());
+        org.junit.Assertions.assertEquals("Init Listener Component", div.getText());
     }
 
     @Override

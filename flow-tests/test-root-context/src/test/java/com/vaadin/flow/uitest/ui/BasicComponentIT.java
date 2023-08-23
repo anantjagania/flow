@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -28,7 +28,7 @@ public class BasicComponentIT extends AbstractBasicElementComponentIT {
         WebElement root = findElement(By.id("root"));
 
         // Selenium does not support text nodes...
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 BasicComponentView.TEXT + "\n" + BasicComponentView.DIV_TEXT
                         + "\n" + BasicComponentView.BUTTON_TEXT,
                 root.getText());

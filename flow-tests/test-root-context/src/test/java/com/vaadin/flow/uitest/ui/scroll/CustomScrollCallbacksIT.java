@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.scroll;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 public class CustomScrollCallbacksIT extends AbstractScrollIT {
@@ -54,11 +54,11 @@ public class CustomScrollCallbacksIT extends AbstractScrollIT {
 
     private void assertView(String expected) {
         String text = findElement(By.id("view")).getText();
-        Assert.assertEquals("Current view: " + expected, text);
+        Assertions.assertEquals("Current view: " + expected, text);
     }
 
     private void assertLog(String expected) {
         String text = findElement(By.id("log")).getText();
-        Assert.assertEquals(expected, text);
+        Assertions.assertEquals(expected, text);
     }
 }

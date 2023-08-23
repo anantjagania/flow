@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebElement;
 
@@ -32,6 +32,6 @@ public class InjectedElementInsideMixinBehaviorIT extends ChromeBrowserTest {
 
         TestBenchElement template = $("mixin-injects").first();
         WebElement injected = template.$(TestBenchElement.class).id("injected");
-        Assert.assertEquals("foo", injected.getText());
+        Assertions.assertEquals("foo", injected.getText());
     }
 }

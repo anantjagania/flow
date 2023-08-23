@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -53,7 +53,7 @@ public class RouterLinkIT extends ChromeBrowserTest {
 
         // Chrome changes url to whatever it can, removing www part, forcing
         // https.
-        Assert.assertTrue("Invalid URL: " + currentUrl,
+        Assertions.assertTrue("Invalid URL: " + currentUrl,
                 currentUrl.equals("http://example.net/"));
     }
 
@@ -83,27 +83,27 @@ public class RouterLinkIT extends ChromeBrowserTest {
     }
 
     private void verifyInsideServletLocation(String pathAfterServletMapping) {
-        Assert.assertEquals("Invalid URL",
+        Assertions.assertEquals("Invalid URL",
                 getRootURL() + "/view/" + pathAfterServletMapping,
                 getDriver().getCurrentUrl());
     }
 
     private void verifyParametersQuery(String parametersQuery) {
-        Assert.assertEquals("Invalid server side event location",
+        Assertions.assertEquals("Invalid server side event location",
                 parametersQuery, findElement(By.id("queryParams")).getText());
     }
 
     private void verifyPopStateEvent(String location) {
-        Assert.assertEquals("Invalid server side event location", location,
+        Assertions.assertEquals("Invalid server side event location", location,
                 findElement(By.id("location")).getText());
     }
 
     private void verifyNotSamePage() {
-        Assert.assertEquals(0, findElements(By.id("location")).size());
+        Assertions.assertEquals(0, findElements(By.id("location")).size());
     }
 
     private void verifySamePage() {
-        Assert.assertNotNull("Page has changed",
+        Assertions.assertNotNull("Page has changed",
                 findElement(By.id("location")));
     }
 }

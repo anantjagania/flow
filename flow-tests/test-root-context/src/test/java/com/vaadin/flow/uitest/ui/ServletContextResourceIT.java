@@ -20,13 +20,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.MatcherAssertions.assertThat;
 
 public class ServletContextResourceIT extends ChromeBrowserTest {
 

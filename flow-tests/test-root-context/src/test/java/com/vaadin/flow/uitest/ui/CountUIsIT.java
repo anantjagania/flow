@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -41,6 +41,6 @@ public class CountUIsIT extends ChromeBrowserTest {
 
         // there should not be any UI instance which is created but never has
         // been navigated (no any enter event into a navigation target)
-        Assert.assertEquals(0, count);
+        Assertions.assertEquals(0, count);
     }
 }

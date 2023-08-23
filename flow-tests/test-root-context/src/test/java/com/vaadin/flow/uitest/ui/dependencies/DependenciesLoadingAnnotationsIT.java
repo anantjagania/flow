@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -24,7 +24,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.junit.MatcherAssert.assertThat;
 
 /**
  * A test that ensures correct order of dependencies loaded. Test corresponds to
@@ -60,7 +60,7 @@ public class DependenciesLoadingAnnotationsIT extends ChromeBrowserTest {
         checkInlinedCss();
 
         WebElement preloadedDiv = findElement(By.id(PRELOADED_DIV_ID));
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Lazy css should be loaded last: color should be blue",
                 "rgba(0, 0, 255, 1)", preloadedDiv.getCssValue("color"));
 
@@ -86,17 +86,17 @@ public class DependenciesLoadingAnnotationsIT extends ChromeBrowserTest {
         assertThat("2 inline messages should be posted before lazy messages",
                 inlineMessages, hasSize(2));
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Expected dom change to happen after eager dependencies loaded and before lazy dependencies have loaded, but got "
                         + testMessages.get(4),
                 testMessages.get(4).equals(DOM_CHANGE_TEXT));
 
         List<String> lazyMessages = testMessages.subList(5, 7);
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Lazy dependencies should be loaded after eager and inline, but got "
                         + lazyMessages.get(0),
                 lazyMessages.get(0).startsWith(LAZY_PREFIX));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Lazy dependencies should be loaded after eager and inline, but got "
                         + lazyMessages.get(1),
                 lazyMessages.get(1).startsWith(LAZY_PREFIX));
@@ -113,7 +113,7 @@ public class DependenciesLoadingAnnotationsIT extends ChromeBrowserTest {
 
         WebElement inlineCssTestDiv = findElement(
                 By.id(DependenciesLoadingBaseView.INLINE_CSS_TEST_DIV_ID));
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Incorrect color for the div that should be styled with inline.css",
                 "rgba(255, 255, 0, 1)", inlineCssTestDiv.getCssValue("color"));
     }

@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.webcomponent;
 
 import static org.hamcrest.CoreMatchers.is;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -32,10 +32,10 @@ public class PaperSliderIT extends ChromeBrowserTest {
 
         WebElement eventField = findElement(
                 By.id(PaperSliderView.VALUE_TEXT_ID));
-        Assert.assertNotNull("No text value found on the page", eventField);
+        Assertions.assertNotNull("No text value found on the page", eventField);
 
         WebElement paperSlider = findElement(By.tagName("paper-slider"));
-        Assert.assertNotNull("No slider found on the page", paperSlider);
+        Assertions.assertNotNull("No slider found on the page", paperSlider);
 
         int initialValue = PaperSliderView.INITIAL_VALUE;
 
@@ -62,14 +62,14 @@ public class PaperSliderIT extends ChromeBrowserTest {
 
     private static void assertSliderValue(WebElement paperSlider,
             int expectedValue) {
-        Assert.assertThat("Slider has incorrect value",
+        MatcherAssert.assertThat("Slider has incorrect value",
                 Integer.valueOf(paperSlider.getAttribute("value")),
                 is(expectedValue));
     }
 
     private static void assertEventFieldValue(WebElement eventField,
             int expectedValue) {
-        Assert.assertThat(
+        MatcherAssert.assertThat(
                 "Expected event field to be updated after slider value was changed",
                 eventField.getText(),
                 is(String.format("Value: %s (set on client)", expectedValue)));

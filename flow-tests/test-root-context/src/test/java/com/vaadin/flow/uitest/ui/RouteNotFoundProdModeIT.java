@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class RouteNotFoundProdModeIT extends RouteNotFoundIT {
 

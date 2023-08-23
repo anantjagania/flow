@@ -1,6 +1,6 @@
 package com.vaadin.flow.contexttest.ui;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 
 public class SubContextNoEndingSlashIT extends AbstractContextIT {
@@ -12,7 +12,7 @@ public class SubContextNoEndingSlashIT extends AbstractContextIT {
 
     @Override
     protected void verifyCorrectUI() {
-        Assert.assertNotNull(findElement(By.id("sub")));
+        Assertions.assertNotNull(findElement(By.id("sub")));
     }
 
 }

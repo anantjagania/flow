@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -30,7 +30,7 @@ public class PostponeProceedIT extends ChromeBrowserTest {
         findElement(By.id("link")).click();
 
         waitUntil(driver -> isElementPresent(By.id("target")));
-        Assert.assertTrue(String.format(
+        Assertions.assertTrue(String.format(
                 "After proceed, the URL in the address bar should ends with %s. But, it was %s",
                 PostponeProceedView.ProceedResultView.class.getSimpleName(),
                 getDriver().getCurrentUrl()),
@@ -47,14 +47,14 @@ public class PostponeProceedIT extends ChromeBrowserTest {
 
         findElement(By.id("delayedProceedLink")).click();
 
-        Assert.assertTrue(isElementPresent(By.id("delayedProceedLink")));
-        Assert.assertTrue(!isElementPresent(By.id("target")));
-        Assert.assertEquals(url, driver.getCurrentUrl());
+        Assertions.assertTrue(isElementPresent(By.id("delayedProceedLink")));
+        Assertions.assertTrue(!isElementPresent(By.id("target")));
+        Assertions.assertEquals(url, driver.getCurrentUrl());
 
         findElement(By.id("proceedButton")).click();
 
         waitUntil(driver -> isElementPresent(By.id("target")));
-        Assert.assertTrue(String.format(
+        Assertions.assertTrue(String.format(
                 "After proceed, the URL in the address bar should ends with %s. But, it was %s",
                 PostponeProceedView.DelayedProceedTargetView.class
                         .getSimpleName(),
@@ -72,14 +72,14 @@ public class PostponeProceedIT extends ChromeBrowserTest {
 
         findElement(By.id("postponedNavigateButton")).click();
 
-        Assert.assertTrue(isElementPresent(By.id("postponedNavigateButton")));
-        Assert.assertTrue(!isElementPresent(By.id("target")));
-        Assert.assertEquals(url, driver.getCurrentUrl());
+        Assertions.assertTrue(isElementPresent(By.id("postponedNavigateButton")));
+        Assertions.assertTrue(!isElementPresent(By.id("target")));
+        Assertions.assertEquals(url, driver.getCurrentUrl());
 
         findElement(By.id("proceedButton")).click();
 
         waitUntil(driver -> isElementPresent(By.id("target")));
-        Assert.assertTrue(String.format(
+        Assertions.assertTrue(String.format(
                 "After proceed, the URL in the address bar should ends with %s. But, it was %s",
                 PostponeProceedView.DelayedProceedTargetView.class
                         .getSimpleName(),

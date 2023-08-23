@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -42,13 +42,13 @@ public class PushWithPreserveOnRefreshIT extends ChromeBrowserTest {
         TestBenchElement button = $(TestBenchElement.class).id("click");
         button.click();
         button.click();
-        Assert.assertEquals("Button has been clicked 2 times", getLastLog());
+        Assertions.assertEquals("Button has been clicked 2 times", getLastLog());
 
         open();
-        Assert.assertEquals("Button has been clicked 2 times", getLastLog());
+        Assertions.assertEquals("Button has been clicked 2 times", getLastLog());
         button = $(TestBenchElement.class).id("click");
         button.click();
-        Assert.assertEquals("Button has been clicked 3 times", getLastLog());
+        Assertions.assertEquals("Button has been clicked 3 times", getLastLog());
     }
 
     private String getLastLog() {

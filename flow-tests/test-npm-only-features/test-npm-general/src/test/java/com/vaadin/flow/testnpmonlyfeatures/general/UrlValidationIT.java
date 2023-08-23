@@ -21,8 +21,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class UrlValidationIT extends ChromeBrowserTest {
 
@@ -44,7 +44,7 @@ public class UrlValidationIT extends ChromeBrowserTest {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         int responseCode = connection.getResponseCode();
-        Assert.assertEquals("HTTP 403 Forbidden expected for urls with " +
+        Assertions.assertEquals("HTTP 403 Forbidden expected for urls with " +
                 "directory change", HttpURLConnection.HTTP_FORBIDDEN, responseCode);
     }
 }

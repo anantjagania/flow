@@ -18,8 +18,8 @@
 package com.vaadin.flow.uitest.ui;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 
@@ -28,6 +28,6 @@ public class TrackMessageSizeIT extends ChromeBrowserTest {
     @Test
     public void runTests() {
         open();
-        Assert.assertEquals("All tests run", this.findElement(By.id("logId")).getText());
+        Assertions.assertEquals("All tests run", this.findElement(By.id("logId")).getText());
     }
 }

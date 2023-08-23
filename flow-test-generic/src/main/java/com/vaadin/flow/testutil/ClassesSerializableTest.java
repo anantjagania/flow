@@ -17,7 +17,7 @@
 package com.vaadin.flow.testutil;
 
 import static java.lang.reflect.Modifier.isStatic;
-import static org.junit.Assert.fail;
+import static org.junit.Assertions.fail;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * A superclass for serialization testing. The test scans all the classpath and

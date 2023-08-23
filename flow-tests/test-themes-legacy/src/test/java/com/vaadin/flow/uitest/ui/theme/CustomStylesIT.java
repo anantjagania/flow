@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.theme;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -31,9 +31,9 @@ public class CustomStylesIT extends ChromeBrowserTest {
         WebElement text = findElement(By.id("custom-style"));
         String fontSize = text.getCssValue("font-size");
         // check that custom style is applied overriding the theme
-        Assert.assertEquals("12px", fontSize);
+        Assertions.assertEquals("12px", fontSize);
 
         // self check that theme styles are also applied
-        Assert.assertEquals("rgba(255, 0, 0, 1)", text.getCssValue("color"));
+        Assertions.assertEquals("rgba(255, 0, 0, 1)", text.getCssValue("color"));
     }
 }

@@ -16,8 +16,8 @@
 
 package com.vaadin.flow.testutil;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -46,7 +46,7 @@ public abstract class AbstractViewTest extends ChromeBrowserTest {
         checkLogsForErrors();
     }
 
-    @After
+    @AfterEach
     public void finalCheck() {
         checkLogsForErrors();
     }

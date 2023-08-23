@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.Arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -60,7 +60,7 @@ public class JavaScriptReturnValueIT extends ChromeBrowserTest {
 
         if ("timeout".equals(type)) {
             try {
-                Assert.assertEquals(
+                Assertions.assertEquals(
                         "Result should not be there immediately for "
                                 + combinationId,
                         "Running...", findElement(By.id("status")).getText());
@@ -68,13 +68,13 @@ public class JavaScriptReturnValueIT extends ChromeBrowserTest {
                 waitUntil(ExpectedConditions.textToBe(By.id("status"),
                         expectedStatus), 2);
             } catch (TimeoutException e) {
-                Assert.fail("Didn't reach expected result for " + combinationId
+                Assertions.fail("Didn't reach expected result for " + combinationId
                         + ". Expected " + expectedStatus + " but got "
                         + findElement(By.id("status")).getText());
                 e.printStackTrace();
             }
         } else {
-            Assert.assertEquals("Unexpected result for " + combinationId,
+            Assertions.assertEquals("Unexpected result for " + combinationId,
                     expectedStatus, findElement(By.id("status")).getText());
         }
     }

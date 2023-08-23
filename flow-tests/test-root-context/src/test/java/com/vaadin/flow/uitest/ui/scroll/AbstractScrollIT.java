@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.uitest.ui.scroll;
 
-import static org.junit.Assert.assertThat;
+import static org.junit.MatcherAssert.assertThat;
 
 import org.hamcrest.number.IsCloseTo;
 

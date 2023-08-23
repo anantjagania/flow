@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -28,6 +28,6 @@ public class DomListenerOnAttachIT extends ChromeBrowserTest {
         open();
 
         String status = findElement(By.id("status")).getText();
-        Assert.assertEquals("Event received", status);
+        Assertions.assertEquals("Event received", status);
     }
 }

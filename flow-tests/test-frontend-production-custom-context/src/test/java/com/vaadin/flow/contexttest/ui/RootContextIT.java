@@ -1,8 +1,8 @@
 package com.vaadin.flow.contexttest.ui;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -27,7 +27,7 @@ public class RootContextIT extends ChromeBrowserTest {
 
     private void verifyFrontend() {
 
-        Assert.assertEquals("Piece of ES6 works from bundled frontend resources", findElementById("es6-div").getText());
+        Assertions.assertEquals("Piece of ES6 works from bundled frontend resources", findElementById("es6-div").getText());
     }
 
     protected WebElement findElementById(String id) {

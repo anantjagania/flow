@@ -4,8 +4,9 @@
     <parent>
         <groupId>com.vaadin</groupId>
         <artifactId>test-embedding</artifactId>
-        <version>2.10-SNAPSHOT</version>
+        <version>2.10-SNS</version>
     </parent>
+
     <artifactId>flow-test-embedding-generic</artifactId>
     <name>Flow Embedding, generic tests</name>
     <packaging>war</packaging>

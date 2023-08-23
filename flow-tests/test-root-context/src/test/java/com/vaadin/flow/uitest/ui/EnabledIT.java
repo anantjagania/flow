@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -29,13 +29,13 @@ public class EnabledIT extends ChromeBrowserTest {
         open();
 
         // The element is initially disabled. It should be there.
-        Assert.assertTrue(isElementPresent(By.id("enabled")));
-        Assert.assertTrue(isElementPresent(By.id("nested-label")));
+        Assertions.assertTrue(isElementPresent(By.id("enabled")));
+        Assertions.assertTrue(isElementPresent(By.id("nested-label")));
 
         // check that disabled update property button is present.
-        Assert.assertTrue(isElementPresent(By.id("updateProperty")));
+        Assertions.assertTrue(isElementPresent(By.id("updateProperty")));
         // Validate that button has the default disabled attribute
-        Assert.assertTrue(findElement(By.id("updateProperty")).getAttribute("disabled") != null);
+        Assertions.assertTrue(findElement(By.id("updateProperty")).getAttribute("disabled") != null);
 
         WebElement main = findElement(By.id("main"));
         WebElement div = main.findElement(By.tagName("div"));
@@ -46,8 +46,8 @@ public class EnabledIT extends ChromeBrowserTest {
         WebElement label = findElement(By.id("nested-label"));
 
         // assert that no changes occurred due to disabled button.
-        Assert.assertEquals("", div.getAttribute("class"));
-        Assert.assertEquals("", label.getAttribute("class"));
+        Assertions.assertEquals("", div.getAttribute("class"));
+        Assertions.assertEquals("", label.getAttribute("class"));
 
         // make the button enabled
         WebElement enableButton = findElement(By.id("enableButton"));
@@ -57,7 +57,7 @@ public class EnabledIT extends ChromeBrowserTest {
         findElement(By.id("updateProperty")).click();
 
         // properties should have changed from the server
-        Assert.assertEquals("foo", div.getAttribute("class"));
-        Assert.assertEquals("bar", label.getAttribute("class"));
+        Assertions.assertEquals("foo", div.getAttribute("class"));
+        Assertions.assertEquals("bar", label.getAttribute("class"));
     }
 }

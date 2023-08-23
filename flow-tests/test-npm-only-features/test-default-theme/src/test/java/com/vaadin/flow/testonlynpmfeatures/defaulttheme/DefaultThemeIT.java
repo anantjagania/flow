@@ -19,8 +19,8 @@ package com.vaadin.flow.testonlynpmfeatures.defaulttheme;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -39,7 +39,7 @@ public class DefaultThemeIT extends ChromeBrowserTest {
                 .collect(Collectors.toList());
 
         // 8 from Lumo and 1 custom-style from frontend/styles/styles.js
-        Assert.assertEquals("Should have found 9 custom-styles", 9,
+        Assertions.assertEquals("Should have found 9 custom-styles", 9,
                 customStyles.size());
     }
 
@@ -50,7 +50,7 @@ public class DefaultThemeIT extends ChromeBrowserTest {
         String lastStyle = $("head").first().$("custom-style").last().$("style")
                 .first().getAttribute("innerText");
 
-        Assert.assertTrue("Theme override expected last",
+        Assertions.assertTrue("Theme override expected last",
                 lastStyle.contains("--lumo-primary-color: red"));
     }
 
@@ -60,6 +60,6 @@ public class DefaultThemeIT extends ChromeBrowserTest {
 
         TestBenchElement button = $("template-with-client-side-imports").first()
                 .$("vaadin-button").first();
-        Assert.assertEquals("rgba(255, 0, 0, 1)", button.getCssValue("color"));
+        Assertions.assertEquals("rgba(255, 0, 0, 1)", button.getCssValue("color"));
     }
 }

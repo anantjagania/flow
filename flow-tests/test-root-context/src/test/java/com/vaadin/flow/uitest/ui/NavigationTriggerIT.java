@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -69,13 +69,13 @@ public class NavigationTriggerIT extends ChromeBrowserTest {
         List<WebElement> messages = getMessages();
         String lastMessageText = messages.get(messages.size() - 1).getText();
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 NavigationTriggerView.buildMessage(path, trigger, parameter),
                 lastMessageText);
     }
 
     private void assertMessageCount(int count) {
-        Assert.assertEquals(count, getMessages().size());
+        Assertions.assertEquals(count, getMessages().size());
     }
 
     private List<WebElement> getMessages() {

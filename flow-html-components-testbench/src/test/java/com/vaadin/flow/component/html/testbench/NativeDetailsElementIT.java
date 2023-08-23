@@ -1,7 +1,7 @@
 package com.vaadin.flow.component.html.testbench;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -16,7 +16,7 @@ public class NativeDetailsElementIT extends ChromeBrowserTest {
         prepareTest(false);
 
         details.setProperty("open", true);
-        Assert.assertEquals("Toggle event number '1' is 'true'", log.getText());
+        Assertions.assertEquals("Toggle event number '1' is 'true'", log.getText());
     }
 
     @Test
@@ -24,10 +24,10 @@ public class NativeDetailsElementIT extends ChromeBrowserTest {
         prepareTest(false);
 
         details.setProperty("open", true);
-        Assert.assertEquals("Toggle event number '1' is 'true'", log.getText());
+        Assertions.assertEquals("Toggle event number '1' is 'true'", log.getText());
 
         details.setProperty("open", false);
-        Assert.assertEquals("Toggle event number '2' is 'false'",
+        Assertions.assertEquals("Toggle event number '2' is 'false'",
                 log.getText());
     }
 
@@ -38,7 +38,7 @@ public class NativeDetailsElementIT extends ChromeBrowserTest {
         details.setProperty("open", false);
         // Event should not be triggered, because details open property
         // defaults to false
-        Assert.assertEquals("", log.getText());
+        Assertions.assertEquals("", log.getText());
     }
 
     @Test
@@ -46,10 +46,10 @@ public class NativeDetailsElementIT extends ChromeBrowserTest {
         prepareTest(false);
 
         button.click();
-        Assert.assertEquals("Toggle event number '1' is 'true'", log.getText());
+        Assertions.assertEquals("Toggle event number '1' is 'true'", log.getText());
 
         button.click();
-        Assert.assertEquals("Toggle event number '2' is 'false'",
+        Assertions.assertEquals("Toggle event number '2' is 'false'",
                 log.getText());
     }
 
@@ -58,10 +58,10 @@ public class NativeDetailsElementIT extends ChromeBrowserTest {
         prepareTest(false);
 
         details.toggle();
-        Assert.assertEquals("Toggle event number '1' is 'true'", log.getText());
+        Assertions.assertEquals("Toggle event number '1' is 'true'", log.getText());
 
         details.toggle();
-        Assert.assertEquals("Toggle event number '2' is 'false'",
+        Assertions.assertEquals("Toggle event number '2' is 'false'",
                 log.getText());
     }
 
@@ -72,12 +72,12 @@ public class NativeDetailsElementIT extends ChromeBrowserTest {
         // Event should be triggered once, because details was already opened on
         // server side
         // triggering the toggle event.
-        Assert.assertEquals("Toggle event number '1' is 'true'", log.getText());
+        Assertions.assertEquals("Toggle event number '1' is 'true'", log.getText());
 
         details.setProperty("open", true);
         // Event should not be triggered again, because details was already
         // opened.
-        Assert.assertEquals("Toggle event number '1' is 'true'", log.getText());
+        Assertions.assertEquals("Toggle event number '1' is 'true'", log.getText());
     }
 
     private void prepareTest(boolean detailsOpen) {

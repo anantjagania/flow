@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -42,7 +42,7 @@ public class ExceptionInStreamResourceIT extends ChromeBrowserTest {
                 + "xhr.send();";
         Object response = ((JavascriptExecutor) getDriver())
                 .executeAsyncScript(script, url);
-        Assert.assertNotNull(response);
-        Assert.assertEquals(500, Integer.parseInt(response.toString()));
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(500, Integer.parseInt(response.toString()));
     }
 }

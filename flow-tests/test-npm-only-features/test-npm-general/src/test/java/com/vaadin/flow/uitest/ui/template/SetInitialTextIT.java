@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -24,9 +24,9 @@ public class SetInitialTextIT extends ChromeBrowserTest {
 
         TestBenchElement child = template.$(TestBenchElement.class).id("child");
 
-        Assert.assertTrue(child.$(TestBenchElement.class)
+        Assertions.assertTrue(child.$(TestBenchElement.class)
                 .attribute("id", "client-side").exists());
-        Assert.assertTrue(child.$(TestBenchElement.class)
+        Assertions.assertTrue(child.$(TestBenchElement.class)
                 .attribute("id", "new-child").exists());
     }
 

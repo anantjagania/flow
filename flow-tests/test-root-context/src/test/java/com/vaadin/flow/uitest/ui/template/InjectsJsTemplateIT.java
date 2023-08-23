@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebElement;
 
@@ -37,14 +37,14 @@ public class InjectsJsTemplateIT extends ChromeBrowserTest {
 
         WebElement fooLabel = injectedTemplate.$(TestBenchElement.class)
                 .id("foo-prop");
-        Assert.assertEquals("bar", fooLabel.getText());
+        Assertions.assertEquals("bar", fooLabel.getText());
 
         WebElement bazLabel = injectedTemplate.$(TestBenchElement.class)
                 .id("baz-prop");
-        Assert.assertEquals("setFromParent", bazLabel.getText());
+        Assertions.assertEquals("setFromParent", bazLabel.getText());
 
         WebElement injectedDiv = parent.$(TestBenchElement.class)
                 .id("injected-div");
-        Assert.assertEquals("setFromParent", injectedDiv.getAttribute("class"));
+        Assertions.assertEquals("setFromParent", injectedDiv.getAttribute("class"));
     }
 }

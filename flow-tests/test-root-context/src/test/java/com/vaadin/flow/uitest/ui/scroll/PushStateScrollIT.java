@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.scroll;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -43,12 +43,12 @@ public class PushStateScrollIT extends ChromeBrowserTest {
         int scrollBeforeClick = getScrollY();
 
         // Sanity check
-        Assert.assertNotEquals("Should be scrolled down before clicking", 0,
+        Assertions.assertNotEquals("Should be scrolled down before clicking", 0,
                 scrollBeforeClick);
 
         button.click();
 
-        Assert.assertEquals("Scroll position should not have changed",
+        Assertions.assertEquals("Scroll position should not have changed",
                 scrollBeforeClick, getScrollY());
     }
 }

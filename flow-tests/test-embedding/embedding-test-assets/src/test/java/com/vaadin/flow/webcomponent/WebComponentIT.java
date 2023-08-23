@@ -18,8 +18,8 @@ package com.vaadin.flow.webcomponent;
 import java.util.List;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -50,7 +50,7 @@ public class WebComponentIT extends EmbeddingChromeBrowserTest
                         + "arguments[0].dispatchEvent(new Event('change'));",
                 select);
 
-        Assert.assertEquals("Selected: Peter, Parker",
+        Assertions.assertEquals("Selected: Peter, Parker",
                 showMessage.$("span").first().getText());
 
         TestBenchElement noMessage = byId("no-message");
@@ -61,7 +61,7 @@ public class WebComponentIT extends EmbeddingChromeBrowserTest
                         + "arguments[0].dispatchEvent(new Event('change'));",
                 select);
 
-        Assert.assertFalse("Message should not be visible",
+        Assertions.assertFalse("Message should not be visible",
                 noMessage.$("span").first().isDisplayed());
     }
 
@@ -76,12 +76,12 @@ public class WebComponentIT extends EmbeddingChromeBrowserTest
         TestBenchElement link = showMessage.$("a").id("link");
         String href = link.getAttribute("href");
         // self check
-        Assert.assertTrue(href.startsWith(getRootURL()));
+        Assertions.assertTrue(href.startsWith(getRootURL()));
         // remove host and port
         href = href.substring(getRootURL().length());
         // now the URI should starts with "/vaadin" since this is the URI of
         // embedded app
-        Assert.assertThat(href,
+        MatcherAssert.assertThat(href,
                 CoreMatchers.startsWith("/vaadin/VAADIN/dynamic/resource/"));
     }
 
@@ -96,9 +96,9 @@ public class WebComponentIT extends EmbeddingChromeBrowserTest
                 .first();
 
         TestBenchElement content = themedComponent.$("div").first();
-        Assert.assertNotNull("The component which should use theme doesn't "
+        Assertions.assertNotNull("The component which should use theme doesn't "
                 + "contain elements", content);
 
-        Assert.assertEquals("rgba(255, 0, 0, 1)", content.getCssValue("color"));
+        Assertions.assertEquals("rgba(255, 0, 0, 1)", content.getCssValue("color"));
     }
 }

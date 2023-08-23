@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.mixedtest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -58,14 +58,14 @@ public class IdTestIT extends ChromeBrowserTest {
 
         WebElement content = myComponent.$(TestBenchElement.class)
                 .id("content");
-        Assert.assertEquals("", content.getText());
+        Assertions.assertEquals("", content.getText());
 
         WebElement button = myComponent.$(TestBenchElement.class).id("button");
         button.click();
-        Assert.assertEquals("1", content.getText());
+        Assertions.assertEquals("1", content.getText());
 
         button.click();
-        Assert.assertEquals("2", content.getText());
+        Assertions.assertEquals("2", content.getText());
     }
 
     private void waitUntillWithMessage(ExpectedCondition<?> condition,
@@ -78,7 +78,7 @@ public class IdTestIT extends ChromeBrowserTest {
         try {
             waitUntil(condition, time);
         } catch (TimeoutException te) {
-            Assert.fail(message);
+            Assertions.fail(message);
         }
     }
 }

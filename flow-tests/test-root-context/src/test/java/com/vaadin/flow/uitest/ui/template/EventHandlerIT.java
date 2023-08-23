@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.template;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -32,7 +32,7 @@ public class EventHandlerIT extends ChromeBrowserTest {
 
         TestBenchElement template = $(TestBenchElement.class).id("template");
         template.$(TestBenchElement.class).id("handle").click();
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Unable to find server event handler invocation confirmation. "
                         + "Looks like 'click' event handler has not been invoked on the server side",
                 isElementPresent(By.id("event-handler-result")));
@@ -41,13 +41,13 @@ public class EventHandlerIT extends ChromeBrowserTest {
         TestBenchElement container = $(TestBenchElement.class).id("event-data");
         List<TestBenchElement> divs = container.$("div").all();
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Unexpected 'button' event data in the received event handler parameter",
                 "button: 0", divs.get(1).getText());
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Unexpected 'type' event data in the received event handler parameter",
                 "type: click", divs.get(2).getText());
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Unexpected 'tag' event data in the received event handler parameter",
                 "tag: button", divs.get(3).getText());
 
@@ -55,26 +55,26 @@ public class EventHandlerIT extends ChromeBrowserTest {
         // handler
         template.$(TestBenchElement.class).id("overridden").click();
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Unable to find server event handler invocation confirmation.",
                 isElementPresent(By.id("overridden-event-handler-result")));
 
-        Assert.assertEquals("Received result wasn't updated by client!",
+        Assertions.assertEquals("Received result wasn't updated by client!",
                 "Overridden server event was invoked with result: ClientSide handler",
                 findElement(By.id("overridden-event-handler-result"))
                         .getText());
 
         // @ClientCallable return value
         template.$("button").id("client").click();
-        Assert.assertEquals("Server-side message should be present",
+        Assertions.assertEquals("Server-side message should be present",
                 "Call from client, message: foo, true",
                 $("div").id("client-call").getText());
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Message from awaiting return value should be present", "FOO",
                 template.$("span").id("status").getText());
 
         template.$("button").id("clientError").click();
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Message from awaiting exception should be present",
                 "Error: Something went wrong. Check server-side logs for more information.",
                 template.$("span").id("status").getText());

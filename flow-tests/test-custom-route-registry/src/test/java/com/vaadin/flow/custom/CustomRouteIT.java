@@ -16,8 +16,8 @@
 
 package com.vaadin.flow.custom;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.NoSuchElementException;
 
 import com.vaadin.flow.component.html.testbench.SpanElement;
@@ -31,13 +31,13 @@ public class CustomRouteIT extends ChromeBrowserTest {
 
         final SpanElement notFoundException = $(SpanElement.class)
                 .id("NotFoundException");
-        Assert.assertEquals("Wrong error handler registered",
+        Assertions.assertEquals("Wrong error handler registered",
                 "NotFoundException :: CustomNotFoundView",
                 notFoundException.getText());
 
         try {
             $(SpanElement.class).id("IllegalAccessException");
-            Assert.fail(
+            Assertions.fail(
                     "Found IllegalAccessException error handler even though it should not be registered");
         } catch (NoSuchElementException nsee) {
             // NO-OP as this should throw element not found
@@ -48,7 +48,7 @@ public class CustomRouteIT extends ChromeBrowserTest {
     public void testCustomErrorView() {
         getDriver().get(getRootURL() + "/none");
         final SpanElement error = $(SpanElement.class).id("error");
-        Assert.assertEquals("Requested route was simply not found!",
+        Assertions.assertEquals("Requested route was simply not found!",
                 error.getText());
     }
 }

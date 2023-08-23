@@ -15,9 +15,9 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -25,7 +25,7 @@ public class DebounceSynchronizePropertyIT
         extends AbstractDebounceSynchronizeIT {
     private WebElement input;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         open();
         input = findElement(By.id("input"));
@@ -64,7 +64,7 @@ public class DebounceSynchronizePropertyIT
     }
 
     @Test
-    @Ignore
+    @Disabled
     public void throttle() throws InterruptedException {
         toggleMode("throttle");
         assertThrottle(input);

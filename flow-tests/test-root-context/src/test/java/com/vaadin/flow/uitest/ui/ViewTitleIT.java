@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 
 import com.vaadin.flow.component.html.testbench.SelectElement;
@@ -47,7 +47,7 @@ public class ViewTitleIT extends ChromeBrowserTest {
     }
 
     private void verifyTitle(String title) {
-        Assert.assertEquals("Page title does not match", title,
+        Assertions.assertEquals("Page title does not match", title,
                 getDriver().getTitle());
     }
 

@@ -6,8 +6,9 @@
     <parent>
         <groupId>com.vaadin</groupId>
         <artifactId>flow-project</artifactId>
-        <version>2.10-SNAPSHOT</version>
+        <version>2.10-SNS</version>
     </parent>
+
     <artifactId>flow-migration</artifactId>
     <name>Flow Migration Tool</name>
     <packaging>jar</packaging>
@@ -29,11 +30,13 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+            <version>2.0.7</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
+            <version>2.0.7</version>
             <scope>test</scope>
         </dependency>
 

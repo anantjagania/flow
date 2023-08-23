@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -38,6 +38,6 @@ public class UpgradeElementIT extends ChromeBrowserTest {
         new Actions(getDriver()).click(input).sendKeys("foo")
                 .sendKeys(Keys.ENTER).build().perform();
         WebElement result = findElement(By.id("text-update"));
-        Assert.assertEquals("foo", result.getText());
+        Assertions.assertEquals("foo", result.getText());
     }
 }

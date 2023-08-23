@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogEntry;
@@ -35,7 +35,7 @@ public class DynamicDependencyIT extends ChromeBrowserTest {
 
         WebElement depElement = findElement(By.id("dep"));
         // true means that the added component (a new one) is not yet in the DOM
-        Assert.assertEquals(Boolean.TRUE.toString(), depElement.getText());
+        Assertions.assertEquals(Boolean.TRUE.toString(), depElement.getText());
     }
 
     @Test
@@ -61,14 +61,14 @@ public class DynamicDependencyIT extends ChromeBrowserTest {
         findElement(By.id(caseName)).click();
 
         String statusText = findElement(By.id("new-component")).getText();
-        Assert.assertEquals("Div updated for " + caseName, statusText);
+        Assertions.assertEquals("Div updated for " + caseName, statusText);
 
         List<LogEntry> entries = getLogEntries(Level.SEVERE);
-        Assert.assertEquals(2, entries.size());
+        Assertions.assertEquals(2, entries.size());
 
-        Assert.assertThat(entries.get(0).getMessage(),
+        MatcherAssert.assertThat(entries.get(0).getMessage(),
                 Matchers.containsString(errorMessageSnippet));
-        Assert.assertThat(entries.get(1).getMessage(),
+        MatcherAssert.assertThat(entries.get(1).getMessage(),
                 Matchers.containsString("could not be loaded"));
     }
 }

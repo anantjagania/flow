@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -32,10 +32,10 @@ public class BasicElementIT extends AbstractBasicElementComponentIT {
 
         List<WebElement> addremovecontainerChildren = findElement(
                 By.id("addremovecontainer")).findElements(By.tagName("div"));
-        Assert.assertEquals(2, addremovecontainerChildren.size());
-        Assert.assertEquals("to-remove",
+        Assertions.assertEquals(2, addremovecontainerChildren.size());
+        Assertions.assertEquals("to-remove",
                 addremovecontainerChildren.get(0).getAttribute("id"));
-        Assert.assertEquals("ok",
+        Assertions.assertEquals("ok",
                 addremovecontainerChildren.get(1).getAttribute("id"));
         // verify the UI still works
         assertDomUpdatesAndEventsDoSomething();

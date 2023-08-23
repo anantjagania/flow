@@ -19,8 +19,8 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.stream.StreamSupport;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogEntries;
@@ -37,7 +37,7 @@ public class EmptyListsIT extends ChromeBrowserTest {
 
         TestBenchElement template = $("*").id("template");
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 template.$("*").attributeContains("class", "item").exists());
 
         findElement(By.id("set-empty")).click();
@@ -57,7 +57,7 @@ public class EmptyListsIT extends ChromeBrowserTest {
                     .filter(entry -> !entry.getMessage()
                             .contains("[WDS] Disconnected!"))
                     .findAny();
-            anyError.ifPresent(entry -> Assert.fail(entry.getMessage()));
+            anyError.ifPresent(entry -> Assertions.fail(entry.getMessage()));
         }
     }
 }

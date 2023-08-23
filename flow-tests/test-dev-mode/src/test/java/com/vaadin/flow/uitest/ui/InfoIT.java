@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -30,14 +30,14 @@ public class InfoIT extends ChromeBrowserTest {
     @Test
     public void productionModeServlet() {
         openProduction();
-        Assert.assertEquals("true", getInfoValue("Production mode"));
+        Assertions.assertEquals("true", getInfoValue("Production mode"));
 
     }
 
     @Test
     public void nonProductionModeServlet() {
         open();
-        Assert.assertEquals("false", getInfoValue("Production mode"));
+        Assertions.assertEquals("false", getInfoValue("Production mode"));
 
     }
 

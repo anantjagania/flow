@@ -19,8 +19,8 @@ import java.util.List;
 
 import com.vaadin.testbench.TestBenchElement;
 import net.jcip.annotations.NotThreadSafe;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -34,12 +34,12 @@ public class LiveReloadIT extends AbstractLiveReloadIT {
         // message window
         waitForElementPresent(By.tagName("vaadin-devmode-gizmo"));
         List<TestBenchElement> liveReloads = $("vaadin-devmode-gizmo").all();
-        Assert.assertEquals(1, liveReloads.size());
+        Assertions.assertEquals(1, liveReloads.size());
         TestBenchElement liveReload = liveReloads.get(0);
 
         WebElement window = liveReload.$("*")
                 .attributeContains("class", "window").first();
-        Assert.assertFalse(window.isDisplayed());
+        Assertions.assertFalse(window.isDisplayed());
 
         // After clicking the icon in the indicator, the live-reload message
         // window should appear
@@ -51,7 +51,7 @@ public class LiveReloadIT extends AbstractLiveReloadIT {
 
         WebElement window2 = liveReload.$("*")
                 .attributeContains("class", "gizmo").first();
-        Assert.assertTrue(window2.isDisplayed());
+        Assertions.assertTrue(window2.isDisplayed());
     }
 
     @Test
@@ -63,21 +63,21 @@ public class LiveReloadIT extends AbstractLiveReloadIT {
         liveReloadTrigger.click();
 
         TestBenchElement liveReload = $("vaadin-devmode-gizmo").first();
-        Assert.assertNotNull(liveReload);
+        Assertions.assertNotNull(liveReload);
         WebElement gizmo1 = liveReload.$("*")
                 .attributeContains("class", "gizmo").first();
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 gizmo1.getAttribute("class").contains("active"));
 
         findElement(By.tagName("body")).click();
 
         TestBenchElement liveReload2 = $("vaadin-devmode-gizmo").first();
-        Assert.assertNotNull(liveReload2);
+        Assertions.assertNotNull(liveReload2);
         WebElement gizmo2 = liveReload2.$("*")
                 .attributeContains("class", "gizmo").first();
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 gizmo2.getAttribute("class").contains("active"));
-        Assert.assertTrue(gizmo2.getAttribute("class").contains("gizmo"));
+        Assertions.assertTrue(gizmo2.getAttribute("class").contains("gizmo"));
     }
 
     @Test
@@ -104,9 +104,9 @@ public class LiveReloadIT extends AbstractLiveReloadIT {
         TestBenchElement liveReload2 = $("vaadin-devmode-gizmo").first();
         WebElement gizmo2 = liveReload2.$("*")
                 .attributeContains("class", "gizmo").first();
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 gizmo2.getAttribute("class").contains("active"));
-        Assert.assertTrue(gizmo2.getAttribute("class").contains("gizmo"));
+        Assertions.assertTrue(gizmo2.getAttribute("class").contains("gizmo"));
     }
 
     @Test
@@ -126,6 +126,6 @@ public class LiveReloadIT extends AbstractLiveReloadIT {
 
         final String newViewId = findElement(
                 By.id(LiveReloadView.INSTANCE_IDENTIFIER)).getText();
-        Assert.assertNotEquals(initialViewId, newViewId);
+        Assertions.assertNotEquals(initialViewId, newViewId);
     }
 }

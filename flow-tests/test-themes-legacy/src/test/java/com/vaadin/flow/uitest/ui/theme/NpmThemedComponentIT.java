@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.theme;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -36,7 +36,7 @@ public class NpmThemedComponentIT extends ChromeBrowserTest {
         String id = nestedDiv.getAttribute("id");
         // make sure that component which is created from the server side is
         // themed
-        Assert.assertEquals("The server side component is not themed", "themed",
+        Assertions.assertEquals("The server side component is not themed", "themed",
             id);
 
         TestBenchElement nestedClientSideComponent = themedComponent
@@ -45,14 +45,14 @@ public class NpmThemedComponentIT extends ChromeBrowserTest {
                 .$("div").all();
         // Fist of all: the client side component is correctly rsolved so it has
         // something inside its shadow root
-        Assert.assertTrue(
+        Assertions.assertTrue(
             "The client side component inside themed component is not resolved",
             divsInClientSideComponent.size() > 0);
 
         TestBenchElement divInClientSideComponent = divsInClientSideComponent
             .get(0);
         // make sure that the nested client side is themed
-        Assert.assertEquals("The server side component is not themed", "themed",
+        Assertions.assertEquals("The server side component is not themed", "themed",
             divInClientSideComponent.getAttribute("id"));
     }
 

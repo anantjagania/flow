@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.uitest.ui.AbstractErrorIT;
 import com.vaadin.testbench.TestBenchElement;
@@ -39,7 +39,7 @@ public class ExceptionsDuringPropertyUpdatesIT extends AbstractErrorIT {
 
         TestBenchElement msg = template.$("div").id("message");
 
-        Assert.assertEquals("Name is updated to bar", msg.getText());
+        Assertions.assertEquals("Name is updated to bar", msg.getText());
 
         List<TestBenchElement> errors = template.$("div")
                 .attribute("class", "error").all();
@@ -47,11 +47,11 @@ public class ExceptionsDuringPropertyUpdatesIT extends AbstractErrorIT {
         Set<String> errorMsgs = errors.stream().map(TestBenchElement::getText)
                 .collect(Collectors.toSet());
 
-        Assert.assertEquals(2, errorMsgs.size());
+        Assertions.assertEquals(2, errorMsgs.size());
 
-        Assert.assertTrue(errorMsgs.contains(
+        Assertions.assertTrue(errorMsgs.contains(
                 "An error occurred: java.lang.RuntimeException: Intentional exception in property sync handler for 'text'"));
-        Assert.assertTrue(errorMsgs.contains(
+        Assertions.assertTrue(errorMsgs.contains(
                 "An error occurred: java.lang.IllegalStateException: Intentional exception in property sync handler for 'title'"));
     }
 

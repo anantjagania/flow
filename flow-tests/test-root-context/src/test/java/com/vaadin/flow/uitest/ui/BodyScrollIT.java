@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -32,10 +32,10 @@ public class BodyScrollIT extends ChromeBrowserTest {
                 .getAttribute("scroll");
 
         if (BrowserUtil.isIE(getDesiredCapabilities())) {
-            Assert.assertTrue("The 'scroll' attribute of body should be empty",
+            Assertions.assertTrue("The 'scroll' attribute of body should be empty",
                     scrollAttribute.isEmpty());
         } else {
-            Assert.assertNull("Body should not have 'scroll' attribute",
+            Assertions.assertNull("Body should not have 'scroll' attribute",
                     scrollAttribute);
         }
     }

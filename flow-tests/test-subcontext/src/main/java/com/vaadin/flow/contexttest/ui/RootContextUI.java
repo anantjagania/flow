@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.contexttest.ui;
 
-import javax.servlet.annotation.WebServlet;
+import jakarta.servlet.annotation.WebServlet;
 
 import com.vaadin.flow.dom.ElementFactory;
 import com.vaadin.flow.server.VaadinRequest;

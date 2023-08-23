@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -27,6 +27,6 @@ public class PlainScriptViaJavaScriptIT extends ChromeBrowserTest {
     public void contextSchemaWorksinJavaScript() {
         open();
 
-        Assert.assertTrue(isElementPresent(By.id("added-from-src-script")));
+        Assertions.assertTrue(isElementPresent(By.id("added-from-src-script")));
     }
 }

@@ -15,9 +15,9 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -25,7 +25,7 @@ import com.vaadin.testbench.TestBenchElement;
 
 public class CustomCustomElementIT extends ChromeBrowserTest {
 
-    @Before
+    @BeforeEach
     public void setUp() {
         open();
     }
@@ -34,12 +34,12 @@ public class CustomCustomElementIT extends ChromeBrowserTest {
     public void clickOnButton_removeFromLayout() {
         TestBenchElement customElement = $("custom-custom-element").first();
 
-        Assert.assertEquals("initial",
+        Assertions.assertEquals("initial",
                 customElement.getPropertyString("shadowRoot", "textContent"));
 
         findElement(By.tagName("button")).click();
 
-        Assert.assertEquals("updated",
+        Assertions.assertEquals("updated",
                 customElement.getPropertyString("shadowRoot", "textContent"));
     }
 

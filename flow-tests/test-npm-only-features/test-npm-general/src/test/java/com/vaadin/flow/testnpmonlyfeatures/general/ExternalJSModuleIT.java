@@ -18,9 +18,9 @@ package com.vaadin.flow.testnpmonlyfeatures.general;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -33,7 +33,7 @@ public class ExternalJSModuleIT extends ChromeBrowserTest {
     private final static String EXPECTED_SRC_FOR_NO_PROTOCOL =
             "http:" + ComponentWithExternalJsModule.SOME_RANDOM_EXTERNAL_JS_URL_WITHOUT_PROTOCOL;
 
-    @Before
+    @BeforeEach
     public void init() {
         open();
         waitForElementPresent(By.tagName("div"));
@@ -42,14 +42,14 @@ public class ExternalJSModuleIT extends ChromeBrowserTest {
     @Test
     public void jsModuleAnnotation_externalJs_shouldBeAddedToPage() {
         List<WebElement> scriptTags = findElements(By.tagName("script"));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "External JS annotated with @JsModule annotation should be added as a script tag with module type to the page!",
                 scriptTags.stream().anyMatch(
                         scriptTag -> ComponentWithExternalJsModule.SOME_RANDOM_EXTERNAL_JS_URL
                                 .equals(scriptTag.getAttribute("src"))
                                 && "module".equals(
                                         scriptTag.getAttribute("type"))));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "External JS without protocol annotated with @JsModule annotation should be added as a script tag with module type to the page!",
                 scriptTags.stream().anyMatch(
                         scriptTag -> EXPECTED_SRC_FOR_NO_PROTOCOL
@@ -64,14 +64,14 @@ public class ExternalJSModuleIT extends ChromeBrowserTest {
         waitForElementPresent(By.id("componentWithExternalJsModule"));
 
         List<WebElement> scriptTags = findElements(By.tagName("script"));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "When a component is added to the page, external JS annotated with @JsModule annotation in the component should be added as a script tag with module type to the page!",
                 scriptTags.stream().anyMatch(
                         scriptTag -> ComponentWithExternalJsModule.SOME_RANDOM_EXTERNAL_JS_URL
                                 .equals(scriptTag.getAttribute("src"))
                                 && "module".equals(
                                         scriptTag.getAttribute("type"))));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "When a component is added to the page, external JS without protocol annotated with @JsModule annotation in the component should be added as a script tag with module type to the page!",
                 scriptTags.stream().anyMatch(
                         scriptTag -> EXPECTED_SRC_FOR_NO_PROTOCOL
@@ -79,7 +79,7 @@ public class ExternalJSModuleIT extends ChromeBrowserTest {
                                 && "module".equals(
                                         scriptTag.getAttribute("type"))));
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "When a component is added to the page, non-external JS annotated with @JsModule annotation in the component should not be added as a script tag to the page!",
                 scriptTags.stream().noneMatch(scriptTag -> scriptTag
                         .getAttribute("src") != null

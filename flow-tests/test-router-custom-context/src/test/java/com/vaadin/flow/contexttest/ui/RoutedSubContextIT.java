@@ -1,6 +1,6 @@
 package com.vaadin.flow.contexttest.ui;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 
 public class RoutedSubContextIT extends AbstractContextIT {
@@ -12,7 +12,7 @@ public class RoutedSubContextIT extends AbstractContextIT {
 
     @Override
     protected void verifyCorrectUI() {
-        Assert.assertNotNull(findElement(By.id("routed-sub")));
+        Assertions.assertNotNull(findElement(By.id("routed-sub")));
     }
 
 }

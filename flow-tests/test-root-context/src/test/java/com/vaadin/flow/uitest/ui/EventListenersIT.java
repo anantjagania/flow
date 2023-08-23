@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -34,16 +34,16 @@ public class EventListenersIT extends ChromeBrowserTest {
         button.click();
 
         List<WebElement> clicks = findElements(By.className("count"));
-        Assert.assertEquals(1, clicks.size());
+        Assertions.assertEquals(1, clicks.size());
 
-        Assert.assertEquals("1", clicks.get(0).getText());
+        Assertions.assertEquals("1", clicks.get(0).getText());
 
         button.click();
 
         clicks = findElements(By.className("count"));
 
-        Assert.assertEquals(2, clicks.size());
-        Assert.assertEquals("1", clicks.get(0).getText());
-        Assert.assertEquals("2", clicks.get(1).getText());
+        Assertions.assertEquals(2, clicks.size());
+        Assertions.assertEquals("1", clicks.get(0).getText());
+        Assertions.assertEquals("2", clicks.get(1).getText());
     }
 }

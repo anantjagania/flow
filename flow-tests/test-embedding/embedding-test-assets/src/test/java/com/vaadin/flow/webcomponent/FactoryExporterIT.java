@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.webcomponent;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -35,7 +35,7 @@ public class FactoryExporterIT extends EmbeddingChromeBrowserTest
         waitForElementVisible(By.id("interface"));
         WebElement paragraph = byId("interface", "paragraph");
 
-        Assert.assertNotNull("Web component exported by interface based "
+        Assertions.assertNotNull("Web component exported by interface based "
                 + "exporter should have been upgraded", paragraph);
     }
 }

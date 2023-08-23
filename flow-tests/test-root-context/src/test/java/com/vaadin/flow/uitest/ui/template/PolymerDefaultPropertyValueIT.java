@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -34,20 +34,20 @@ public class PolymerDefaultPropertyValueIT extends ChromeBrowserTest {
         TestBenchElement template = $(TestBenchElement.class).id("template");
         TestBenchElement text = template.$(TestBenchElement.class).id("text");
 
-        Assert.assertEquals("foo", text.getText());
+        Assertions.assertEquals("foo", text.getText());
 
         TestBenchElement name = template.$(TestBenchElement.class).id("name");
-        Assert.assertEquals("bar", name.getText());
+        Assertions.assertEquals("bar", name.getText());
 
         TestBenchElement msg = template.$(TestBenchElement.class).id("message");
-        Assert.assertEquals("updated-message", msg.getText());
+        Assertions.assertEquals("updated-message", msg.getText());
 
         TestBenchElement email = template.$(TestBenchElement.class).id("email");
-        Assert.assertEquals("foo@example.com", email.getText());
+        Assertions.assertEquals("foo@example.com", email.getText());
 
         findElement(By.id("show-email")).click();
 
         WebElement serverSideEmailValue = findElement(By.id("email-value"));
-        Assert.assertEquals("foo@example.com", serverSideEmailValue.getText());
+        Assertions.assertEquals("foo@example.com", serverSideEmailValue.getText());
     }
 }

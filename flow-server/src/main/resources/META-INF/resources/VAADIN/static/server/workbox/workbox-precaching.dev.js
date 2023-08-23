@@ -491,7 +491,7 @@ this.workbox.precaching = (function (DBWrapper_mjs,logger_mjs,cacheNames_mjs,Wor
      */
     addToCacheList(entries) {
       {
-        assert_mjs.assert.isArray(entries, {
+        assert_mjs.Assertions.isArray(entries, {
           moduleName: 'workbox-precaching',
           className: 'PrecacheController',
           funcName: 'addToCacheList',
@@ -589,7 +589,7 @@ this.workbox.precaching = (function (DBWrapper_mjs,logger_mjs,cacheNames_mjs,Wor
           }
 
           if (options.plugins) {
-            assert_mjs.assert.isArray(options.plugins, {
+            assert_mjs.Assertions.isArray(options.plugins, {
               moduleName: 'workbox-precaching',
               className: 'PrecacheController',
               funcName: 'install',
@@ -856,7 +856,7 @@ this.workbox.precaching = (function (DBWrapper_mjs,logger_mjs,cacheNames_mjs,Wor
   */
 
   {
-    assert_mjs.assert.isSwEnv('workbox-precaching');
+    assert_mjs.Assertions.isSwEnv('workbox-precaching');
   }
 
   let installActivateListenersAdded = false;

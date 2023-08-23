@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.navigation;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -39,14 +39,14 @@ public class BrowserNavigationServerRoundTripIT extends ChromeBrowserTest {
 
         final String queryValue0 = findElement(By.id(FirstView.QUERY_LABEL_ID))
                 .getText();
-        Assert.assertEquals("should have received query parameter value 'bar'",
+        Assertions.assertEquals("should have received query parameter value 'bar'",
                 "query=bar", queryValue0);
 
         getDriver().navigate().back();
 
         final String queryValue1 = findElement(By.id(FirstView.QUERY_LABEL_ID))
                 .getText();
-        Assert.assertEquals("should have received query parameter value 'foo'",
+        Assertions.assertEquals("should have received query parameter value 'foo'",
                 "query=foo", queryValue1);
     }
 

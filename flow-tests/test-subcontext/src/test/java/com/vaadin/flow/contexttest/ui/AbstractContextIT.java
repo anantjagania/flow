@@ -1,7 +1,7 @@
 package com.vaadin.flow.contexttest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -39,7 +39,7 @@ public abstract class AbstractContextIT extends ChromeBrowserTest {
 
     private void styleInjection() {
         // Initial stylesheet makes all text red
-        Assert.assertEquals(RED, findElementById("hello").getCssValue("color"));
+        Assertions.assertEquals(RED, findElementById("hello").getCssValue("color"));
 
         // Inject stylesheet which makes text blue
         findElementById("loadBlue").click();
@@ -54,14 +54,14 @@ public abstract class AbstractContextIT extends ChromeBrowserTest {
         findElement(By.cssSelector("body")).click();
         String addedBodyText = findElement(By.cssSelector(".body-click-added"))
                 .getText();
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Click on body, reported by JavaScript click handler",
                 addedBodyText);
 
         // Inject scripts
         findElementById("loadJs").click();
         String addedJsText = findElementById("appended-element").getText();
-        Assert.assertEquals("Added by script", addedJsText);
+        Assertions.assertEquals("Added by script", addedJsText);
     }
 
     protected WebElement findElementById(String id) {

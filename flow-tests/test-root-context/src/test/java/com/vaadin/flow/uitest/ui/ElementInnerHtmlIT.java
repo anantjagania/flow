@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.html.testbench.DivElement;
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
@@ -29,22 +29,22 @@ public class ElementInnerHtmlIT extends ChromeBrowserTest {
         open();
         DivElement innerHtml = $(DivElement.class).id("inner-html-field");
 
-        Assert.assertEquals("", innerHtml.getPropertyString("innerHTML"));
+        Assertions.assertEquals("", innerHtml.getPropertyString("innerHTML"));
 
         $(NativeButtonElement.class).id("set-foo").click();
-        Assert.assertEquals("<p>Foo</p>", innerHtml.getPropertyString("innerHTML"));
+        Assertions.assertEquals("<p>Foo</p>", innerHtml.getPropertyString("innerHTML"));
 
         $(NativeButtonElement.class).id("set-foo").click();
-        Assert.assertEquals("<p>Foo</p>", innerHtml.getPropertyString("innerHTML"));
+        Assertions.assertEquals("<p>Foo</p>", innerHtml.getPropertyString("innerHTML"));
 
         $(NativeButtonElement.class).id("set-boo").click();
-        Assert.assertEquals("<p>Boo</p>", innerHtml.getPropertyString("innerHTML"));
+        Assertions.assertEquals("<p>Boo</p>", innerHtml.getPropertyString("innerHTML"));
 
         $(NativeButtonElement.class).id("set-boo").click();
-        Assert.assertEquals("<p>Boo</p>", innerHtml.getPropertyString("innerHTML"));
+        Assertions.assertEquals("<p>Boo</p>", innerHtml.getPropertyString("innerHTML"));
 
         $(NativeButtonElement.class).id("set-null").click();
-        Assert.assertEquals("", innerHtml.getPropertyString("innerHTML"));
+        Assertions.assertEquals("", innerHtml.getPropertyString("innerHTML"));
 
     }
 }

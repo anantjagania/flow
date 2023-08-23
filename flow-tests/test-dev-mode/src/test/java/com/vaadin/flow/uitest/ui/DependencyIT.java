@@ -15,14 +15,14 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -37,11 +37,11 @@ public class DependencyIT extends ChromeBrowserTest {
     public void styleInjection() {
         open();
         // Initial stylesheet makes all text red
-        Assert.assertEquals(RED, findElementById("hello").getCssValue("color"));
+        Assertions.assertEquals(RED, findElementById("hello").getCssValue("color"));
 
         // Inject stylesheet which makes text blue
         findElementById("loadBlue").click();
-        Assert.assertEquals(BLUE,
+        Assertions.assertEquals(BLUE,
                 findElementById("hello").getCssValue("color"));
     }
 
@@ -52,7 +52,7 @@ public class DependencyIT extends ChromeBrowserTest {
         clickElementWithJs(findElement(By.tagName("body")));
         String addedBodyText = findElement(By.cssSelector(".body-click-added"))
                 .getText();
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Click on body, reported by JavaScript click handler",
                 addedBodyText);
 
@@ -60,7 +60,7 @@ public class DependencyIT extends ChromeBrowserTest {
         findElementById("loadJs").click();
         waitForElementPresent(By.id("read-global-var-text"));
         String addedJsText = findElementById("read-global-var-text").getText();
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Second script loaded. Global variable (window.globalVar) is: 'Set by set-global-var.js'",
                 addedJsText);
     }
@@ -72,18 +72,18 @@ public class DependencyIT extends ChromeBrowserTest {
         // Initial HTML import logs a message on the page
         List<String> messages = getMessages();
 
-        Assert.assertEquals(3, messages.size());
-        assertTrue(messages.contains("HTML import 4 companion JS loaded"));
-        assertTrue(messages.contains("Messagehandler initialized in HTML import 1"));
-        assertTrue(messages.contains("Messagehandler initialized in HTML import 4"));
+        Assertions.assertEquals(3, messages.size());
+Assertions.assertTrue(messages.contains("HTML import 4 companion JS loaded"));
+Assertions.assertTrue(messages.contains("Messagehandler initialized in HTML import 1"));
+Assertions.assertTrue(messages.contains("Messagehandler initialized in HTML import 4"));
 
         // Inject html
         findElementById("loadHtml").click();
         messages = getMessages();
 
-        Assert.assertEquals(5, messages.size());
-        assertTrue(messages.contains("HTML import 2 loaded"));
-        assertTrue(messages.contains("HTML import 3 loaded"));
+        Assertions.assertEquals(5, messages.size());
+Assertions.assertTrue(messages.contains("HTML import 2 loaded"));
+Assertions.assertTrue(messages.contains("HTML import 3 loaded"));
     }
 
     @Test
@@ -93,13 +93,13 @@ public class DependencyIT extends ChromeBrowserTest {
 
         List<String> messages = getMessages();
 
-        Assert.assertEquals("script1 is loaded",
+        Assertions.assertEquals("script1 is loaded",
                 messages.get(messages.size() - 4));
-        Assert.assertEquals("Mixed HTML import 1 loaded",
+        Assertions.assertEquals("Mixed HTML import 1 loaded",
                 messages.get(messages.size() - 3));
-        Assert.assertEquals("script2 is loaded",
+        Assertions.assertEquals("script2 is loaded",
                 messages.get(messages.size() - 2));
-        Assert.assertEquals("Mixed HTML import 2 loaded",
+        Assertions.assertEquals("Mixed HTML import 2 loaded",
                 messages.get(messages.size() - 1));
     }
 
@@ -110,19 +110,19 @@ public class DependencyIT extends ChromeBrowserTest {
 
         List<String> errors = findElements(By.className("v-system-error"))
                 .stream().map(WebElement::getText).collect(Collectors.toList());
-        Assert.assertEquals(3, errors.size());
+        Assertions.assertEquals(3, errors.size());
         // The order for these can be random
-        assertTrue("Couldn't find error for not-found.css",
+Assertions.assertTrue("Couldn't find error for not-found.css",
                 errors.stream()
                         .filter(s -> s.startsWith("Error loading http://")
                                 && s.endsWith("/not-found.css"))
                         .findFirst().isPresent());
-        assertTrue("Couldn't find error for not-found.js",
+Assertions.assertTrue("Couldn't find error for not-found.js",
                 errors.stream()
                         .filter(s -> s.startsWith("Error loading http://")
                                 && s.endsWith("/not-found.js"))
                         .findFirst().isPresent());
-        assertTrue("Couldn't find error for not-found.html",
+Assertions.assertTrue("Couldn't find error for not-found.html",
                 errors.stream()
                         .filter(s -> s.startsWith("Error loading http://")
                                 && s.endsWith("/not-found.html"))
@@ -136,7 +136,7 @@ public class DependencyIT extends ChromeBrowserTest {
 
         List<WebElement> errors = findElements(By.className("v-system-error"));
         // Should not be shown in production
-        Assert.assertEquals(0, errors.size());
+        Assertions.assertEquals(0, errors.size());
     }
 
     private List<String> getMessages() {

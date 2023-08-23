@@ -1,7 +1,7 @@
 package com.vaadin.flow.contexttest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -88,7 +88,7 @@ public class PushIT extends ChromeBrowserTest {
         try {
             waitUntil(driver -> signal.getText().equals(sampleText), 2);
         } catch (TimeoutException e) {
-            Assert.fail("Push state check failed when waiting for '"
+            Assertions.fail("Push state check failed when waiting for '"
                     + sampleText + "' in element #"
                     + DependencyLayout.PUSH_SIGNAL_ID);
         }

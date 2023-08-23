@@ -2,8 +2,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -99,14 +99,14 @@ public class FragmentLinkIT extends ChromeBrowserTest {
     }
 
     private void verifyView2Open() {
-        Assert.assertNotNull("FragmentView2 not opened",
+        Assertions.assertNotNull("FragmentView2 not opened",
                 findElement(By.id("view2")));
     }
 
     private void assertScrollPosition(int expected, int actual) {
         int lowerBound = expected - 2 > 0 ? expected - 2 : 0;
         int higherBound = expected + 2;
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Invalid scroll position, expected " + expected
                         + " +-2px. actual " + actual,
                 lowerBound <= expected && expected <= higherBound);
@@ -115,12 +115,12 @@ public class FragmentLinkIT extends ChromeBrowserTest {
     private void verifyHashChangeEvents(int numberOfEvents) {
         List<WebElement> spans = findElement(By.id("placeholder"))
                 .findElements(By.tagName("span"));
-        Assert.assertEquals("Invalid amount of hash change events",
+        Assertions.assertEquals("Invalid amount of hash change events",
                 numberOfEvents, spans.size());
     }
 
     private void verifyInsideServletLocation(String pathAfterServletMapping) {
-        Assert.assertEquals("Invalid URL",
+        Assertions.assertEquals("Invalid URL",
                 getRootURL() + "/view/" + pathAfterServletMapping,
                 getDriver().getCurrentUrl());
     }

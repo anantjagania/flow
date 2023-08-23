@@ -19,8 +19,8 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.stream.StreamSupport;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
@@ -34,7 +34,7 @@ public class WebComponentsIT extends ChromeBrowserTest {
     public void testPolyfillLoaded() {
         open();
 
-        Assert.assertTrue(driver.findElements(By.tagName("script")).stream()
+        Assertions.assertTrue(driver.findElements(By.tagName("script")).stream()
                 .anyMatch(element -> element.getAttribute("src")
                         .endsWith("webcomponents-loader.js")));
 
@@ -56,7 +56,7 @@ public class WebComponentsIT extends ChromeBrowserTest {
                     .filter(entry -> !entry.getMessage()
                             .contains("[WDS] Disconnected!"))
                     .findAny();
-            anyError.ifPresent(entry -> Assert.fail(entry.getMessage()));
+            anyError.ifPresent(entry -> Assertions.fail(entry.getMessage()));
         }
     }
 }

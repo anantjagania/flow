@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -18,12 +18,12 @@ public class ErrorPageIT extends ChromeBrowserTest {
     public void testErrorViewOpened() {
         open();
 
-        Assert.assertTrue(getDriver().getPageSource()
+        Assertions.assertTrue(getDriver().getPageSource()
                 .contains("Could not navigate to 'abcd'"));
 
         getDriver().get(getTestURL() + "/foobar");
 
-        Assert.assertTrue(getDriver().getPageSource()
+        Assertions.assertTrue(getDriver().getPageSource()
                 .contains("Could not navigate to 'abcd/foobar'"));
     }
 }

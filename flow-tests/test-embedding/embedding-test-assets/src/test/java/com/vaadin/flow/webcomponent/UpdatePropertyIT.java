@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.webcomponent;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.testbench.TestBenchElement;
@@ -36,23 +36,23 @@ public class UpdatePropertyIT extends EmbeddingChromeBrowserTest implements HasB
 
         TestBenchElement button = byId("counter").$("button").first();
 
-        Assert.assertEquals("Count (id:count) should start from 0", 0,
+        Assertions.assertEquals("Count (id:count) should start from 0", 0,
                 getInt("count"));
-        Assert.assertEquals("Count (id:json) should start from 0", 0,
+        Assertions.assertEquals("Count (id:json) should start from 0", 0,
                 getInt("json"));
 
         button.click();
 
-        Assert.assertEquals("Count (id:count) should be 1", 1,
+        Assertions.assertEquals("Count (id:count) should be 1", 1,
                 getInt("count"));
-        Assert.assertEquals("Count (id:json) should be 1", 1,
+        Assertions.assertEquals("Count (id:json) should be 1", 1,
                 getInt("json"));
 
         button.click();
 
-        Assert.assertEquals("Count (id:count) should be 2", 2,
+        Assertions.assertEquals("Count (id:count) should be 2", 2,
                 getInt("count"));
-        Assert.assertEquals("Count (id:json) should be 2", 2,
+        Assertions.assertEquals("Count (id:json) should be 2", 2,
                 getInt("json"));
     }
 

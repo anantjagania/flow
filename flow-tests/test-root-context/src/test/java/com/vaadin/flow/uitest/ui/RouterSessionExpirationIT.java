@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -35,15 +35,15 @@ public class RouterSessionExpirationIT extends ChromeBrowserTest {
         navigateToAnotherView();
         String sessionId = getSessionId();
         navigateToFirstView();
-        Assert.assertEquals(sessionId, getSessionId());
+        Assertions.assertEquals(sessionId, getSessionId());
         navigateToSesssionExpireView();
         // expired session causes page reload, after the page reload there will
         // be a new session
-        Assert.assertNotEquals(sessionId, getSessionId());
+        Assertions.assertNotEquals(sessionId, getSessionId());
         sessionId = getSessionId();
         navigateToFirstView();
         // session is preserved
-        Assert.assertEquals(sessionId, getSessionId());
+        Assertions.assertEquals(sessionId, getSessionId());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class RouterSessionExpirationIT extends ChromeBrowserTest {
         waitUntil(webDriver -> findElements(By.id("sessionId")).isEmpty());
         // Navigate back as we are on the error view.
         getDriver().navigate().back();
-        Assert.assertEquals(sessionId, getSessionId());
+        Assertions.assertEquals(sessionId, getSessionId());
     }
 
     private String getSessionId() {
@@ -83,7 +83,7 @@ public class RouterSessionExpirationIT extends ChromeBrowserTest {
 
     private void navigateTo(String linkText) {
         findElement(By.linkText(linkText)).click();
-        Assert.assertNotNull(
+        Assertions.assertNotNull(
                 findElement(By.xpath("//strong[text()='" + linkText + "']")));
 
     }

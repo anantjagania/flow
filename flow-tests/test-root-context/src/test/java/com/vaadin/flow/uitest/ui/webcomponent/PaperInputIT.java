@@ -17,7 +17,7 @@ package com.vaadin.flow.uitest.ui.webcomponent;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -40,7 +40,7 @@ public class PaperInputIT extends ChromeBrowserTest {
                 By.className("update-value"));
         WebElement lastUpdateValue = updateValueElements
                 .get(updateValueElements.size() - 1);
-        org.junit.Assert.assertEquals(originalValue + "bar",
+        org.junit.Assertions.assertEquals(originalValue + "bar",
                 lastUpdateValue.getText());
     }
 }

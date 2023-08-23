@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -34,12 +34,12 @@ public class MutationSeveralSyncedPropsIT extends ChromeBrowserTest {
         WebElement name = template.$(TestBenchElement.class).id("name");
         WebElement msg = template.$(TestBenchElement.class).id("msg");
 
-        Assert.assertEquals("foo", name.getText());
-        Assert.assertEquals("msg", msg.getText());
+        Assertions.assertEquals("foo", name.getText());
+        Assertions.assertEquals("msg", msg.getText());
 
         findElement(By.id("update")).click();
 
-        Assert.assertEquals("bar", name.getText());
-        Assert.assertEquals("baz", msg.getText());
+        Assertions.assertEquals("bar", name.getText());
+        Assertions.assertEquals("baz", msg.getText());
     }
 }

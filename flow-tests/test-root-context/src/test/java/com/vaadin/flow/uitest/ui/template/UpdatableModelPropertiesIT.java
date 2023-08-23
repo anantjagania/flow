@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -91,7 +91,7 @@ public class UpdatableModelPropertiesIT extends ChromeBrowserTest {
         TestBenchElement template = $(TestBenchElement.class).id("template");
         WebElement value = template.$(TestBenchElement.class)
                 .id("property-value");
-        Assert.assertEquals(expectedValue, value.getText());
+        Assertions.assertEquals(expectedValue, value.getText());
     }
 
     private void assertNoUpdate(String unexpectedValue) {
@@ -100,7 +100,7 @@ public class UpdatableModelPropertiesIT extends ChromeBrowserTest {
         TestBenchElement template = $(TestBenchElement.class).id("template");
         WebElement value = template.$(TestBenchElement.class)
                 .id("property-value");
-        Assert.assertNotEquals(unexpectedValue, value.getText());
+        Assertions.assertNotEquals(unexpectedValue, value.getText());
     }
 
 }

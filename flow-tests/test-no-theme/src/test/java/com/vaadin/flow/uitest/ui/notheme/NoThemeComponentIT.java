@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.notheme;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -33,13 +33,13 @@ public class NoThemeComponentIT extends ChromeBrowserTest {
         List<WebElement> customStyles = $("head").first()
                 .findElements(By.tagName("custom-style"));
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Found custom style whereas @NoTheme should disable Lumo "
                         + "and not add any 'custom-theme' element",
                 0, customStyles.size());
 
         String color = $("a").first().getCssValue("color");
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Unexpected color for a link. "
                         + "@NoTheme should not theme a link anyhow.",
                 "rgba(0, 0, 0, 1)", color);

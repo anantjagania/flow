@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -16,7 +16,7 @@ public class NoRouterIT extends ChromeBrowserTest {
         WebElement button = findElement(By.tagName("button"));
         button.click();
 
-        Assert.assertEquals(1, findElements(By.className("response")).size());
+        Assertions.assertEquals(1, findElements(By.className("response")).size());
     }
 
 }

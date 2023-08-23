@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -21,14 +21,14 @@ public class BackButtonServerRoundTripIT extends ChromeBrowserTest {
 
         final String queryValue0 = findElement(
                 By.id(BackButtonServerRoundTripView.QUERY_LABEL_ID)).getText();
-        Assert.assertTrue("should have received query parameter value 'bar'",
+        Assertions.assertTrue("should have received query parameter value 'bar'",
                 queryValue0.equals("query=bar"));
 
         getDriver().navigate().back();
 
         final String queryValue1 = findElement(
                 By.id(BackButtonServerRoundTripView.QUERY_LABEL_ID)).getText();
-        Assert.assertTrue("should have received query parameter value 'foo'",
+        Assertions.assertTrue("should have received query parameter value 'foo'",
                 queryValue1.equals("query=foo"));
     }
 }

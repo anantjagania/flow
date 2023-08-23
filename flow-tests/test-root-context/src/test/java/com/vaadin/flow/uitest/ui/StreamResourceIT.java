@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -66,10 +66,10 @@ public class StreamResourceIT extends AbstractStreamResourceIT {
             List<String> lines = IOUtils.readLines(stream,
                     StandardCharsets.UTF_8);
             String text = lines.stream().collect(Collectors.joining());
-            Assert.assertEquals("foo", text);
+            Assertions.assertEquals("foo", text);
         }
 
-        Assert.assertEquals(filename, FilenameUtils.getName(url));
+        Assertions.assertEquals(filename, FilenameUtils.getName(url));
     }
 
 }

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -33,19 +33,19 @@ public class RestoreViewWithAttachedByIdIT extends ChromeBrowserTest {
 
         WebElement target = $(TestBenchElement.class).id("template")
                 .$(TestBenchElement.class).id("target");
-        Assert.assertEquals("Server Side Text", target.getText());
+        Assertions.assertEquals("Server Side Text", target.getText());
 
         // replace the template with a label
         WebElement button = findElement(By.tagName("button"));
         button.click();
 
-        Assert.assertTrue(isElementPresent(By.id("info")));
+        Assertions.assertTrue(isElementPresent(By.id("info")));
 
         // return the template back
         button.click();
 
         target = $(TestBenchElement.class).id("template")
                 .$(TestBenchElement.class).id("target");
-        Assert.assertEquals("Server Side Text", target.getText());
+        Assertions.assertEquals("Server Side Text", target.getText());
     }
 }

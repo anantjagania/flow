@@ -16,8 +16,8 @@
 
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -34,7 +34,7 @@ public class RequestParametersIT extends ChromeBrowserTest {
         open();
         WebElement label = findElement(By.id(RequestParametersView.REQUEST_PARAM_ID));
 
-        Assert.assertEquals(RequestParametersView.NO_INPUT_TEXT, label.getText());
+        Assertions.assertEquals(RequestParametersView.NO_INPUT_TEXT, label.getText());
     }
 
     @Test
@@ -43,6 +43,6 @@ public class RequestParametersIT extends ChromeBrowserTest {
         open(String.format("%s=%s", RequestParametersView.REQUEST_PARAM_NAME, paramValue));
         WebElement label = findElement(By.id(RequestParametersView.REQUEST_PARAM_ID));
 
-        Assert.assertEquals(paramValue, label.getText());
+        Assertions.assertEquals(paramValue, label.getText());
     }
 }

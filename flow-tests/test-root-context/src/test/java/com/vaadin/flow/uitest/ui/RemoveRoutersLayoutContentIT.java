@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -68,7 +68,7 @@ public class RemoveRoutersLayoutContentIT extends ChromeBrowserTest {
         TestBenchElement subLayout = $("div").id(SUB_LAYOUT_ID);
         List<WebElement> subLayoutChildren = subLayout
                 .findElements(By.tagName("div"));
-        Assert.assertEquals(1, subLayoutChildren.size());
+        Assertions.assertEquals(1, subLayoutChildren.size());
     }
 
     private void navigate(String navigateButtonId) {

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -32,19 +32,19 @@ public class InjectScriptTagIT extends ChromeBrowserTest {
         TestBenchElement parent = $("inject-script-tag-template").first();
 
         TestBenchElement div = parent.$(TestBenchElement.class).id("value-div");
-        Assert.assertEquals("<!-- <script>", div.getText());
+        Assertions.assertEquals("<!-- <script>", div.getText());
 
         WebElement slot = findElement(By.id("slot-1"));
-        Assert.assertEquals("<!-- <script> --><!-- <script></script>",
+        Assertions.assertEquals("<!-- <script> --><!-- <script></script>",
                 slot.getText());
 
         TestBenchElement button = parent.$(TestBenchElement.class)
                 .id("change-value");
         button.click();
 
-        Assert.assertEquals("<!-- <SCRIPT>", div.getText());
+        Assertions.assertEquals("<!-- <SCRIPT>", div.getText());
         slot = findElement(By.id("slot-2"));
-        Assert.assertEquals("<!-- <SCRIPT> --><!-- <SCRIPT></SCRIPT>",
+        Assertions.assertEquals("<!-- <SCRIPT> --><!-- <SCRIPT></SCRIPT>",
                 slot.getText());
     }
 

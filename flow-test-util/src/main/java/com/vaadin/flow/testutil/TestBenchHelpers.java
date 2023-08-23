@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -179,7 +179,7 @@ public class TestBenchHelpers extends ParallelTest {
             unwrappedActual = ((WrapsElement) unwrappedActual)
                     .getWrappedElement();
         }
-        Assert.assertEquals(unwrappedExpected, unwrappedActual);
+        Assertions.assertEquals(unwrappedExpected, unwrappedActual);
     }
 
     /**

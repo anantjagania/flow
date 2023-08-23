@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 
 import com.vaadin.flow.testcategory.IgnoreOSGi;
@@ -37,6 +37,6 @@ public class ConvertToBeanIT extends ChromeBrowserTest {
         template.$(TestBenchElement.class).id("click").click();
 
         String text = template.$(TestBenchElement.class).id("msg").getText();
-        Assert.assertEquals("02.05.2000", text);
+        Assertions.assertEquals("02.05.2000", text);
     }
 }

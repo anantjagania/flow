@@ -2,8 +2,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -21,7 +21,7 @@ public abstract class AbstractBasicElementComponentIT
     }
 
     protected void assertDomUpdatesAndEventsDoSomething() {
-        Assert.assertEquals(0, getThankYouCount());
+        Assertions.assertEquals(0, getThankYouCount());
         $(InputTextElement.class).first().setValue("abc");
 
         // Need to call WebElement.click(), because TestBenchElement.click()
@@ -29,31 +29,31 @@ public abstract class AbstractBasicElementComponentIT
         // mouse coordinate test.
         $(NativeButtonElement.class).first().getWrappedElement().click();
 
-        Assert.assertEquals(1, getThankYouCount());
+        Assertions.assertEquals(1, getThankYouCount());
 
         String buttonText = getThankYouElements().get(0).getText();
         String expected = "Thank you for clicking \"Click me\" at \\((\\d+),(\\d+)\\)! The field value is abc";
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Expected '" + expected + "', was '" + buttonText + "'",
                 buttonText.matches(expected));
 
         // Clicking removes the element
         getThankYouElements().get(0).click();
 
-        Assert.assertEquals(0, getThankYouCount());
+        Assertions.assertEquals(0, getThankYouCount());
 
         WebElement helloElement = findElement(By.id("hello-world"));
 
-        Assert.assertEquals("Hello world", helloElement.getText());
-        Assert.assertEquals("hello", helloElement.getAttribute("class"));
+        Assertions.assertEquals("Hello world", helloElement.getText());
+        Assertions.assertEquals("hello", helloElement.getAttribute("class"));
 
         helloElement.click();
-        Assert.assertEquals("Stop touching me!", helloElement.getText());
-        Assert.assertEquals("", helloElement.getAttribute("class"));
+        Assertions.assertEquals("Stop touching me!", helloElement.getText());
+        Assertions.assertEquals("", helloElement.getAttribute("class"));
 
         // Clicking again shouldn't have any effect
         helloElement.click();
-        Assert.assertEquals("Stop touching me!", helloElement.getText());
+        Assertions.assertEquals("Stop touching me!", helloElement.getText());
     }
 
     protected int getThankYouCount() {

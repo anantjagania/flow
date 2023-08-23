@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui.theme;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -49,12 +49,12 @@ public class ThemeIT extends ChromeBrowserTest {
                 + "/path/themes/app-theme/img/dice.jpg";
         WebElement diceSpan = findElement(By.id(DICE_ID));
         final String expectedImgUrl = "url(\"" + resourceUrl + "\")";
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Background image has been referenced on java page and "
                         + "expected to be applied",
                 expectedImgUrl, diceSpan.getCssValue("background-image"));
         getDriver().get(resourceUrl);
-        Assert.assertFalse("Java-side referenced resource should be served",
+        Assertions.assertFalse("Java-side referenced resource should be served",
                 driver.getPageSource().contains("HTTP ERROR 404 Not Found"));
     }
 
@@ -65,7 +65,7 @@ public class ThemeIT extends ChromeBrowserTest {
             + "/path/themes/app-theme/fortawesome/icons/snowflake.svg";
         WebElement cssNodeSnowflake = findElement(By.id(CSS_SNOWFLAKE));
         final String expectedImgUrl = "url(\"" + resourceUrl + "\")";
-        Assert.assertEquals(
+        Assertions.assertEquals(
             "Background image has been referenced in styles.css and "
                 + "expected to be applied",
             expectedImgUrl, cssNodeSnowflake.getCssValue("background-image"));
@@ -74,11 +74,11 @@ public class ThemeIT extends ChromeBrowserTest {
     @Test
     public void secondTheme_staticFilesNotCopied() {
         getDriver().get(getRootURL() + "/path/themes/app-theme/img/bg.jpg");
-        Assert.assertFalse("app-theme static files should be copied",
+        Assertions.assertFalse("app-theme static files should be copied",
             driver.getPageSource().contains("HTTP ERROR 404"));
 
         getDriver().get(getRootURL() + "/path/themes/no-copy/no-copy.txt");
-        Assert.assertTrue("no-copy theme should not be handled",
+        Assertions.assertTrue("no-copy theme should not be handled",
             driver.getPageSource().contains("HTTP ERROR 404"));
     }
 
@@ -90,20 +90,20 @@ public class ThemeIT extends ChromeBrowserTest {
 
         final WebElement body = findElement(By.tagName("body"));
         // Note themes/app-theme gets VAADIN/static from the file-loader
-        Assert.assertEquals("body background-image should come from styles.css",
+        Assertions.assertEquals("body background-image should come from styles.css",
             "url(\"" + getRootURL()
                 + "/path/VAADIN/static/themes/app-theme/img/bg.jpg\")",
             body.getCssValue("background-image"));
 
-        Assert.assertEquals("body font-family should come from styles.css",
+        Assertions.assertEquals("body font-family should come from styles.css",
             "Ostrich", body.getCssValue("font-family"));
 
-        Assert.assertEquals("html color from styles.css should be applied.",
+        Assertions.assertEquals("html color from styles.css should be applied.",
             "rgba(0, 0, 0, 1)", body.getCssValue("color"));
 
         // Note themes/app-theme gets VAADIN/static from the file-loader
         getDriver().get(getRootURL() + "/path/VAADIN/static/themes/app-theme/img/bg.jpg");
-        Assert.assertFalse("app-theme background file should be served",
+        Assertions.assertFalse("app-theme background file should be served",
             driver.getPageSource().contains("Could not navigate"));
     }
 
@@ -112,20 +112,20 @@ public class ThemeIT extends ChromeBrowserTest {
         open();
         checkLogsForErrors();
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             "Imported FontAwesome css file should be applied.",
             "\"Font Awesome 5 Free\"", $(SpanElement.class).id(FONTAWESOME_ID)
                         .getCssValue("font-family"));
 
         String iconUnicode = getCssPseudoElementValue(FONTAWESOME_ID,
                                           "::before");
-        Assert.assertEquals(
+        Assertions.assertEquals(
            "Font-Icon from FontAwesome css file should be applied.",
            "\"\uf0f4\"", iconUnicode);
 
         getDriver().get(getRootURL() +
                 "/path/VAADIN/static/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg");
-        Assert.assertFalse("Font resource should be available",
+        Assertions.assertFalse("Font resource should be available",
                 driver.getPageSource().contains("HTTP ERROR 404 Not Found"));
     }
 
@@ -134,17 +134,17 @@ public class ThemeIT extends ChromeBrowserTest {
         open();
         checkLogsForErrors();
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             "Color from parent theme should be applied.",
             "rgba(0, 255, 255, 1)", $(SpanElement.class).id(FONTAWESOME_ID)
                 .getCssValue("color"));
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             "Child theme should override parent theme values",
             "5px", $(SpanElement.class).id(FONTAWESOME_ID)
                 .getCssValue("margin"));
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             "Child theme values should be applied",
             "5px", $(SpanElement.class).id(FONTAWESOME_ID)
                 .getCssValue("padding"));
@@ -152,10 +152,10 @@ public class ThemeIT extends ChromeBrowserTest {
         TestBenchElement myField = $(TestBenchElement.class).id(MY_POLYMER_ID);
         TestBenchElement input = myField.$(TestBenchElement.class)
             .id("vaadin-text-field-input-0");
-        Assert.assertEquals("Polymer text field should get parent border radius",
+        Assertions.assertEquals("Polymer text field should get parent border radius",
             "0px", input.getCssValue("border-radius"));
 
-        Assert.assertEquals("Polymer text field should use green as color",
+        Assertions.assertEquals("Polymer text field should use green as color",
             "rgba(0, 128, 0, 1)", input.getCssValue("color"));
 
     }
@@ -165,7 +165,7 @@ public class ThemeIT extends ChromeBrowserTest {
         TestBenchElement myField = $(TestBenchElement.class).id(MY_POLYMER_ID);
         TestBenchElement input = myField.$(TestBenchElement.class)
             .id("vaadin-text-field-input-0");
-        Assert.assertEquals("Polymer text field should have red background",
+        Assertions.assertEquals("Polymer text field should have red background",
             "rgba(255, 0, 0, 1)", input.getCssValue("background-color"));
 
         myField = $(TestBenchElement.class).id(MY_LIT_ID);
@@ -173,9 +173,9 @@ public class ThemeIT extends ChromeBrowserTest {
             .filter(element -> "radio".equals(element.getAttribute("part")))
             .findFirst().orElseGet(null);
 
-        Assert.assertNotNull("Element with part='radio' was not found", radio);
+        Assertions.assertNotNull("Element with part='radio' was not found", radio);
 
-        Assert.assertEquals("Lit radiobutton should have red background",
+        Assertions.assertEquals("Lit radiobutton should have red background",
             "rgba(255, 0, 0, 1)", radio.getCssValue("background-color"));
     }
 
@@ -185,7 +185,7 @@ public class ThemeIT extends ChromeBrowserTest {
         checkLogsForErrors();
 
         // Note themes/app-theme gets VAADIN/static from the file-loader
-        Assert.assertEquals("Imported css file URLs should have been handled.",
+        Assertions.assertEquals("Imported css file URLs should have been handled.",
             "url(\"" + getRootURL()
                 + "/path/VAADIN/static/themes/app-theme/icons/archive.png\")",
             $(SpanElement.class).id(SUB_COMPONENT_ID)
@@ -197,7 +197,7 @@ public class ThemeIT extends ChromeBrowserTest {
         open();
         checkLogsForErrors();
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             "Node assets should have been copied to 'themes/app-theme'",
             getRootURL()
                 + "/path/themes/app-theme/fortawesome/icons/snowflake.svg",
@@ -205,7 +205,7 @@ public class ThemeIT extends ChromeBrowserTest {
 
         open(getRootURL() + "/path/" + $(ImageElement.class).id(SNOWFLAKE_ID)
             .getAttribute("src"));
-        Assert.assertFalse("Node static icon should be available",
+        Assertions.assertFalse("Node static icon should be available",
             driver.getPageSource().contains("HTTP ERROR 404 Not Found"));
     }
 
@@ -214,23 +214,23 @@ public class ThemeIT extends ChromeBrowserTest {
         open();
         checkLogsForErrors();
 
-        Assert.assertEquals("Relative non theme url should not be touched",
+        Assertions.assertEquals("Relative non theme url should not be touched",
             "url(\"" + getRootURL()
                 + "/path/test/path/monarch-butterfly.jpg\")",
             $(SpanElement.class).id(BUTTERFLY_ID)
                 .getCssValue("background-image"));
 
-        Assert.assertEquals("Absolute non theme url should not be touched",
+        Assertions.assertEquals("Absolute non theme url should not be touched",
             "url(\"" + getRootURL() + "/octopuss.jpg\")",
             $(SpanElement.class).id(OCTOPUSS_ID)
                 .getCssValue("background-image"));
 
         getDriver().get(getRootURL() + "/path/test/path/monarch-butterfly.jpg");
-        Assert.assertFalse("webapp resource should be served",
+        Assertions.assertFalse("webapp resource should be served",
             driver.getPageSource().contains("HTTP ERROR 404 Not Found"));
 
         getDriver().get(getRootURL() + "/octopuss.jpg");
-        Assert.assertFalse("root resource should be served",
+        Assertions.assertFalse("root resource should be served",
             driver.getPageSource().contains("HTTP ERROR 404 Not Found"));
     }
 
@@ -238,7 +238,7 @@ public class ThemeIT extends ChromeBrowserTest {
     public void themeRulesOverrideLumo() {
         open();
         checkLogsForErrors();
-        Assert.assertEquals("Background should be blue, as overridden in the theme", "rgba(0, 0, 255, 1)",
+        Assertions.assertEquals("Background should be blue, as overridden in the theme", "rgba(0, 0, 255, 1)",
                 $("html").first().getCssValue("background-color"));
 
     }
@@ -257,9 +257,9 @@ public class ThemeIT extends ChromeBrowserTest {
                 .map(link -> link.getAttribute("href"))
                 .collect(Collectors.toList());
 
-        Assert.assertTrue("Missing link for external url", linkUrls
+        Assertions.assertTrue("Missing link for external url", linkUrls
                 .contains("https://fonts.googleapis.com/css?family=Itim"));
-        Assert.assertFalse("Found import that webpack should have resolved",
+        Assertions.assertFalse("Found import that webpack should have resolved",
                 linkUrls.contains("sub-css/sub.css"));
     }
 

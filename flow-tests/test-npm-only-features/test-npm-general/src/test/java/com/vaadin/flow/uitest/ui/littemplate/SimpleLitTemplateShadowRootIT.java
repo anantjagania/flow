@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.littemplate;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.html.testbench.DivElement;
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
@@ -43,7 +43,7 @@ public class SimpleLitTemplateShadowRootIT extends ChromeBrowserTest {
 
     @Test
     public void shadowRoot() {
-        Assert.assertEquals(shouldHaveShadowRoot(),
+        Assertions.assertEquals(shouldHaveShadowRoot(),
                 (Boolean) executeScript("return !!arguments[0].shadowRoot",
                         template));
     }
@@ -53,17 +53,17 @@ public class SimpleLitTemplateShadowRootIT extends ChromeBrowserTest {
         NativeButtonElement mappedButton = template.$(NativeButtonElement.class)
                 .id("mappedButton");
 
-        Assert.assertEquals("Server button", mappedButton.getText());
+        Assertions.assertEquals("Server button", mappedButton.getText());
         mappedButton.click();
 
         DivElement label = template.$(DivElement.class).id("label");
-        Assert.assertEquals("Hello from server component event listener",
+        Assertions.assertEquals("Hello from server component event listener",
         label.getText());
 
         DivElement sortDiv = template.$(DivElement.class)
                 .id("sort");
 
-        Assert.assertEquals("Sort", sortDiv.getText());
+        Assertions.assertEquals("Sort", sortDiv.getText());
     }
 
     @Test
@@ -71,10 +71,10 @@ public class SimpleLitTemplateShadowRootIT extends ChromeBrowserTest {
         NativeButtonElement clientButton = template.$(NativeButtonElement.class)
                 .id("clientButton");
 
-        Assert.assertEquals("Client button", clientButton.getText());
+        Assertions.assertEquals("Client button", clientButton.getText());
         clientButton.click();
 
         DivElement label = template.$(DivElement.class).id("label");
-        Assert.assertEquals("Hello from ClientCallable", label.getText());
+        Assertions.assertEquals("Hello from ClientCallable", label.getText());
     }
 }

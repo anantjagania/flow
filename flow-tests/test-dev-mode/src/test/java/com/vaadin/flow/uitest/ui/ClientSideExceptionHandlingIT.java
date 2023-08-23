@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.regex.Pattern;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
@@ -37,7 +37,7 @@ public class ClientSideExceptionHandlingIT extends ChromeBrowserTest {
 
         String errorMessage = findElement(ERROR_LOCATOR).getText();
 
-        Assert.assertTrue("Unexpected error message: " + errorMessage,
+        Assertions.assertTrue("Unexpected error message: " + errorMessage,
                 Pattern.matches(ERROR_PATTERN, errorMessage));
     }
 
@@ -46,7 +46,7 @@ public class ClientSideExceptionHandlingIT extends ChromeBrowserTest {
         openProduction();
         causeException();
 
-        Assert.assertFalse(isElementPresent(ERROR_LOCATOR));
+        Assertions.assertFalse(isElementPresent(ERROR_LOCATOR));
     }
 
     private void causeException() {

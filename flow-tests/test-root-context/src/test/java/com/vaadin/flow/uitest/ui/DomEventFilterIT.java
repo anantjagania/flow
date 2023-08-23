@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -35,11 +35,11 @@ public class DomEventFilterIT extends ChromeBrowserTest {
 
         input.sendKeys("asdf");
 
-        Assert.assertEquals(0, getMessages().size());
+        Assertions.assertEquals(0, getMessages().size());
 
         input.sendKeys("foo  bar");
 
-        Assert.assertEquals(2, getMessages().size());
+        Assertions.assertEquals(2, getMessages().size());
     }
 
     @Test
@@ -114,43 +114,43 @@ public class DomEventFilterIT extends ChromeBrowserTest {
         WebElement button = findElement(By.id("listener-removal-button"));
         WebElement input = findElement(By.id("listener-input"));
 
-        Assert.assertEquals("Result paragraph should be empty", "",
+        Assertions.assertEquals("Result paragraph should be empty", "",
                 paragraph.getText());
 
         input.sendKeys("a");
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Filter should have prevented default, and input is empty", "",
                 input.getAttribute("value"));
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Event was sent to server and paragraph should be 'A'", "A",
                 paragraph.getText());
 
         input.sendKeys("b");
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Filter should have prevented default, and input is empty", "",
                 input.getAttribute("value"));
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Event was sent to server and paragraph should be 'B'", "B",
                 paragraph.getText());
 
         // remove keybind for A
         button.click();
-        Assert.assertEquals("Result paragraph should be 'REMOVED'", "REMOVED",
+        Assertions.assertEquals("Result paragraph should be 'REMOVED'", "REMOVED",
                 paragraph.getText());
 
         // keybind for A should no longer work
         input.sendKeys("a");
-        Assert.assertEquals("Filter should be removed, and input has 'a'", "a",
+        Assertions.assertEquals("Filter should be removed, and input has 'a'", "a",
                 input.getAttribute("value"));
-        Assert.assertEquals("Result paragraph should still be 'REMOVED'",
+        Assertions.assertEquals("Result paragraph should still be 'REMOVED'",
                 "REMOVED", paragraph.getText());
 
         // b should still be functional
         input.sendKeys("b");
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Filter should have prevented default, and input has only 'a'",
                 "a", input.getAttribute("value"));
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Event was sent to server and paragraph should be 'B'", "B",
                 paragraph.getText());
     }
@@ -158,25 +158,25 @@ public class DomEventFilterIT extends ChromeBrowserTest {
     private void assertMessages(int skip, String... expectedTail) {
         List<WebElement> messages = getMessages();
         if (messages.size() < skip) {
-            Assert.fail("Cannot skip " + skip + " messages when there are only "
+            Assertions.fail("Cannot skip " + skip + " messages when there are only "
                     + messages.size() + "messages. " + joinMessages(messages));
         }
 
         messages = messages.subList(skip, messages.size());
 
         if (messages.size() < expectedTail.length) {
-            Assert.fail("Expected " + expectedTail.length
+            Assertions.fail("Expected " + expectedTail.length
                     + " messages, but there are only " + messages.size() + ". "
                     + joinMessages(messages));
         }
 
         for (int i = 0; i < expectedTail.length; i++) {
-            Assert.assertEquals("Unexpected message at index " + i,
+            Assertions.assertEquals("Unexpected message at index " + i,
                     expectedTail[i], messages.get(i).getText());
         }
 
         if (messages.size() > expectedTail.length) {
-            Assert.fail("There are unexpected messages at the end. "
+            Assertions.fail("There are unexpected messages at the end. "
                     + joinMessages(messages.subList(expectedTail.length,
                             messages.size())));
         }

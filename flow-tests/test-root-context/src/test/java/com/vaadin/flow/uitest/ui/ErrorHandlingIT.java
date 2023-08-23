@@ -1,6 +1,6 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
 

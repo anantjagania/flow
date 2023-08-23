@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -32,10 +32,10 @@ public class SynchronizedPropertyIT extends ChromeBrowserTest {
         WebElement labelSyncOnChange = findElement(By.id("syncOnChangeLabel"));
         syncOnChange.sendKeys("123");
         blur();
-        Assert.assertEquals("Server value: 123", labelSyncOnChange.getText());
+        Assertions.assertEquals("Server value: 123", labelSyncOnChange.getText());
         syncOnChange.sendKeys("456");
         blur();
-        Assert.assertEquals("Server value: 123456",
+        Assertions.assertEquals("Server value: 123456",
                 labelSyncOnChange.getText());
     }
 
@@ -47,11 +47,11 @@ public class SynchronizedPropertyIT extends ChromeBrowserTest {
         syncOnKeyUp.sendKeys("1");
         syncOnKeyUp.sendKeys("2");
         syncOnKeyUp.sendKeys("3");
-        Assert.assertEquals("Server value: 123", labelSyncOnKeyUp.getText());
+        Assertions.assertEquals("Server value: 123", labelSyncOnKeyUp.getText());
         syncOnKeyUp.sendKeys("4");
         syncOnKeyUp.sendKeys("5");
         syncOnKeyUp.sendKeys("6");
-        Assert.assertEquals("Server value: 123456", labelSyncOnKeyUp.getText());
+        Assertions.assertEquals("Server value: 123456", labelSyncOnKeyUp.getText());
     }
 
     @Test
@@ -65,12 +65,12 @@ public class SynchronizedPropertyIT extends ChromeBrowserTest {
         // Property was set after label was created and sync set up
         // It is intentionally in the "wrong" state until there is a sync
         // message from the client
-        Assert.assertEquals("Server value on create: null",
+        Assertions.assertEquals("Server value on create: null",
                 labelSyncOnChange.getText());
         syncOnChangeInitialValue.sendKeys(Keys.END);
         syncOnChangeInitialValue.sendKeys("123");
         blur();
-        Assert.assertEquals("Server value in change listener: initial123",
+        Assertions.assertEquals("Server value in change listener: initial123",
                 labelSyncOnChange.getText());
 
     }
@@ -86,22 +86,22 @@ public class SynchronizedPropertyIT extends ChromeBrowserTest {
         multiSyncValue.sendKeys("123");
         waitUntil(driver -> "Server value: 123"
                 .equals(multiSyncValueLabel.getText()), 2);
-        Assert.assertEquals("", multiSyncValueAsNumberLabel.getText());
+        Assertions.assertEquals("", multiSyncValueAsNumberLabel.getText());
         blur();
         waitUntil(driver -> "Server value: 123"
                 .equals(multiSyncValueLabel.getText()), 2);
-        Assert.assertEquals("Server valueAsNumber: 123",
+        Assertions.assertEquals("Server valueAsNumber: 123",
                 multiSyncValueAsNumberLabel.getText());
 
         multiSyncValue.sendKeys("456");
         waitUntil(driver -> "Server value: 123456"
                 .equals(multiSyncValueLabel.getText()), 2);
-        Assert.assertEquals("Server valueAsNumber: 123",
+        Assertions.assertEquals("Server valueAsNumber: 123",
                 multiSyncValueAsNumberLabel.getText());
         blur();
         waitUntil(driver -> "Server value: 123456"
                 .equals(multiSyncValueLabel.getText()), 2);
-        Assert.assertEquals("Server valueAsNumber: 123456",
+        Assertions.assertEquals("Server valueAsNumber: 123456",
                 multiSyncValueAsNumberLabel.getText());
     }
 

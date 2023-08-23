@@ -15,9 +15,9 @@
  */
 package com.vaadin.flow.uitest.ui.frontend;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.component.html.testbench.DivElement;
@@ -44,16 +44,16 @@ import com.vaadin.testbench.TestBenchElement;
 public class FrontendProtocolIT extends ChromeBrowserTest {
 
     @Test
-    @Ignore // https://github.com/vaadin/flow/issues/8063
+    @Disabled // https://github.com/vaadin/flow/issues/8063
     public void loadComponentFromEs6Path() {
         openProduction();
 
         // will access the frontend-protocol.html file at
         // src/main/webapp/VAADIN/static/frontend/es6/components
-        Assert.assertEquals("File loaded from ES6 path",
+        Assertions.assertEquals("File loaded from ES6 path",
                 getComponentInnerText());
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 getRootURL()
                         + "/frontend-es6/components/frontend-protocol.html",
                 executeClientSideResolveUri());
@@ -65,25 +65,25 @@ public class FrontendProtocolIT extends ChromeBrowserTest {
 
         // will access the frontend-protocol.html file at
         // src/main/webapp/components
-        Assert.assertEquals("File loaded from context path",
+        Assertions.assertEquals("File loaded from context path",
                 getComponentInnerText());
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 getRootURL() + "/frontend/components/frontend-protocol.html",
                 executeClientSideResolveUri());
     }
 
     @Test
-    @Ignore // https://github.com/vaadin/flow/issues/8063
+    @Disabled // https://github.com/vaadin/flow/issues/8063
     public void loadComponentFromEs6Property() {
         openForEs6Url();
 
         // will access the frontend-protocol.html file at
         // src/main/webapp/com/vaadin/flow/uitest/components
-        Assert.assertEquals("File loaded from property-defined path",
+        Assertions.assertEquals("File loaded from property-defined path",
                 getComponentInnerText());
 
-        Assert.assertEquals(getRootURL()
+        Assertions.assertEquals(getRootURL()
                 + "/frontend/com/vaadin/flow/uitest/components/frontend-protocol.html",
                 executeClientSideResolveUri());
     }

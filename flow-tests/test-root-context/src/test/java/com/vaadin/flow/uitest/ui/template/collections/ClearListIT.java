@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebElement;
 
@@ -28,12 +28,12 @@ public class ClearListIT extends ChromeBrowserTest {
         TestBenchElement template = $(TestBenchElement.class).id("template");
         List<String> initialMessages = getMessages(template);
 
-        Assert.assertEquals("Initial page does not contain expected messages",
+        Assertions.assertEquals("Initial page does not contain expected messages",
                 Arrays.asList("1", "2"), initialMessages);
 
         template.$(TestBenchElement.class).id("clearList").click();
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Page should not contain elements after we've cleared them",
                 getMessages(template).isEmpty());
     }
@@ -41,9 +41,9 @@ public class ClearListIT extends ChromeBrowserTest {
     private void checkThatModelHasNoDefaultConstructor() {
         Constructor<?>[] modelConstructors = ClearListView.Message.class
                 .getConstructors();
-        Assert.assertEquals("Expect model to have one constructor exactly", 1,
+        Assertions.assertEquals("Expect model to have one constructor exactly", 1,
                 modelConstructors.length);
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Expect model to have at least one parameter in its single constructor",
                 modelConstructors[0].getParameterCount() > 0);
     }

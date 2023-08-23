@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebElement;
 
@@ -34,6 +34,6 @@ public class TemplateInTemplateWithIdIT extends ChromeBrowserTest {
         TestBenchElement child = template.$(TestBenchElement.class).id("child");
 
         WebElement text = child.$(TestBenchElement.class).id("text");
-        Assert.assertEquals("@Id injected!", text.getText());
+        Assertions.assertEquals("@Id injected!", text.getText());
     }
 }

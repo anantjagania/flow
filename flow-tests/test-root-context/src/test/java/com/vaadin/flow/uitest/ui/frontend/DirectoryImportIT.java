@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui.frontend;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -13,7 +13,7 @@ public class DirectoryImportIT extends ChromeBrowserTest {
         open();
 
         TestBenchElement component = $("a-directory-component").first();
-        Assert.assertEquals("Directory import ok", component.getText());
+        Assertions.assertEquals("Directory import ok", component.getText());
     }
 
 }

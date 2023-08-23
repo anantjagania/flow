@@ -14,7 +14,7 @@ describe('VaadinDevmodeGizmo', () => {
       'protocol': 'https',
       'hostname': 'abc-12345678-1234-1234-1234-1234567890ab.ws-eu01.gitpod.io'
     };
-    assert.equal(gizmo.getSpringBootWebSocketUrl(location),
+    Assertions.equal(gizmo.getSpringBootWebSocketUrl(location),
       'ws://35729-12345678-1234-1234-1234-1234567890ab.ws-eu01.gitpod.io');
   });
 
@@ -23,7 +23,7 @@ describe('VaadinDevmodeGizmo', () => {
     gizmo.setAttribute('url', 'http://localhost:8080/context/vaadinServlet');
     gizmo.setAttribute('backend', 'HOTSWAP_AGENT');
 
-    assert.equal(gizmo.getDedicatedWebSocketUrl(),
+    Assertions.equal(gizmo.getDedicatedWebSocketUrl(),
       'ws://localhost:8080/context/vaadinServlet?v-r=push&debug_window');
   });
 
@@ -33,10 +33,10 @@ describe('VaadinDevmodeGizmo', () => {
     gizmo.setAttribute('backend', 'HOTSWAP_AGENT');
     gizmo.openWebSocketConnection();
     gizmo.javaConnection.handleError('TEST');
-    assert.equal(gizmo.javaStatus, 'error');
-    assert.equal(gizmo.messages.length, 1);
-    assert.equal(gizmo.messages[0].type, 'error');
-    assert.equal(gizmo.messages[0].message, 'TEST');
+    Assertions.equal(gizmo.javaStatus, 'error');
+    Assertions.equal(gizmo.messages.length, 1);
+    Assertions.equal(gizmo.messages[0].type, 'error');
+    Assertions.equal(gizmo.messages[0].message, 'TEST');
 
   });
 });

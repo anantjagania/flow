@@ -3,7 +3,7 @@ package com.vaadin.flow.uitest.ui.push;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.experimental.categories.Category;
 
 import com.vaadin.flow.testcategory.PushTests;
@@ -24,7 +24,7 @@ public abstract class ChromeBrowserTestWithProxy
         connectProxy();
     }
 
-    @After
+    @AfterEach
     public void teardownProxy() {
         disconnectProxy();
     }

@@ -21,8 +21,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -50,13 +50,13 @@ public class HistoryIT extends ChromeBrowserTest {
         locationField.setValue("asdf");
         pushButton.click();
 
-        Assert.assertEquals(baseUrl.resolve("asdf"), getCurrentUrl());
+        Assertions.assertEquals(baseUrl.resolve("asdf"), getCurrentUrl());
 
         // Back to original state
         backButton.click();
 
-        Assert.assertEquals(baseUrl, getCurrentUrl());
-        Assert.assertEquals(
+        Assertions.assertEquals(baseUrl, getCurrentUrl());
+        Assertions.assertEquals(
                 Arrays.asList(
                         "New location: com.vaadin.flow.uitest.ui.HistoryView"),
                 getStatusMessages());
@@ -67,20 +67,20 @@ public class HistoryIT extends ChromeBrowserTest {
         locationField.setValue("qwerty");
         replaceButton.click();
 
-        Assert.assertEquals(baseUrl.resolve("qwerty"), getCurrentUrl());
+        Assertions.assertEquals(baseUrl.resolve("qwerty"), getCurrentUrl());
 
         // Forward to originally pushed state
         forwardButton.click();
-        Assert.assertEquals(baseUrl.resolve("asdf"), getCurrentUrl());
-        Assert.assertEquals(Arrays.asList("New location: asdf",
+        Assertions.assertEquals(baseUrl.resolve("asdf"), getCurrentUrl());
+        Assertions.assertEquals(Arrays.asList("New location: asdf",
                 "New state: {\"foo\":true}"), getStatusMessages());
         clearButton.click();
 
         // Back to the replaced state
         backButton.click();
 
-        Assert.assertEquals(baseUrl.resolve("qwerty"), getCurrentUrl());
-        Assert.assertEquals(Arrays.asList("New location: qwerty"),
+        Assertions.assertEquals(baseUrl.resolve("qwerty"), getCurrentUrl());
+        Assertions.assertEquals(Arrays.asList("New location: qwerty"),
                 getStatusMessages());
 
         // Navigate to empty string should go to the context path root
@@ -88,7 +88,7 @@ public class HistoryIT extends ChromeBrowserTest {
         locationField.clear();
         pushButton.click();
 
-        Assert.assertEquals(baseUrl.resolve("."), getCurrentUrl());
+        Assertions.assertEquals(baseUrl.resolve("."), getCurrentUrl());
     }
 
     private URI getCurrentUrl() throws URISyntaxException {

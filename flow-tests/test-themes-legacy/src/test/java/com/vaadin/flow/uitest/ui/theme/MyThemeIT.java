@@ -16,8 +16,8 @@
 package com.vaadin.flow.uitest.ui.theme;
 
 import com.vaadin.testbench.TestBenchElement;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -32,7 +32,7 @@ public class MyThemeIT extends ChromeBrowserTest {
 
         TestBenchElement element = $("my-component").first();
 
-        Assert.assertNotNull("Couldn't find element.", element.$("*").id("component"));
+        Assertions.assertNotNull("Couldn't find element.", element.$("*").id("component"));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class MyThemeIT extends ChromeBrowserTest {
         getDriver().get(getRootURL()
                 + "/view/com.vaadin.flow.uitest.ui.theme.MyThemeComponentView");
 
-        Assert.assertTrue(findElement(By.id("theme-component")).isDisplayed());
+        Assertions.assertTrue(findElement(By.id("theme-component")).isDisplayed());
     }
 
 }

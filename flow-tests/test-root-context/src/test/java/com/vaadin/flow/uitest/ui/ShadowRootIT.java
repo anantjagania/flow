@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -33,14 +33,14 @@ public class ShadowRootIT extends ChromeBrowserTest {
         DivElement div = $(DivElement.class).id("test-element");
 
         WebElement shadowDiv = div.$(DivElement.class).id("shadow-div");
-        Assert.assertEquals("Div inside shadow DOM", shadowDiv.getText());
+        Assertions.assertEquals("Div inside shadow DOM", shadowDiv.getText());
 
         WebElement shadowLabel = div.$(LabelElement.class).id("shadow-label");
-        Assert.assertEquals("Label inside shadow DOM", shadowLabel.getText());
+        Assertions.assertEquals("Label inside shadow DOM", shadowLabel.getText());
 
         findElement(By.id("remove")).click();
 
-        Assert.assertTrue("Child has not been removed from the shadow root",
+        Assertions.assertTrue("Child has not been removed from the shadow root",
                 findElements(By.id("shadow-label")).isEmpty());
     }
 }

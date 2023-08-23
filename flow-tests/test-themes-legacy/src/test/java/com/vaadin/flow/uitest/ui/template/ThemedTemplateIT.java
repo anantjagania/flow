@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 
 import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.commands.CanCompareScreenshots;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -40,18 +40,18 @@ public class ThemedTemplateIT extends ChromeBrowserTest {
         // check that all imported templates are available in the DOM
         TestBenchElement template = $("themed-template").first();
 
-        Assert.assertNotNull("The main template has no simple child Div inside it",
+        Assertions.assertNotNull("The main template has no simple child Div inside it",
                 isPresentInShadowRoot(template, "div"));
 
-        Assert.assertNotNull("The main template has no sub template which is imported by "
+        Assertions.assertNotNull("The main template has no sub template which is imported by "
                         + "relative URL referring to the resource in the same folder",
                 isPresentInShadowRoot(template, "relative1"));
 
-        Assert.assertNotNull("The main template has no sub template which is imported by "
+        Assertions.assertNotNull("The main template has no sub template which is imported by "
                         + "relative URL referring to the resource in the parent folder",
                 isPresentInShadowRoot(template, "relative2"));
 
-        Assert.assertNotNull("The main template has no sub template which is imported by "
+        Assertions.assertNotNull("The main template has no sub template which is imported by "
                         + "absolute URL",
                 isPresentInShadowRoot(template, "absolute"));
 
@@ -61,22 +61,22 @@ public class ThemedTemplateIT extends ChromeBrowserTest {
                 .map(link -> link.getAttribute("href")).filter(Objects::nonNull)
                 .map(this::getFilePath).collect(Collectors.toSet());
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "The themed HTML file for the template is not added as an HMTL import to the head",
                 hrefs.stream().anyMatch(href -> href.endsWith(
                         "/frontend/bower_components/themed-template/theme/myTheme/com/ThemedTemplate.html")));
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "The themed HTML file for the simple relative file (same location as the template file) "
                         + "is not added as an HMTL import to the head",
                 hrefs.stream().anyMatch(href -> href.endsWith(
                         "/frontend/bower_components/themed-template/theme/myTheme/com/relative1.html")));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "The themed HTML file for the relative file (located in the parent folder of the template file) "
                         + "is not added as an HMTL import to the head",
                 hrefs.stream().anyMatch(href -> href.endsWith(
                         "frontend/bower_components/themed-template/theme/myTheme/relative2.html")));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "The themed HTML file for the absolute file "
                         + "is not added as an HMTL import to the head",
                 hrefs.contains("/frontend/absolute.html"));

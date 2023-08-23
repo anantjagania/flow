@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.webcomponent;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 public class DefaultValueInitializationIT extends EmbeddingChromeBrowserTest
@@ -39,21 +39,21 @@ public class DefaultValueInitializationIT extends EmbeddingChromeBrowserTest
          */
 
         // Java default
-        Assert.assertEquals("Java default value is correct", "1",
+        Assertions.assertEquals("Java default value is correct", "1",
                 value("init-1"));
-        Assert.assertEquals("Java default's counter is correct", "1",
+        Assertions.assertEquals("Java default's counter is correct", "1",
                 counter("init-1"));
 
         // JS default
-        Assert.assertEquals("JS default value is correct", "2",
+        Assertions.assertEquals("JS default value is correct", "2",
                 value("init-2"));
-        Assert.assertEquals("JS default's counter is correct", "1",
+        Assertions.assertEquals("JS default's counter is correct", "1",
                 counter("init-2"));
 
         // Updated property
-        Assert.assertEquals("Property updated default value is correct", "3",
+        Assertions.assertEquals("Property updated default value is correct", "3",
                 value("init-3"));
-        Assert.assertEquals("Property updated default's counter is correct",
+        Assertions.assertEquals("Property updated default's counter is correct",
                 "1", counter("init-3"));
 
         // Verify that counters actually update by clicking a button which
@@ -61,21 +61,21 @@ public class DefaultValueInitializationIT extends EmbeddingChromeBrowserTest
         findElement(By.id("update-properties")).click();
 
         // Java default
-        Assert.assertEquals("Java default's value is changed", "4",
+        Assertions.assertEquals("Java default's value is changed", "4",
                 value("init-1"));
-        Assert.assertEquals("Java default's counter increases", "2",
+        Assertions.assertEquals("Java default's counter increases", "2",
                 counter("init-1"));
 
         // JS default
-        Assert.assertEquals("JS default's value is changed", "4",
+        Assertions.assertEquals("JS default's value is changed", "4",
                 value("init-2"));
-        Assert.assertEquals("JS default's counter increases", "2",
+        Assertions.assertEquals("JS default's counter increases", "2",
                 counter("init-2"));
 
         // Updated property
-        Assert.assertEquals("Property updated default's value is changed", "4",
+        Assertions.assertEquals("Property updated default's value is changed", "4",
                 value("init-3"));
-        Assert.assertEquals("Property updated default's counter increases", "2",
+        Assertions.assertEquals("Property updated default's counter increases", "2",
                 counter("init-3"));
     }
 

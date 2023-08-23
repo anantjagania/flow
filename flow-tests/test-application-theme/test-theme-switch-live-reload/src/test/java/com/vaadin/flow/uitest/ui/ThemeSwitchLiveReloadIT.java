@@ -25,9 +25,9 @@ import java.nio.file.Paths;
 
 import net.jcip.annotations.NotThreadSafe;
 import org.apache.commons.io.FileUtils;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
@@ -48,7 +48,7 @@ public class ThemeSwitchLiveReloadIT extends ChromeBrowserTest {
     private static final String APP_THEME = "app-theme";
     private static final String OTHER_THEME = "other-theme";
 
-    @After
+    @AfterEach
     public void cleanUp() {
         switchThemeName(OTHER_THEME, APP_THEME);
         // This wait-until is needed to not affect the second re-run in CI
@@ -60,7 +60,7 @@ public class ThemeSwitchLiveReloadIT extends ChromeBrowserTest {
     @Test
     public void switchThemeName_changeThemeNameAndRecompile_themeIsChangedOnFly() {
         open();
-        Assert.assertFalse(OTHER_THEME +
+        Assertions.assertFalse(OTHER_THEME +
                            " styles are not expected before switching the theme",
                 isOtherThemeUsed());
 
@@ -87,7 +87,7 @@ public class ThemeSwitchLiveReloadIT extends ChromeBrowserTest {
                 attempts++;
             }
         }
-        Assert.fail(errMessage);
+        Assertions.fail(errMessage);
     }
 
     private void waitUntilAppTheme() {
@@ -137,6 +137,6 @@ public class ThemeSwitchLiveReloadIT extends ChromeBrowserTest {
         int result = compiler.run(null, null, null, "-d", outputPath.getPath(),
                 "-sourcepath", sourcePath.getPath(),
                 viewClassFile.getPath());
-        Assert.assertEquals("Failed to recompile ThemeSwitchLiveReloadView.java", 0, result);
+        Assertions.assertEquals("Failed to recompile ThemeSwitchLiveReloadView.java", 0, result);
     }
 }

@@ -1,8 +1,8 @@
 package com.vaadin.flow.component.html.testbench;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -11,7 +11,7 @@ public class InputTextElementIT extends ChromeBrowserTest {
     private InputTextElement input;
     private DivElement log;
 
-    @Before
+    @BeforeEach
     public void open() {
         getDriver().get("http://localhost:8888/InputText");
         input = $(InputTextElement.class).id("input");
@@ -20,32 +20,32 @@ public class InputTextElementIT extends ChromeBrowserTest {
 
     @Test
     public void getSetValue() {
-        Assert.assertEquals("", input.getValue());
+        Assertions.assertEquals("", input.getValue());
         input.setValue("foo");
-        Assert.assertEquals("foo", input.getValue());
-        Assert.assertEquals("Value is 'foo'", log.getText());
+        Assertions.assertEquals("foo", input.getValue());
+        Assertions.assertEquals("Value is 'foo'", log.getText());
     }
 
     @Test
     public void setValueEmpty() {
         input.setValue("foo");
         input.setValue("");
-        Assert.assertEquals("", input.getValue());
-        Assert.assertEquals("Value is ''", log.getText());
+        Assertions.assertEquals("", input.getValue());
+        Assertions.assertEquals("Value is ''", log.getText());
     }
 
     @Test
     public void clearEmpty() {
         input.clear();
-        Assert.assertEquals("", input.getValue());
-        Assert.assertEquals("", log.getText());
+        Assertions.assertEquals("", input.getValue());
+        Assertions.assertEquals("", log.getText());
     }
 
     @Test
     public void clearWithValue() {
         input.setValue("foobar");
         input.clear();
-        Assert.assertEquals("", input.getValue());
-        Assert.assertEquals("Value is ''", log.getText());
+        Assertions.assertEquals("", input.getValue());
+        Assertions.assertEquals("Value is ''", log.getText());
     }
 }

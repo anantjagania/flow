@@ -3,8 +3,8 @@ package com.vaadin.flow.uitest.ui;
 import java.util.ArrayList;
 
 import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -50,7 +50,7 @@ public class PageIT extends ChromeBrowserTest {
     }
 
     private void verifyTitle(String title) {
-        Assert.assertEquals("Page title does not match", title,
+        Assertions.assertEquals("Page title does not match", title,
                 getDriver().getTitle());
     }
 
@@ -65,10 +65,10 @@ public class PageIT extends ChromeBrowserTest {
 
         InputTextElement input = $(InputTextElement.class).id("input");
         input.setValue("foo");
-        Assert.assertEquals("foo", input.getPropertyString("value"));
+        Assertions.assertEquals("foo", input.getPropertyString("value"));
         findElement(By.id("reload")).click();
         input = $(InputTextElement.class).id("input");
-        Assert.assertEquals("", input.getValue());
+        Assertions.assertEquals("", input.getValue());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class PageIT extends ChromeBrowserTest {
         open();
 
         findElement(By.id("setLocation")).click();
-        Assert.assertThat(getDriver().getCurrentUrl(),
+        MatcherAssert.assertThat(getDriver().getCurrentUrl(),
                 Matchers.endsWith(BaseHrefView.class.getName()));
     }
 
@@ -87,7 +87,7 @@ public class PageIT extends ChromeBrowserTest {
         findElement(By.id("open")).click();
         ArrayList<String> tabs = new ArrayList<>(
                 getDriver().getWindowHandles());
-        Assert.assertThat(
+        MatcherAssert.assertThat(
                 getDriver().switchTo().window(tabs.get(1)).getCurrentUrl(),
                 Matchers.endsWith(BaseHrefView.class.getName()));
     }
@@ -100,7 +100,7 @@ public class PageIT extends ChromeBrowserTest {
 
         waitUntil(driver -> !getIframeUrl().equals("about:blank"));
 
-        Assert.assertThat(getIframeUrl(),
+        MatcherAssert.assertThat(getIframeUrl(),
                 Matchers.endsWith(BaseHrefView.class.getName()));
     }
 

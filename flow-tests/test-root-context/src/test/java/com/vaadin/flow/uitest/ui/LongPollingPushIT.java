@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -42,7 +42,7 @@ public class LongPollingPushIT extends ChromeBrowserTest {
         waitForElementPresent(By.id("child"));
         WebElement span = findElement(By.id("child"));
 
-        Assert.assertEquals("Some text", span.getAttribute("innerHTML"));
+        Assertions.assertEquals("Some text", span.getAttribute("innerHTML"));
         /*
          * SockJS client may try to connect to sockjs node server:
          * https://github.com/sockjs/sockjs-node/blob/master/README.md.

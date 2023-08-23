@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.html.testbench.DivElement;
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -13,12 +13,12 @@ public class PolymerTemplateWithoutShadowRootIT extends ChromeBrowserTest {
         open();
         DivElement content = $(DivElement.class).attribute("real", "deal")
                 .first();
-        Assert.assertEquals("Hello", content.getText());
+        Assertions.assertEquals("Hello", content.getText());
         DivElement special = $(DivElement.class).id("special!#id");
-        Assert.assertEquals("Special", special.getText());
+        Assertions.assertEquals("Special", special.getText());
         DivElement map = $(DivElement.class).id("map");
-        Assert.assertEquals("Map", map.getText());
+        Assertions.assertEquals("Map", map.getText());
         content.click();
-        Assert.assertEquals("Goodbye", content.getText());
+        Assertions.assertEquals("Goodbye", content.getText());
     }
 }

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -32,6 +32,6 @@ public class SerializeUIIT extends ChromeBrowserTest {
         serialize.click();
 
         WebElement message = findElement(By.id("message"));
-        Assert.assertEquals("Successfully serialized ui", message.getText());
+        Assertions.assertEquals("Successfully serialized ui", message.getText());
     }
 }

@@ -3,8 +3,8 @@ package com.vaadin.flow.uitest.ui.push;
 import java.util.Locale;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.shared.communication.PushMode;
@@ -24,14 +24,14 @@ public class PushConfigurationWebSocketIT extends PushConfigurationTest {
                         PushMode.AUTOMATIC.name().toLowerCase(Locale.ENGLISH)))
                 .click();
 
-        Assert.assertThat(getStatusText(),
+        MatcherAssert.assertThat(getStatusText(),
                 CoreMatchers.containsString("fallbackTransport: long-polling"));
-        Assert.assertThat(getStatusText(),
+        MatcherAssert.assertThat(getStatusText(),
                 CoreMatchers.containsString("transport: websocket"));
 
         waitForServerCounterToUpdate();
 
-        Assert.assertEquals(Transport.WEBSOCKET.getIdentifier(),
+        Assertions.assertEquals(Transport.WEBSOCKET.getIdentifier(),
                 getTransport());
     }
 }

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.misc.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -44,7 +44,7 @@ public class MiscelaneousIT extends ChromeBrowserTest {
     @Test //#5964
     public void should_loadThemedComponent_fromLocal() {
         WebElement body = findElement(By.tagName("body"));
-        Assert.assertEquals("2px", body.getCssValue("padding"));
+        Assertions.assertEquals("2px", body.getCssValue("padding"));
     }
 
     /**
@@ -57,7 +57,7 @@ public class MiscelaneousIT extends ChromeBrowserTest {
 
         checkLogsForErrors();
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Missing/invalid icons at startup should be handled with error log.",
                 isElementPresent(By.id(MiscelaneousView.TEST_VIEW_ID)));
     }

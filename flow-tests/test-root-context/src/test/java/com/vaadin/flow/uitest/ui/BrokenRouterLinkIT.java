@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -35,7 +35,7 @@ public class BrokenRouterLinkIT extends ChromeBrowserTest {
 
         link.click();
 
-        Assert.assertTrue(getDriver().getCurrentUrl().endsWith(href));
+        Assertions.assertTrue(getDriver().getCurrentUrl().endsWith(href));
     }
 
     // https://github.com/vaadin/flow/issues/8693
@@ -49,13 +49,13 @@ public class BrokenRouterLinkIT extends ChromeBrowserTest {
         link.click();
 
         long y0 = (Long) executeScript("return window.scrollY");
-        Assert.assertEquals(0L, y0);
+        Assertions.assertEquals(0L, y0);
 
         getDriver().navigate().back();
 
         waitForElementPresent(By.id(BrokenRouterLinkView.LINK_ID));
 
         long y1 = (Long) executeScript("return window.scrollY");
-        Assert.assertEquals(100L, y1);
+        Assertions.assertEquals(100L, y1);
     }
 }

@@ -18,8 +18,8 @@ package com.vaadin.flow.webcomponent;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.testbench.TestBenchElement;
@@ -44,6 +44,6 @@ public class NpmOnlyIndexIT extends EmbeddingChromeBrowserTest {
         System.out.println(styles.size());
 
         // getAttribute wouldn't work, so we are counting the elements
-        Assert.assertEquals(2, styles.size());
+        Assertions.assertEquals(2, styles.size());
     }
 }

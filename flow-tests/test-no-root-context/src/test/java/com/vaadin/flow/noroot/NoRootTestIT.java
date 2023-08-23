@@ -2,13 +2,13 @@ package com.vaadin.flow.noroot;
 
 import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assertions.assertTrue;
 
 public class NoRootTestIT extends ChromeBrowserTest {
 
@@ -21,7 +21,7 @@ public class NoRootTestIT extends ChromeBrowserTest {
         String polymerVersionProperty = "polymer.version";
         String expectedPolymerVersion = System
                 .getProperty(polymerVersionProperty);
-        assertTrue(String.format(
+Assertions.assertTrue(String.format(
                 "System property '%s' is empty, double check the project pom",
                 polymerVersionProperty),
                 expectedPolymerVersion != null
@@ -29,7 +29,7 @@ public class NoRootTestIT extends ChromeBrowserTest {
 
         String actualPolymerText = findElement(
                 By.id(NoRootTestView.TEST_VIEW_ID)).getText();
-        assertTrue(
+Assertions.assertTrue(
                 String.format("Expected Polymer version: '%s', actual: '%s'",
                         expectedPolymerVersion, actualPolymerText),
                 actualPolymerText.endsWith(expectedPolymerVersion));
@@ -39,10 +39,10 @@ public class NoRootTestIT extends ChromeBrowserTest {
         @SuppressWarnings("unchecked") // javascript
         Map<String, String> serviceWorkerData = (Map<String, String>) executeScript(
                 "return navigator.serviceWorker.controller");
-        Assert.assertNotNull(
+        Assertions.assertNotNull(
                 "Expect to have service worker data after page reload",
                 serviceWorkerData);
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Expect the service worker to be activated after the page reload",
                 "activated", serviceWorkerData.get("state"));
         checkLogsForErrors();

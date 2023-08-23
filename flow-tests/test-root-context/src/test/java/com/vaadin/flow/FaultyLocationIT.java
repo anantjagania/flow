@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -26,7 +26,7 @@ public class FaultyLocationIT extends ChromeBrowserTest {
     public void changeOnClient() {
         open();
 
-        Assert.assertTrue("Faulty URL didn't return a 404 exception page.",
+        Assertions.assertTrue("Faulty URL didn't return a 404 exception page.",
                 getDriver().getPageSource()
                         .contains("Could not navigate to '%3Ffaulty'"));
 

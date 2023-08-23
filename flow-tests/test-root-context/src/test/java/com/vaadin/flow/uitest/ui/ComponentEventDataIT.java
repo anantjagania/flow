@@ -16,8 +16,8 @@
 
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -65,19 +65,19 @@ public class ComponentEventDataIT extends AbstractEventDataIT {
     }
 
     private void verifyHeader(String text) {
-        Assert.assertEquals("Invalid header reported", text, $(DivElement.class)
+        Assertions.assertEquals("Invalid header reported", text, $(DivElement.class)
                 .id(ComponentEventDataView.HEADER_CLICKED).getText());
     }
 
     private void verifyTargetFirstChild(String text) {
-        Assert.assertEquals("Invalid event.target.children[0] element reported",
+        Assertions.assertEquals("Invalid event.target.children[0] element reported",
                 text, $(DivElement.class).id(ComponentEventDataView.FIRST_CHILD)
                         .getText());
     }
 
     private void verifyDirectChild(String text) {
         // this is just for making sure it is possible to do this
-        Assert.assertEquals("Invalid direct target component reported", text,
+        Assertions.assertEquals("Invalid direct target component reported", text,
                 $(DivElement.class).id(ComponentEventDataView.CHILD_COMPONENT)
                         .getText());
     }

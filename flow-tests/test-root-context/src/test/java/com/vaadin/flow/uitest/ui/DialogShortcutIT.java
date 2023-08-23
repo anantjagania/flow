@@ -7,9 +7,9 @@ import com.vaadin.flow.component.html.testbench.InputTextElement;
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -22,7 +22,7 @@ public class DialogShortcutIT extends ChromeBrowserTest {
     private NativeButtonElement uiLevelButton;
     protected AtomicInteger dialogCounter;
 
-    @Before
+    @BeforeEach
     public void init() {
         open();
         eventLog = $(DivElement.class).id(DialogShortcutView.EVENT_LOG_ID);
@@ -134,7 +134,7 @@ public class DialogShortcutIT extends ChromeBrowserTest {
         final InputTextElement dialogInput = getDialogInput(firstDialogIndex);
         pressShortcutKey(dialogInput);
         validateLatestDialogShortcut(0, firstDialogIndex);
-        Assert.assertNotEquals(
+        Assertions.assertNotEquals(
                 "Entered shortcut key should not be visible in input due to prevent default",
                 DialogShortcutView.KEY_STRING, dialogInput.getValue());
 
@@ -143,7 +143,7 @@ public class DialogShortcutIT extends ChromeBrowserTest {
         dialogInput.sendKeys("fooxbar");
         // only x triggers event and value changes
         validateLatestDialogShortcut(1, firstDialogIndex);
-        Assert.assertEquals("Entered value should be visible in input",
+        Assertions.assertEquals("Entered value should be visible in input",
                 "foobar", dialogInput.getValue());
     }
 
@@ -158,7 +158,7 @@ public class DialogShortcutIT extends ChromeBrowserTest {
         final InputTextElement dialogInput = getDialogInput(firstDialogIndex);
         pressShortcutKey(dialogInput);
         validateLatestDialogShortcut(0, firstDialogIndex);
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Entered shortcut key should be visible in input due to allow default",
                 DialogShortcutView.KEY_STRING, dialogInput.getValue());
         dialogInput.clear();
@@ -167,7 +167,7 @@ public class DialogShortcutIT extends ChromeBrowserTest {
         dialogInput.sendKeys("foo" + DialogShortcutView.KEY_STRING + "bar");
         // only x triggers event and value changes
         validateLatestDialogShortcut(1, firstDialogIndex);
-        Assert.assertEquals("Entered value should be visible in input",
+        Assertions.assertEquals("Entered value should be visible in input",
                 "foo" + DialogShortcutView.KEY_STRING + "bar",
                 dialogInput.getValue());
     }
@@ -202,7 +202,7 @@ public class DialogShortcutIT extends ChromeBrowserTest {
             String eventSourceId) {
         final WebElement latestEvent = waitUntil(driver -> eventLog.findElement(
                 By.xpath(String.format("div[%d]", indexFromTop + 1))));
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Invalid latest event with " + indexFromTop + ":" + ":"
                         + eventSourceId,
                 eventCounter + "-" + eventSourceId, latestEvent.getText());

@@ -23,8 +23,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
@@ -46,7 +46,7 @@ public class SerializationTest {
                 // NavigationTrigger.PROGRAMMATIC, new Location(""),
                 // Collections.emptyList(), Collections.emptyMap()));
                 try {
-                    Assert.assertNotNull(serializeDeserialize(view));
+                    Assertions.assertNotNull(serializeDeserialize(view));
                 } catch (Exception e) {
                     throw new AssertionError(
                             "Can't serialize view " + viewClass.getName(), e);

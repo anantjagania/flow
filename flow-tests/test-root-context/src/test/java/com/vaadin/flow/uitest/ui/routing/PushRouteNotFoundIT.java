@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.routing;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 
@@ -33,7 +33,7 @@ public class PushRouteNotFoundIT extends ChromeBrowserTest {
 
         TestBenchElement push = $(TestBenchElement.class).id("push-layout")
                 .$(TestBenchElement.class).id("push-mode");
-        Assert.assertEquals("Push mode: AUTOMATIC", push.getText());
+        Assertions.assertEquals("Push mode: AUTOMATIC", push.getText());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class PushRouteNotFoundIT extends ChromeBrowserTest {
         waitUntil(driver -> driver.getCurrentUrl()
                 .endsWith(ForwardPage.class.getName()));
 
-        Assert.assertTrue(isElementPresent(By.id("forwarded")));
+        Assertions.assertTrue(isElementPresent(By.id("forwarded")));
     }
 
     @Override

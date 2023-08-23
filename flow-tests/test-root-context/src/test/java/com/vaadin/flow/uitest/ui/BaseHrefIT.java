@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -34,10 +34,10 @@ public class BaseHrefIT extends ChromeBrowserTest {
 
         getDriver().get(uiUrl);
         waitForDevServer();
-        Assert.assertEquals(expectedUrl, getLinkHref());
+        Assertions.assertEquals(expectedUrl, getLinkHref());
 
         getDriver().get(uiUrl + "/foo/bar/baz");
-        Assert.assertEquals(expectedUrl, getLinkHref());
+        Assertions.assertEquals(expectedUrl, getLinkHref());
     }
 
     private String getLinkHref() {

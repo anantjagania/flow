@@ -15,9 +15,9 @@
  */
 package com.vaadin.flow.webcomponent;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -45,77 +45,77 @@ public class PreserveOnRefreshIT extends EmbeddingChromeBrowserTest
 
     @Test
     public void twoPreservedComponents_modifiedValue_shouldNot_propagateToOtherComponentAfterRefresh() {
-        Assert.assertEquals(MODIFIED + " input should be empty", "",
+        Assertions.assertEquals(MODIFIED + " input should be empty", "",
                 getValue(MODIFIED));
-        Assert.assertEquals(UNMODIFIED + " input should be empty", "",
+        Assertions.assertEquals(UNMODIFIED + " input should be empty", "",
                 getValue(UNMODIFIED));
 
         final String EXPECTED = "expected text";
         writeInInput(MODIFIED, EXPECTED);
 
-        Assert.assertEquals(MODIFIED + " input should have text", EXPECTED,
+        Assertions.assertEquals(MODIFIED + " input should have text", EXPECTED,
                 getValue(MODIFIED));
-        Assert.assertEquals(UNMODIFIED + " input should be empty", "",
+        Assertions.assertEquals(UNMODIFIED + " input should be empty", "",
                 getValue(UNMODIFIED));
 
         refreshPage();
 
-        Assert.assertEquals(MODIFIED + " input should have text after refresh",
+        Assertions.assertEquals(MODIFIED + " input should have text after refresh",
                 EXPECTED, getValue(MODIFIED));
-        Assert.assertEquals(UNMODIFIED + " input should be empty after refresh",
+        Assertions.assertEquals(UNMODIFIED + " input should be empty after refresh",
                 "", getValue(UNMODIFIED));
     }
 
     @Test
     public void preservedAndUnpreservedComponents_onlyPreservedComponent_should_keepNewValueAfterRefresh() {
-        Assert.assertEquals(MODIFIED + " input should be empty", "",
+        Assertions.assertEquals(MODIFIED + " input should be empty", "",
                 getValue(MODIFIED));
-        Assert.assertEquals(NO_PRESERVE + " input should be empty", "",
+        Assertions.assertEquals(NO_PRESERVE + " input should be empty", "",
                 getValue(NO_PRESERVE));
 
         final String EXPECTED = "expected text";
         writeInInput(MODIFIED, EXPECTED);
         writeInInput(NO_PRESERVE, EXPECTED);
 
-        Assert.assertEquals(MODIFIED + " input should have text", EXPECTED,
+        Assertions.assertEquals(MODIFIED + " input should have text", EXPECTED,
                 getValue(MODIFIED));
-        Assert.assertEquals(NO_PRESERVE + " input should have text", EXPECTED,
+        Assertions.assertEquals(NO_PRESERVE + " input should have text", EXPECTED,
                 getValue(NO_PRESERVE));
 
         refreshPage();
 
-        Assert.assertEquals(MODIFIED + " input should have text after refresh",
+        Assertions.assertEquals(MODIFIED + " input should have text after refresh",
                 EXPECTED, getValue(MODIFIED));
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 NO_PRESERVE + " input should be empty after refresh", "",
                 getValue(NO_PRESERVE));
     }
 
     @Test
     public void whenValueIsChangedOnPreservingComponent_should_preserveTheNewValueAfterRefresh() {
-        Assert.assertEquals(MODIFIED + " input should be empty", "",
+        Assertions.assertEquals(MODIFIED + " input should be empty", "",
                 getValue(MODIFIED));
 
         // first value change and refresh
         final String EXPECTED_1 = "expected text";
         writeInInput(MODIFIED, EXPECTED_1);
 
-        Assert.assertEquals(MODIFIED + " input should have text", EXPECTED_1,
+        Assertions.assertEquals(MODIFIED + " input should have text", EXPECTED_1,
                 getValue(MODIFIED));
 
         refreshPage();
-        Assert.assertEquals(MODIFIED + " input should display first changed "
+        Assertions.assertEquals(MODIFIED + " input should display first changed "
                 + "text after refresh", EXPECTED_1, getValue(MODIFIED));
 
         // second value change and refresh
         final String EXPECTED_2 = EXPECTED_1 + " with additions";
         writeInInput(MODIFIED, " with additions");
 
-        Assert.assertEquals(MODIFIED + " input should have text", EXPECTED_2,
+        Assertions.assertEquals(MODIFIED + " input should have text", EXPECTED_2,
                 getValue(MODIFIED));
 
         refreshPage();
-        Assert.assertEquals(MODIFIED + " input should display second changed "
+        Assertions.assertEquals(MODIFIED + " input should display second changed "
                 + "text after refresh", EXPECTED_2, getValue(MODIFIED));
     }
 
@@ -146,11 +146,11 @@ public class PreserveOnRefreshIT extends EmbeddingChromeBrowserTest
 
         TestBenchElement noIdElement = findTagWithoutId(PRESERVE_ON_REFRESH_TAG);
 
-        Assert.assertEquals(MODIFIED + " input should be empty", "",
+        Assertions.assertEquals(MODIFIED + " input should be empty", "",
                 getValue(MODIFIED));
-        Assert.assertEquals(UNMODIFIED + " input should be empty", "",
+        Assertions.assertEquals(UNMODIFIED + " input should be empty", "",
                 getValue(UNMODIFIED));
-        Assert.assertEquals("Input without id should be empty", "",
+        Assertions.assertEquals("Input without id should be empty", "",
                 getValue(noIdElement));
 
         writeInInput(MODIFIED, TEXT_CONTENTS);
@@ -160,16 +160,16 @@ public class PreserveOnRefreshIT extends EmbeddingChromeBrowserTest
         relocateTo("preserveOnRefreshSecondary.html");
 
         // same place, same id
-        Assert.assertEquals(MODIFIED + " input should have preserved state",
+        Assertions.assertEquals(MODIFIED + " input should have preserved state",
                 TEXT_CONTENTS, getValue(MODIFIED));
 
         // same place, different id
-        Assert.assertEquals(NEW_ID + " input should be empty", "",
+        Assertions.assertEquals(NEW_ID + " input should be empty", "",
                 getValue(NEW_ID));
 
         // same place, no assigned id
         TestBenchElement noIdElement2 = findTagWithoutId(PRESERVE_ON_REFRESH_TAG);
-        Assert.assertEquals("Input without id should have preserved state",
+        Assertions.assertEquals("Input without id should have preserved state",
                 TEXT_CONTENTS, getValue(noIdElement2));
     }
 

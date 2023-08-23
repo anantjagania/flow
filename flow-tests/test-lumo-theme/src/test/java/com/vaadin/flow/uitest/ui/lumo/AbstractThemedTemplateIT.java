@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -39,7 +39,7 @@ public abstract class AbstractThemedTemplateIT extends ChromeBrowserTest {
 
         TestBenchElement div = template.$("div").first();
 
-        Assert.assertEquals("Lumo themed Template", div.getText());
+        Assertions.assertEquals("Lumo themed Template", div.getText());
 
         TestBenchElement head = $("head").first();
 
@@ -64,7 +64,7 @@ public abstract class AbstractThemedTemplateIT extends ChromeBrowserTest {
         }
 
         if (!expectedSuffices.isEmpty()) {
-            Assert.fail("No imports found for the lumo specific HTML file(s) : "
+            Assertions.fail("No imports found for the lumo specific HTML file(s) : "
                     + expectedSuffices);
         }
     }

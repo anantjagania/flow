@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
@@ -36,20 +36,20 @@ public class AttachExistingDomElementByIdIT extends ChromeBrowserTest {
             String placeholder) {
         WebElement input = getInput(id);
 
-        Assert.assertEquals(initialLabelText, getLabel(id).getText());
+        Assertions.assertEquals(initialLabelText, getLabel(id).getText());
 
-        Assert.assertEquals(placeholder, input.getAttribute("placeholder"));
+        Assertions.assertEquals(placeholder, input.getAttribute("placeholder"));
 
         input.sendKeys("Harley!");
         input.sendKeys(Keys.TAB);
 
-        Assert.assertEquals("Text from input Harley!", getLabel(id).getText());
+        Assertions.assertEquals("Text from input Harley!", getLabel(id).getText());
 
         // Reset values to defaults
         $(TestBenchElement.class).id(id).$(TestBenchElement.class).id("button")
                 .click();
 
-        Assert.assertEquals("default", getLabel(id).getText());
+        Assertions.assertEquals("default", getLabel(id).getText());
     }
 
     private WebElement getInput(String id) {

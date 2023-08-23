@@ -3,8 +3,8 @@ package com.vaadin.flow.uitest.ui.push;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -46,7 +46,7 @@ public abstract class SendMultibyteCharactersTest
         checkLogsForErrors(
                 msg -> msg.contains("sockjs-node") || msg.contains("[WDS]"));
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 messages.stream().anyMatch(msg -> msg.startsWith("Received ")
                         && msg.contains("message:")));
     }

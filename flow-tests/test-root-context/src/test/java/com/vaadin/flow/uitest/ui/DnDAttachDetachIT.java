@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import static com.vaadin.flow.uitest.ui.DnDAttachDetachView.DRAGGABLE_ID;
@@ -38,7 +38,7 @@ public class DnDAttachDetachIT extends ChromeBrowserTest {
         dragAndDrop(getDraggableText(), getDropTarget());
 
         TestBenchElement eventElement = getEvent(0);
-        Assert.assertEquals("Drop: 0", eventElement.getText());
+        Assertions.assertEquals("Drop: 0", eventElement.getText());
 
         clickElementWithJs(SWAP_BUTTON_ID);
 
@@ -53,9 +53,9 @@ public class DnDAttachDetachIT extends ChromeBrowserTest {
         // without proper reactivation of the drop target, the following event
         // is not discoved
         eventElement = getEvent(1);
-        Assert.assertEquals("Drop: 1", eventElement.getText());
+        Assertions.assertEquals("Drop: 1", eventElement.getText());
 
-        Assert.assertFalse("No second event should have occurred",
+        Assertions.assertFalse("No second event should have occurred",
                 isElementPresent(By.id("drop-" + 2)));
     }
 
@@ -66,16 +66,16 @@ public class DnDAttachDetachIT extends ChromeBrowserTest {
         dragAndDrop(getDraggableText(), getDropTarget());
 
         TestBenchElement eventElement = getEvent(0);
-        Assert.assertEquals("Drop: 0", eventElement.getText());
+        Assertions.assertEquals("Drop: 0", eventElement.getText());
 
         clickElementWithJs(MOVE_BUTTON_ID);
 
         dragAndDrop(getDraggableText(), getDropTarget());
 
         eventElement = getEvent(1);
-        Assert.assertEquals("Drop: 1", eventElement.getText());
+        Assertions.assertEquals("Drop: 1", eventElement.getText());
 
-        Assert.assertFalse("No second event should have occurred",
+        Assertions.assertFalse("No second event should have occurred",
                 isElementPresent(By.id("drop-" + 2)));
     }
 

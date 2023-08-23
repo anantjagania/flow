@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -27,6 +27,6 @@ public class HasUrlParameterErrorIT extends ChromeBrowserTest {
     public void testNavigationTriggers() {
         open();
 
-        Assert.assertNotNull("Expected custom error handler to render", findElement(By.id("custom-exception")));
+        Assertions.assertNotNull("Expected custom error handler to render", findElement(By.id("custom-exception")));
     }
 }

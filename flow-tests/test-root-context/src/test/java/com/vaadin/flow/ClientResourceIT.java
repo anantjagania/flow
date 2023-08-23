@@ -20,8 +20,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -39,7 +39,7 @@ public class ClientResourceIT extends ChromeBrowserTest {
         URL url = getResourceURL(path);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         int responseCode = connection.getResponseCode();
-        Assert.assertEquals(HttpURLConnection.HTTP_NOT_FOUND, responseCode);
+        Assertions.assertEquals(HttpURLConnection.HTTP_NOT_FOUND, responseCode);
     }
 
     private URL getResourceURL(String path) throws MalformedURLException {

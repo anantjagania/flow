@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -32,10 +32,10 @@ public class JsApiGetByIdIT extends ChromeBrowserTest {
         String text = source.getText();
         WebElement target = findElement(By.id("target"));
 
-        Assert.assertNotEquals(text, target.getText());
+        Assertions.assertNotEquals(text, target.getText());
 
         findElement(By.id("update")).click();
 
-        Assert.assertEquals(text, target.getText());
+        Assertions.assertEquals(text, target.getText());
     }
 }

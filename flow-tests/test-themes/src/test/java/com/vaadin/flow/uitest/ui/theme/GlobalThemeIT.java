@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui.theme;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -46,20 +46,20 @@ public class GlobalThemeIT extends ChromeBrowserTest {
         open();
         checkLogsForErrors();
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             "Imported FontAwesome css file should be applied.",
             "\"Font Awesome 5 Free\"", $(SpanElement.class).id(FONTAWESOME_ID)
                         .getCssValue("font-family"));
 
         String iconUnicode = getCssPseudoElementValue(FONTAWESOME_ID,
                                           "::before");
-        Assert.assertEquals(
+        Assertions.assertEquals(
            "Font-Icon from FontAwesome css file should be applied.",
            "\"\uf0f4\"", iconUnicode);
 
         getDriver().get(getRootURL() +
                 "/path/VAADIN/static/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg");
-        Assert.assertFalse("Font resource should be available",
+        Assertions.assertFalse("Font resource should be available",
                 driver.getPageSource().contains("HTTP ERROR 404 Not Found"));
     }
 

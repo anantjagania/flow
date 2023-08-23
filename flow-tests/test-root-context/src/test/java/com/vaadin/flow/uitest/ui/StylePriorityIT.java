@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -29,7 +29,7 @@ public class StylePriorityIT extends ChromeBrowserTest {
         open();
         WebElement div = findElement(By.id("priority-style"));
 
-        Assert.assertEquals("display: block !important;",
+        Assertions.assertEquals("display: block !important;",
                 div.getAttribute("style"));
     }
 }

@@ -16,8 +16,8 @@
 
 package com.vaadin.flow.uitest.ui.template.imports;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -40,14 +40,14 @@ public class LazyWidgetIT extends ChromeBrowserTest {
 
         TestBenchElement template = $(TestBenchElement.class).id("template");
         String input = "InputMaster";
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 "No greeting should be present before we press the button",
                 template.$("*").attribute("id", "greeting").exists());
 
         template.$(TestBenchElement.class).id("input").sendKeys(input);
         template.$(TestBenchElement.class).id("button").click();
 
-        Assert.assertEquals("Greeting is different from expected",
+        Assertions.assertEquals("Greeting is different from expected",
                 String.format(LazyWidgetView.GREETINGS_TEMPLATE, input),
                 template.$(TestBenchElement.class).id("greeting").getText());
     }

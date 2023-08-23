@@ -16,8 +16,8 @@
 
 package com.vaadin.flow.servlet;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -36,7 +36,7 @@ public class NavigationTargetIT extends ChromeBrowserTest {
 
         WebElement navigationTarget = findElement(By.id("navigationTarget"));
 
-        Assert.assertNotNull(navigationTarget);
-        Assert.assertEquals("Hello world", navigationTarget.getText());
+        Assertions.assertNotNull(navigationTarget);
+        Assertions.assertEquals("Hello world", navigationTarget.getText());
     }
 }

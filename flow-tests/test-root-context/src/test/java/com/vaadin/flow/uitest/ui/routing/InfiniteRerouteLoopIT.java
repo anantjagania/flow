@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.routing;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.component.Component;
@@ -32,7 +32,7 @@ public class InfiniteRerouteLoopIT extends ChromeBrowserTest {
 
         waitUntil(driver -> isElementPresent(By.tagName("body")));
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 driver.getCurrentUrl().endsWith(NAVIGATION_EXCEPTION));
     }
 

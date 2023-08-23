@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -17,9 +17,9 @@ public class SetParameterForwardToIT extends ChromeBrowserTest {
         waitForElementPresent(By.id(SetParameterForwardToView.LOCATION_ID));
         final String locationId = findElement(
                 By.id(SetParameterForwardToView.LOCATION_ID)).getText();
-        Assert.assertTrue("should redirect to " + baseLoc + "/two",
+        Assertions.assertTrue("should redirect to " + baseLoc + "/two",
                 locationId.endsWith("/two"));
-        Assert.assertTrue("should update the URL",
+        Assertions.assertTrue("should update the URL",
                 getDriver().getCurrentUrl().endsWith(baseLoc + "/two"));
     }
 }

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
@@ -36,12 +36,12 @@ public class BrowserWindowResizeIT extends ChromeBrowserTest {
 
         WebElement info = findElement(By.id("size-info"));
 
-        Assert.assertEquals(String.valueOf(newWidth), info.getText());
+        Assertions.assertEquals(String.valueOf(newWidth), info.getText());
 
         newWidth -= 30;
         getDriver().manage().window()
                 .setSize(new Dimension(newWidth, currentSize.getHeight()));
 
-        Assert.assertEquals(String.valueOf(newWidth), info.getText());
+        Assertions.assertEquals(String.valueOf(newWidth), info.getText());
     }
 }

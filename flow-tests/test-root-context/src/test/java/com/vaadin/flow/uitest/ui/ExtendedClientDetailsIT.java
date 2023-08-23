@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class ExtendedClientDetailsIT extends ChromeBrowserTest {
 
@@ -38,9 +38,9 @@ public class ExtendedClientDetailsIT extends ChromeBrowserTest {
         try {
             Double.parseDouble($(TestBenchElement.class).id("pr").getText());
         } catch (NumberFormatException nfe) {
-            Assert.fail("Could not parse reported device pixel ratio");
+            Assertions.fail("Could not parse reported device pixel ratio");
         }
-        Assert.assertTrue("false".equalsIgnoreCase(
+        Assertions.assertTrue("false".equalsIgnoreCase(
                 $(TestBenchElement.class).id("td").getText()));
 
     }
@@ -55,12 +55,12 @@ public class ExtendedClientDetailsIT extends ChromeBrowserTest {
         try {
             double pixelRatio = Double
                     .parseDouble($(TestBenchElement.class).id("pr").getText());
-            Assert.assertEquals("Invalid Pixel ratio reported", 2.0D,
+            Assertions.assertEquals("Invalid Pixel ratio reported", 2.0D,
                     pixelRatio, 0.1D);
         } catch (NumberFormatException nfe) {
-            Assert.fail("Could not parse reported device pixel ratio");
+            Assertions.fail("Could not parse reported device pixel ratio");
         }
-        Assert.assertTrue("true".equalsIgnoreCase(
+        Assertions.assertTrue("true".equalsIgnoreCase(
                 $(TestBenchElement.class).id("td").getText()));
 
     }
@@ -70,7 +70,7 @@ public class ExtendedClientDetailsIT extends ChromeBrowserTest {
         String elementText = $(TestBenchElement.class).id(elementId).getText();
         Object executionResult = getCommandExecutor()
                 .executeScript(("return " + jsExecution + ";"));
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "reported value did not match js execution for " + elementId,
                 executionResult.toString(), elementText);
     }

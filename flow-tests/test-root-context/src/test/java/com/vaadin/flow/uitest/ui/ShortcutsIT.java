@@ -20,9 +20,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -37,7 +37,7 @@ public class ShortcutsIT extends ChromeBrowserTest {
 
     private static final String DEFAULT_VALUE = "testing...";
 
-    @Before
+    @BeforeEach
     public void before() {
         open();
         resetKeys();
@@ -56,7 +56,7 @@ public class ShortcutsIT extends ChromeBrowserTest {
 
         WebElement input = findElement(By.id("input"));
 
-        assertEquals(input, driver.switchTo().activeElement());
+Assertions.assertEquals(input, driver.switchTo().activeElement());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class ShortcutsIT extends ChromeBrowserTest {
         assertActualEquals("subview");
 
         // using the shortcut prevented "s" from being written
-        Assert.assertEquals("", innerInput.getText());
+        Assertions.assertEquals("", innerInput.getText());
     }
 
     @Test
@@ -124,7 +124,7 @@ public class ShortcutsIT extends ChromeBrowserTest {
         assertActualEquals("Alt+H triggered on one of the listenOns");
 
         // using the shortcut prevented "h" from being written
-        Assert.assertEquals("", listenOn.getText());
+        Assertions.assertEquals("", listenOn.getText());
     }
 
     @Test
@@ -219,7 +219,7 @@ public class ShortcutsIT extends ChromeBrowserTest {
     public void removingShortcutCleansJavascriptEventSettingsItUsed() {
         WebElement removalInput = findElement(By.id("removal-input"));
 
-        Assert.assertEquals("removalInput should be empty", "",
+        Assertions.assertEquals("removalInput should be empty", "",
                 removalInput.getAttribute("value"));
 
         // the removalInput has a shortcut bound on 'd'. When 'd' is typed,
@@ -228,11 +228,11 @@ public class ShortcutsIT extends ChromeBrowserTest {
         // printed out.
 
         removalInput.sendKeys("abcd");
-        Assert.assertEquals("removalInput should have 'ABC' and no 'd'", "ABC",
+        Assertions.assertEquals("removalInput should have 'ABC' and no 'd'", "ABC",
                 removalInput.getAttribute("value"));
 
         removalInput.sendKeys("abcd");
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "removalInput 'ABCabcd'. Since shortcut was removed, 'd' can "
                         + "be typed.",
                 "ABCabcd", removalInput.getAttribute("value"));
@@ -264,7 +264,7 @@ public class ShortcutsIT extends ChromeBrowserTest {
     }
 
     private void assertActualEquals(String expected) {
-        Assert.assertEquals(expected,
+        Assertions.assertEquals(expected,
                 findElement(By.id("actual")).getAttribute("value"));
     }
 

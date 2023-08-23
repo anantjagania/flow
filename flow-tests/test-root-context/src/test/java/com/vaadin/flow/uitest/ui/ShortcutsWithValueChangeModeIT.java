@@ -20,8 +20,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
@@ -90,11 +90,11 @@ public class ShortcutsWithValueChangeModeIT extends ChromeBrowserTest {
         String paragraphText = $(ParagraphElement.class).id("value").getText();
 
         if (expectValue) {
-            Assert.assertEquals(
+            Assertions.assertEquals(
                     "Expecting input value to be in sync with server value",
                     text, paragraphText);
         } else {
-            Assert.assertEquals(
+            Assertions.assertEquals(
                     "Expecting input value not to be synced with server", "",
                     paragraphText);
         }

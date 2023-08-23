@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.template;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -36,7 +36,7 @@ public class PolymerPropertyChangeEventIT extends ChromeBrowserTest {
 
         List<WebElement> changeEvents = findElements(
                 By.className("change-event"));
-        Assert.assertTrue("Expected property change event is not fired. "
+        Assertions.assertTrue("Expected property change event is not fired. "
                 + "Element with expected old and new value is not found",
                 changeEvents.stream().anyMatch(
                         event -> "New property value: 'foo', old property value: 'fo'"

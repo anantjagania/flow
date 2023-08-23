@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -20,7 +20,7 @@ public class ModelListIT extends ChromeBrowserTest {
 
     private TestBenchElement modelList;
 
-    @Before
+    @BeforeEach
     public void init() {
         open();
         modelList = $("model-list").first();
@@ -84,14 +84,14 @@ public class ModelListIT extends ChromeBrowserTest {
         List<WebElement> repeated3 = repeat3.findElements(By.tagName("div"));
         List<WebElement> repeated4 = repeat4.findElements(By.tagName("div"));
 
-        Assert.assertEquals("false", repeated1.get(0).getText());
-        Assert.assertEquals("false", repeated1.get(1).getText());
-        Assert.assertEquals("false", repeated2.get(0).getText());
-        Assert.assertEquals("false", repeated2.get(1).getText());
-        Assert.assertEquals("false", repeated3.get(0).getText());
-        Assert.assertEquals("false", repeated3.get(1).getText());
-        Assert.assertEquals("false", repeated4.get(0).getText());
-        Assert.assertEquals("false", repeated4.get(1).getText());
+        Assertions.assertEquals("false", repeated1.get(0).getText());
+        Assertions.assertEquals("false", repeated1.get(1).getText());
+        Assertions.assertEquals("false", repeated2.get(0).getText());
+        Assertions.assertEquals("false", repeated2.get(1).getText());
+        Assertions.assertEquals("false", repeated3.get(0).getText());
+        Assertions.assertEquals("false", repeated3.get(1).getText());
+        Assertions.assertEquals("false", repeated4.get(0).getText());
+        Assertions.assertEquals("false", repeated4.get(1).getText());
     }
 
     private void assertClickedStates(int... clicked) {
@@ -112,7 +112,7 @@ public class ModelListIT extends ChromeBrowserTest {
             int index = i;
             boolean clickedState = IntStream.of(clicked)
                     .anyMatch(x -> x == index);
-            Assert.assertThat(divs.get(index).getText(),
+            MatcherAssert.assertThat(divs.get(index).getText(),
                     CoreMatchers.startsWith(String.valueOf(clickedState)));
         }
     }

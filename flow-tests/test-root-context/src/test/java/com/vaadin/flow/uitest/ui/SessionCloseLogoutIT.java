@@ -17,8 +17,8 @@
 
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
@@ -36,7 +36,7 @@ public class SessionCloseLogoutIT extends ChromeBrowserTest {
 
         waitUntil(driver -> !findElements(By.tagName("a")).isEmpty());
         String sessionExpiredText = $("a").first().getText();
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Unexpected view after navigation with closed session",
                 "My link", sessionExpiredText);
 

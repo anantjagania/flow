@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 
@@ -31,7 +31,7 @@ public class PushSettingsIT extends ChromeBrowserTest {
 
         String modeText = findElement(By.id("pushMode")).getText();
 
-        Assert.assertEquals("Push mode: AUTOMATIC", modeText);
+        Assertions.assertEquals("Push mode: AUTOMATIC", modeText);
     }
 
 }

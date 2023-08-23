@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -34,8 +34,8 @@ public class TimingInfoReportedIT extends ChromeBrowserTest {
         // Check timings starting from the second request
         open();
 
-        Assert.assertEquals(1, findElements(By.className("log")).size());
-        Assert.assertEquals("Timings ok",
+        Assertions.assertEquals(1, findElements(By.className("log")).size());
+        Assertions.assertEquals("Timings ok",
                 findElement(By.className("log")).getText());
 
     }

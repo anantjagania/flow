@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.memoryleaks.ui;
 
-import javax.servlet.annotation.WebServlet;
+import jakarta.servlet.annotation.WebServlet;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;

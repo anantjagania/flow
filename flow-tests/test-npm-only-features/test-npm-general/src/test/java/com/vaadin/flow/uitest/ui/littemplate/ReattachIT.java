@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.littemplate;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -38,7 +38,7 @@ public class ReattachIT extends ChromeBrowserTest {
                 .id("form-template");
         TestBenchElement div = template.$(TestBenchElement.class).id("div");
 
-        Assert.assertEquals("foo", div.getText());
+        Assertions.assertEquals("foo", div.getText());
 
         // detach template
         button.click();
@@ -48,7 +48,7 @@ public class ReattachIT extends ChromeBrowserTest {
 
         template = $(TestBenchElement.class).id("form-template");
         div = template.$(TestBenchElement.class).id("div");
-        Assert.assertEquals("foo", div.getText());
+        Assertions.assertEquals("foo", div.getText());
     }
 
 }

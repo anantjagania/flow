@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.littemplate;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.html.testbench.DivElement;
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
@@ -42,11 +42,11 @@ public class TypeScriptIT extends ChromeBrowserTest {
         NativeButtonElement mappedButton = template.$(NativeButtonElement.class)
                 .id("mappedButton");
 
-        Assert.assertEquals("Server button", mappedButton.getText());
+        Assertions.assertEquals("Server button", mappedButton.getText());
         mappedButton.click();
 
         DivElement label = template.$(DivElement.class).id("label");
-        Assert.assertEquals("Hello from server component event listener",
+        Assertions.assertEquals("Hello from server component event listener",
                 label.getText());
     }
 }

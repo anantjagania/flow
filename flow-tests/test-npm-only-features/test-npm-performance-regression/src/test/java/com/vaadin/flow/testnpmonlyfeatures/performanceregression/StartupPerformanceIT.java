@@ -24,8 +24,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -59,7 +59,7 @@ public class StartupPerformanceIT extends ChromeBrowserTest {
                         ? 5500
                         : 12000;
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 String.format("startup time expected <= %d but was %d",
                         thresholdMs, startupTimeWithoutNpmInstallTime),
                 startupTimeWithoutNpmInstallTime <= thresholdMs);

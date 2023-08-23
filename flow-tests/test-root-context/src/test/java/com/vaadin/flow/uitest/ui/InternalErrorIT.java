@@ -15,9 +15,9 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
@@ -27,8 +27,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
 
 /**
  * Tests for handling internal errors and session expiration
@@ -89,10 +88,10 @@ public class InternalErrorIT extends ChromeBrowserTest {
         // Just click on any button to make a request after killing the session
         clickButton(CLOSE_SESSION);
 
-        Assert.assertTrue("After enabling the 'Session Expired' notification, "
+        Assertions.assertTrue("After enabling the 'Session Expired' notification, "
                 + "the page should not be refreshed "
                 + "after killing the session", isMessageUpdated());
-        Assert.assertTrue("After enabling the 'Session Expired' notification "
+        Assertions.assertTrue("After enabling the 'Session Expired' notification "
                 + "and killing the session, the notification should be displayed",
                 isSessionExpiredNotificationPresent());
     }
@@ -103,9 +102,9 @@ public class InternalErrorIT extends ChromeBrowserTest {
 
         clickButton("cause-exception");
 
-        Assert.assertTrue("The page should not be immediately refreshed after "
+        Assertions.assertTrue("The page should not be immediately refreshed after "
                 + "a server-side exception", isMessageUpdated());
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "'Internal error' notification should be present after "
                         + "a server-side exception",
                 isInternalErrorNotificationPresent());
@@ -114,10 +113,10 @@ public class InternalErrorIT extends ChromeBrowserTest {
         try {
             waitUntil(driver -> !isMessageUpdated());
         } catch (TimeoutException e) {
-            Assert.fail("After internal error, clicking the notification "
+            Assertions.fail("After internal error, clicking the notification "
                     + "should refresh the page, resetting the state of the UI.");
         }
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 "'Internal error' notification should be gone after refreshing",
                 isInternalErrorNotificationPresent());
     }
@@ -128,9 +127,9 @@ public class InternalErrorIT extends ChromeBrowserTest {
 
         clickButton("cause-exception");
 
-        Assert.assertTrue("The page should not be immediately refreshed after "
+        Assertions.assertTrue("The page should not be immediately refreshed after "
                 + "a server-side exception", isMessageUpdated());
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "'Internal error' notification should be present after "
                         + "a server-side exception",
                 isInternalErrorNotificationPresent());
@@ -139,16 +138,16 @@ public class InternalErrorIT extends ChromeBrowserTest {
         try {
             waitUntil(driver -> !isMessageUpdated());
         } catch (TimeoutException e) {
-            Assert.fail(
+            Assertions.fail(
                     "After internal error, pressing esc-key should refresh the page, "
                             + "resetting the state of the UI.");
         }
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 "'Internal error' notification should be gone after refreshing",
                 isInternalErrorNotificationPresent());
     }
 
-    @After
+    @AfterEach
     public void resetSystemMessages() {
         waitUntil(ExpectedConditions
                 .presenceOfElementLocated(By.id("reset-system-messages")));

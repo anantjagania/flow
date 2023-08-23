@@ -16,8 +16,8 @@
 package com.vaadin.flow.uitest.ui;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -33,7 +33,7 @@ public class ExceptionStacktraceIT extends ChromeBrowserTest {
                 .filter(element -> element.getAttribute("class").isEmpty())
                 .findFirst().get();
 
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 "There should be no warning about SLF4J absence because the test project should have slf4j bindings",
                 isElementPresent(By.cssSelector("body > div > div")));
 
@@ -42,7 +42,7 @@ public class ExceptionStacktraceIT extends ChromeBrowserTest {
         // The first string is the op level exception thrown in the core, the
         // second string is the cause of the exception. Both should be in the
         // stacktrace
-        Assert.assertThat("There is no stacktrace on the page",
+        MatcherAssert.assertThat("There is no stacktrace on the page",
                 stacktrace.getText(),
                 CoreMatchers.allOf(
                         CoreMatchers.containsString(

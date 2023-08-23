@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -44,7 +44,7 @@ public class ElementInitOrderIT extends ChromeBrowserTest {
             TestBenchElement element = $(name).first();
             String status = element.$(TestBenchElement.class).id("status")
                     .getText();
-            Assert.assertEquals(
+            Assertions.assertEquals(
                     "property = property, attribute = attribute, child count = 1, style = style, class = class",
                     status);
         }

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.mixedtest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -36,7 +36,7 @@ public class NavigateToStyledIT extends ChromeBrowserTest {
 
         String color = div.getCssValue("color");
         // The red color
-        Assert.assertEquals("rgba(255, 0, 0, 1)", color);
+        Assertions.assertEquals("rgba(255, 0, 0, 1)", color);
     }
 
     @Override

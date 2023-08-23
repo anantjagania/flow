@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -30,13 +30,13 @@ public class ScriptInjectIT extends ChromeBrowserTest {
     public void ensureNoAlerts() {
         open();
         List<WebElement> inputs = findElements(By.xpath("//input"));
-        Assert.assertEquals(ScriptInjectView.values.length, inputs.size());
+        Assertions.assertEquals(ScriptInjectView.values.length, inputs.size());
 
         // All inputs should contain some variant of
         // <script>alert('foo');</script>
         for (int i = 0; i < inputs.size(); i++) {
             WebElement e = inputs.get(i);
-            Assert.assertEquals(
+            Assertions.assertEquals(
                     ScriptInjectView.getValue(ScriptInjectView.values[i]),
                     e.getAttribute("value"));
         }

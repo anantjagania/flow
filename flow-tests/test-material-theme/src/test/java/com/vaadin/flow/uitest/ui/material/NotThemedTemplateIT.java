@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -36,7 +36,7 @@ public class NotThemedTemplateIT extends ChromeBrowserTest {
 
         TestBenchElement div = template.$("div").first();
 
-        Assert.assertEquals("Template", div.getText());
+        Assertions.assertEquals("Template", div.getText());
 
         TestBenchElement head = $("head").first();
 
@@ -45,9 +45,9 @@ public class NotThemedTemplateIT extends ChromeBrowserTest {
                 .collect(Collectors.toList());
 
         for (String href : hrefs) {
-            Assert.assertThat(href,
+            MatcherAssert.assertThat(href,
                     CoreMatchers.not(CoreMatchers.containsString("material")));
-            Assert.assertThat(href,
+            MatcherAssert.assertThat(href,
                     CoreMatchers.not(CoreMatchers.containsString("lumo")));
         }
     }

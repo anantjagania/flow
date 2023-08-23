@@ -1,6 +1,6 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -17,11 +17,11 @@ public abstract class RouteNotFoundIT extends ChromeBrowserTest {
 
     protected void assertPageHasRoutes(boolean contains) {
         String pageSource = getDriver().getPageSource();
-        Assert.assertEquals(contains, pageSource.contains("Available routes"));
-        Assert.assertEquals(contains, pageSource.contains("noParent"));
-        Assert.assertEquals(contains, pageSource.contains("foo/bar"));
+        Assertions.assertEquals(contains, pageSource.contains("Available routes"));
+        Assertions.assertEquals(contains, pageSource.contains("noParent"));
+        Assertions.assertEquals(contains, pageSource.contains("foo/bar"));
         // check that <img src=x onerror=...> did not inject div via script
-        Assert.assertFalse(pageSource.contains("<div id=\"injected\"></div>"));
+        Assertions.assertFalse(pageSource.contains("<div id=\"injected\"></div>"));
     }
 
 }

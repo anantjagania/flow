@@ -239,7 +239,7 @@ public final class BeanUtil implements Serializable {
 
         private static boolean isAvailable() {
             try {
-                Class<?> clazz = Class.forName("javax.validation.Validation");
+                Class<?> clazz = Class.forName("jakarta.validation.Validation");
                 Method method = clazz.getMethod("buildDefaultValidatorFactory");
                 method.invoke(null);
                 return true;

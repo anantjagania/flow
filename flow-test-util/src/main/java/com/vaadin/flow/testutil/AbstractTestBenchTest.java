@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.Platform;
@@ -188,7 +188,7 @@ public abstract class AbstractTestBenchTest extends TestBenchHelpers {
      *             if there was a problem accessing the reference image
      */
     protected void verifyScreenshot(String identifier) throws IOException {
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "SCREENSHOT MATCH FAILURE: <" + identifier
                         + "> does not match expected.",
                 testBench().compareScreen(identifier));

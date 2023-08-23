@@ -15,9 +15,9 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -25,7 +25,7 @@ import com.vaadin.flow.testutil.ChromeBrowserTest;
 
 public class AttachListenerIT extends ChromeBrowserTest {
 
-    @Before
+    @BeforeEach
     public void init() {
         open();
     }
@@ -153,7 +153,7 @@ public class AttachListenerIT extends ChromeBrowserTest {
         waitForElementPresent(By.id("result"));
 
         WebElement result = findElement(By.id("result"));
-        Assert.assertEquals(expectedResult, result.getText());
+        Assertions.assertEquals(expectedResult, result.getText());
     }
 
 }

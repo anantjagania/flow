@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.server.startup;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import java.io.Serializable;
 import java.lang.reflect.Modifier;
@@ -44,9 +44,6 @@ import com.vaadin.flow.router.RoutesChangedEvent;
 import com.vaadin.flow.router.internal.AbstractRouteRegistry;
 import com.vaadin.flow.router.internal.ErrorTargetEntry;
 import com.vaadin.flow.router.internal.HasUrlParameterFormat;
-import com.vaadin.flow.router.internal.NavigationRouteTarget;
-import com.vaadin.flow.router.internal.PathUtil;
-import com.vaadin.flow.router.internal.RouteTarget;
 import com.vaadin.flow.server.ErrorRouteRegistry;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.server.RouteRegistry;

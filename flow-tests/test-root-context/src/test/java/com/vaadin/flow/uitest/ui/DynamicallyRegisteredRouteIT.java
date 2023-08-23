@@ -20,8 +20,8 @@ import java.util.List;
 
 import com.vaadin.flow.testcategory.IgnoreOSGi;
 import com.vaadin.flow.testutil.ChromeBrowserTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -40,9 +40,9 @@ public class DynamicallyRegisteredRouteIT extends ChromeBrowserTest {
         List<WebElement> elements = findElements(
                 By.id(DynamicallyRegisteredRoute.ID));
 
-        Assert.assertEquals("Route registered during startup is not available",
+        Assertions.assertEquals("Route registered during startup is not available",
                 1, elements.size());
-        Assert.assertEquals("Dynamically registered route not rendered",
+        Assertions.assertEquals("Dynamically registered route not rendered",
                 DynamicallyRegisteredRoute.TEXT, elements.get(0).getText());
     }
 }

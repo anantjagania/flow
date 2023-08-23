@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -29,8 +29,8 @@ public class VisibilityIT extends ChromeBrowserTest {
         open();
 
         // The element is initially hidden. It shouldn't be bound.
-        Assert.assertFalse(isElementPresent(By.id("visibility")));
-        Assert.assertFalse(isElementPresent(By.id("nested-label")));
+        Assertions.assertFalse(isElementPresent(By.id("visibility")));
+        Assertions.assertFalse(isElementPresent(By.id("nested-label")));
 
         WebElement main = findElement(By.id("main"));
         WebElement div = main.findElement(By.tagName("div"));
@@ -39,27 +39,27 @@ public class VisibilityIT extends ChromeBrowserTest {
         WebElement visibilityButton = findElement(By.id("updateVisibiity"));
         scrollIntoViewAndClick(visibilityButton);
 
-        Assert.assertNull(div.getAttribute("hidden"));
-        Assert.assertEquals("visibility", div.getAttribute("id"));
+        Assertions.assertNull(div.getAttribute("hidden"));
+        Assertions.assertEquals("visibility", div.getAttribute("id"));
 
         WebElement label = findElement(By.id("nested-label"));
-        Assert.assertNull(label.getAttribute("hidden"));
+        Assertions.assertNull(label.getAttribute("hidden"));
 
         // change some properties for the element itself and it's child
         findElement(By.id("updateProperty")).click();
 
-        Assert.assertEquals("foo", div.getAttribute("class"));
-        Assert.assertEquals("bar", label.getAttribute("class"));
+        Assertions.assertEquals("foo", div.getAttribute("class"));
+        Assertions.assertEquals("bar", label.getAttribute("class"));
 
         // switch the visibility of the parent off and on
         scrollIntoViewAndClick(visibilityButton);
 
-        Assert.assertEquals(Boolean.TRUE.toString(),
+        Assertions.assertEquals(Boolean.TRUE.toString(),
                 div.getAttribute("hidden"));
 
         scrollIntoViewAndClick(visibilityButton);
 
-        Assert.assertNull(label.getAttribute("hidden"));
+        Assertions.assertNull(label.getAttribute("hidden"));
     }
 
     @Test
@@ -71,33 +71,33 @@ public class VisibilityIT extends ChromeBrowserTest {
         scrollIntoViewAndClick(visibilityButton);
 
         // The element is initially hidden. It shouldn't be bound.
-        Assert.assertFalse(isElementPresent(By.id("visibility")));
-        Assert.assertFalse(isElementPresent(By.id("nested-label")));
+        Assertions.assertFalse(isElementPresent(By.id("visibility")));
+        Assertions.assertFalse(isElementPresent(By.id("nested-label")));
 
         // make the parent visible
         findElement(By.id("updateVisibiity")).click();
 
         // now the child element is not bound, so it's invisible
-        Assert.assertFalse(isElementPresent(By.id("nested-label")));
+        Assertions.assertFalse(isElementPresent(By.id("nested-label")));
 
         // change some properties for child while it's invisible
         findElement(By.id("updateProperty")).click();
 
         // The element is still unbound and can't be found
-        Assert.assertFalse(isElementPresent(By.id("nested-label")));
+        Assertions.assertFalse(isElementPresent(By.id("nested-label")));
 
         // make it visible now
         scrollIntoViewAndClick(visibilityButton);
 
         WebElement label = findElement(By.id("nested-label"));
-        Assert.assertNull(label.getAttribute("hidden"));
+        Assertions.assertNull(label.getAttribute("hidden"));
 
-        Assert.assertEquals("bar", label.getAttribute("class"));
+        Assertions.assertEquals("bar", label.getAttribute("class"));
 
         // make it invisible
         scrollIntoViewAndClick(visibilityButton);
 
-        Assert.assertEquals(Boolean.TRUE.toString(),
+        Assertions.assertEquals(Boolean.TRUE.toString(),
                 label.getAttribute("hidden"));
     }
 }

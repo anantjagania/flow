@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -30,6 +30,6 @@ public class CallFunctionBeforeRemoveIT extends ChromeBrowserTest {
         findElement(By.tagName("button")).click();
 
         waitUntil(driver -> !isElementPresent(By.className("v-system-error")));
-        Assert.assertFalse(isElementPresent(By.className("v-system-error")));
+        Assertions.assertFalse(isElementPresent(By.className("v-system-error")));
     }
 }

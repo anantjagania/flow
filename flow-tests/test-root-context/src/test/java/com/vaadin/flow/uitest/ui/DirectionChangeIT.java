@@ -21,8 +21,8 @@ import java.util.function.Predicate;
 
 import com.vaadin.flow.component.Direction;
 import com.vaadin.flow.testutil.ChromeBrowserTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -63,7 +63,7 @@ public class DirectionChangeIT extends ChromeBrowserTest {
 
     private void verifyDirection(Direction direction) {
         String dir = getDirection();
-        Assert.assertEquals(direction == null ? "" : direction.getClientName(),
+        Assertions.assertEquals(direction == null ? "" : direction.getClientName(),
                 dir);
     }
 

@@ -25,8 +25,8 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import org.junit.Assert;
-import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -95,7 +95,7 @@ public abstract class ComponentDemoTest extends ChromeBrowserTest {
         List<WebElement> toggleThemeButtons = layout
                 .findElement(By.id(VARIANT_TOGGLE_BUTTONS_DIV_ID))
                 .findElements(By.tagName("button"));
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 "Expected at least one toggle theme button in 'buttonDiv', but got none",
                 toggleThemeButtons.isEmpty());
         toggleThemeButtons.forEach(button -> toggleVariantAndCheck(
@@ -114,15 +114,15 @@ public abstract class ComponentDemoTest extends ChromeBrowserTest {
                 variantProducer.apply(button));
 
         button.click();
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "After two toggle variants button clicks, button text should be the same as before testing",
                 button.getText(), initialButtonText);
 
         List<String> currentThemes = getComponentThemes(component);
         String assertionMessage = "After two toggle variants button clicks, component 'theme' attribute should contain the same value as before testing";
-        Assert.assertEquals(assertionMessage, currentThemes.size(),
+        Assertions.assertEquals(assertionMessage, currentThemes.size(),
                 initialButtonThemes.size());
-        currentThemes.forEach(currentTheme -> Assert.assertTrue(
+        currentThemes.forEach(currentTheme -> Assertions.assertTrue(
                 assertionMessage + String.format(
                         " but theme variant '%s' is missing", currentTheme),
                 initialButtonThemes.contains(currentTheme)));
@@ -132,35 +132,35 @@ public abstract class ComponentDemoTest extends ChromeBrowserTest {
     private void verifyThemeIsToggled(List<String> updatedThemes,
             String updatedButtonText, List<String> previousThemes,
             String previousButtonText, String variantName) {
-        Assert.assertNotEquals("Button should change its text after toggling",
+        Assertions.assertNotEquals("Button should change its text after toggling",
                 previousButtonText, updatedButtonText);
 
         boolean shouldAddTheme = previousButtonText.startsWith("Add");
         if (shouldAddTheme) {
-            Assert.assertTrue(
+            Assertions.assertTrue(
                     "When a theme variant got added, toggle button text should start with 'Remove' word",
                     updatedButtonText.startsWith("Remove"));
-            Assert.assertEquals(
+            Assertions.assertEquals(
                     "When a theme variant got added, component 'theme' attribute should contain one more variant that before",
                     previousThemes.size() + 1, updatedThemes.size());
-            Assert.assertTrue(
+            Assertions.assertTrue(
                     "When a theme variant got added, component 'theme' attribute should contain all previous theme variants",
                     updatedThemes.containsAll(previousThemes));
 
-            Assert.assertTrue("The selected theme variant:" + variantName
+            Assertions.assertTrue("The selected theme variant:" + variantName
                     + " should be added to the component 'theme' attribute.",
                     updatedThemes.contains(variantName));
         } else {
-            Assert.assertTrue(
+            Assertions.assertTrue(
                     "When a theme variant got removed, toggle button text should start with 'Add' word",
                     updatedButtonText.startsWith("Add"));
-            Assert.assertEquals(
+            Assertions.assertEquals(
                     "When a theme variant got removed, component 'theme' attribute should contain one less variant than before",
                     previousThemes.size() - 1, updatedThemes.size());
-            Assert.assertTrue(
+            Assertions.assertTrue(
                     "When a theme variant got removed, previous theme variants should contain all theme variants from component 'theme' attribute",
                     previousThemes.containsAll(updatedThemes));
-            Assert.assertFalse("The selected theme variant:" + variantName
+            Assertions.assertFalse("The selected theme variant:" + variantName
                     + " should be removed from the component 'theme' attribute.",
                     updatedThemes.contains(variantName));
         }

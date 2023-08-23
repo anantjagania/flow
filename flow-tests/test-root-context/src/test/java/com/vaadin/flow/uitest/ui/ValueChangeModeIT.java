@@ -1,12 +1,10 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import com.vaadin.flow.data.value.ValueChangeMode;
 
 import com.vaadin.flow.data.value.ValueChangeMode;
 
@@ -14,7 +12,7 @@ public class ValueChangeModeIT extends AbstractDebounceSynchronizeIT {
 
     private WebElement input;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         open();
         input = findElement(By.id("input"));
@@ -33,7 +31,7 @@ public class ValueChangeModeIT extends AbstractDebounceSynchronizeIT {
     }
 
     @Test
-    @Ignore
+    @Disabled
     public void timeout() throws InterruptedException {
         toggleMode(ValueChangeMode.TIMEOUT);
         assertThrottle(input);

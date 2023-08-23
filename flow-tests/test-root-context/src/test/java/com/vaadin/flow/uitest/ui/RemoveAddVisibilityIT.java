@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -29,12 +29,12 @@ public class RemoveAddVisibilityIT extends ChromeBrowserTest {
         open();
 
         WebElement element = findElement(By.tagName("span"));
-        Assert.assertEquals(Boolean.TRUE.toString(),
+        Assertions.assertEquals(Boolean.TRUE.toString(),
                 element.getAttribute("hidden"));
 
         findElement(By.id("make-visible")).click();
 
-        Assert.assertNull(element.getAttribute("hidden"));
-        Assert.assertEquals("Initially hidden", element.getText());
+        Assertions.assertNull(element.getAttribute("hidden"));
+        Assertions.assertEquals("Initially hidden", element.getText());
     }
 }

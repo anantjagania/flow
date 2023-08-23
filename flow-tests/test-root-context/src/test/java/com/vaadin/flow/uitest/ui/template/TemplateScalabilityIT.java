@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -25,7 +25,7 @@ public class TemplateScalabilityIT extends ChromeBrowserTest {
         TestBenchElement viewTemplate = $("*").id("scalability-view");
         int buttons = viewTemplate.$("template-scalability-panel").all().size();
 
-        Assert.assertEquals("Template should have created "
+        Assertions.assertEquals("Template should have created "
                         + TemplateScalabilityView.NUM_ITEMS + " panels with buttons.",
                 TemplateScalabilityView.NUM_ITEMS, buttons);
 

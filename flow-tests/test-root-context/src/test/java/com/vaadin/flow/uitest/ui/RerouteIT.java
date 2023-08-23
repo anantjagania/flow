@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -33,7 +33,7 @@ public class RerouteIT extends ChromeBrowserTest {
 
         findElement(By.id("navigate")).click();
 
-        Assert.assertTrue(getDriver().getPageSource()
+        Assertions.assertTrue(getDriver().getPageSource()
                 .contains("Could not navigate to "));
     }
 
@@ -42,7 +42,7 @@ public class RerouteIT extends ChromeBrowserTest {
         open();
         findElement(By.id("navigate")).click();
 
-        Assert.assertNotNull("Navigate button was not found",
+        Assertions.assertNotNull("Navigate button was not found",
                 findElement(By.id("navigate")));
     }
 }

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -26,7 +26,7 @@ public class StaticHtmlIT extends ChromeBrowserTest {
     @Test
     public void ensureStaticHtmlShown() {
         open();
-        Assert.assertEquals("NetBeans plugin",
+        Assertions.assertEquals("NetBeans plugin",
                 findElement(By.xpath("//a[@href='/netbeans']")).getText());
     }
 }

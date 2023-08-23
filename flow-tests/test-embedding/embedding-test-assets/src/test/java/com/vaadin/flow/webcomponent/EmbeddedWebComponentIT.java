@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.webcomponent;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.testbench.TestBenchElement;
@@ -36,11 +36,11 @@ public class EmbeddedWebComponentIT extends EmbeddingChromeBrowserTest
         open();
 
         // Check that there is no pwa install prompt
-        Assert.assertFalse(isElementPresent(By.id("pwa-ip")));
+        Assertions.assertFalse(isElementPresent(By.id("pwa-ip")));
 
         TestBenchElement webComponent = $("client-select").first();
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 webComponent.getText().trim().startsWith("Web Component"));
 
         // Selection is visibly changed and event manually dispatched
@@ -52,12 +52,12 @@ public class EmbeddedWebComponentIT extends EmbeddingChromeBrowserTest
 
         TestBenchElement msg = webComponent.$("span").first();
 
-        Assert.assertEquals("Selected: Peter, Parker", msg.getText());
+        Assertions.assertEquals("Selected: Peter, Parker", msg.getText());
 
         // Check that there is correctly imported custom element
         TestBenchElement dependencyElement = webComponent.$("dep-element")
                 .first();
-        Assert.assertEquals("Imported element",
+        Assertions.assertEquals("Imported element",
                 byId(dependencyElement, "main").getText());
     }
 }

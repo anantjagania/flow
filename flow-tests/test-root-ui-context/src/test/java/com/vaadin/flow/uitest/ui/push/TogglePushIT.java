@@ -1,8 +1,8 @@
 package com.vaadin.flow.uitest.ui.push;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import com.vaadin.flow.testcategory.PushTests;
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assertions.assertFalse;
 
 @Category(PushTests.class)
 public class TogglePushIT extends ChromeBrowserTest {
@@ -24,17 +24,17 @@ public class TogglePushIT extends ChromeBrowserTest {
 
         getDelayedCounterUpdateButton().click();
         Thread.sleep(2000);
-        Assert.assertEquals("Counter has been updated 0 times",
+        Assertions.assertEquals("Counter has been updated 0 times",
                 getCounterText());
 
         // Open with push enabled
         open("push=enabled");
-        Assert.assertThat(getPushToggle().getText(),
+        MatcherAssert.assertThat(getPushToggle().getText(),
                 CoreMatchers.containsString("Push enabled"));
 
         getDelayedCounterUpdateButton().click();
         Thread.sleep(2000);
-        Assert.assertEquals("Counter has been updated 1 times",
+        Assertions.assertEquals("Counter has been updated 1 times",
                 getCounterText());
 
     }
@@ -46,7 +46,7 @@ public class TogglePushIT extends ChromeBrowserTest {
         Thread.sleep(2000);
 
         // Push is enabled, so text gets updated
-        Assert.assertEquals("Counter has been updated 1 times",
+        Assertions.assertEquals("Counter has been updated 1 times",
                 getCounterText());
 
         // Disable push
@@ -54,12 +54,12 @@ public class TogglePushIT extends ChromeBrowserTest {
         getDelayedCounterUpdateButton().click();
         Thread.sleep(2000);
         // Push is disabled, so text is not updated
-        Assert.assertEquals("Counter has been updated 1 times",
+        Assertions.assertEquals("Counter has been updated 1 times",
                 getCounterText());
 
         getDirectCounterUpdateButton().click();
         // Direct update is visible, and includes previous update
-        Assert.assertEquals("Counter has been updated 3 times",
+        Assertions.assertEquals("Counter has been updated 3 times",
                 getCounterText());
 
         // Re-enable push
@@ -68,7 +68,7 @@ public class TogglePushIT extends ChromeBrowserTest {
         Thread.sleep(2000);
 
         // Push is enabled again, so text gets updated
-        Assert.assertEquals("Counter has been updated 4 times",
+        Assertions.assertEquals("Counter has been updated 4 times",
                 getCounterText());
     }
 

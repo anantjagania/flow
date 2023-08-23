@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -35,7 +35,7 @@ public class OrderedDependencyIT extends ChromeBrowserTest {
         open();
         // Parent of component stylesheet makes all text red
         // Extending class makes it blue
-        Assert.assertEquals("Expected child style was not applied.", BLUE,
+        Assertions.assertEquals("Expected child style was not applied.", BLUE,
                 findElementById("component").getCssValue("color"));
     }
 
@@ -46,10 +46,10 @@ public class OrderedDependencyIT extends ChromeBrowserTest {
         // Initial HTML import logs a message on the page
         List<String> messages = getMessages();
 
-        Assert.assertEquals(2, messages.size());
-        Assert.assertEquals(messages.get(0),
+        Assertions.assertEquals(2, messages.size());
+        Assertions.assertEquals(messages.get(0),
                 "Messagehandler initialized in HTML import 1");
-        Assert.assertEquals(messages.get(1),
+        Assertions.assertEquals(messages.get(1),
                 "Messagehandler initialized in HTML import 2");
     }
 
@@ -61,13 +61,13 @@ public class OrderedDependencyIT extends ChromeBrowserTest {
         // Initial HTML import logs a message on the page
         List<String> messages = getMessages();
 
-        Assert.assertEquals(4, messages.size());
-        Assert.assertEquals(messages.get(0),
+        Assertions.assertEquals(4, messages.size());
+        Assertions.assertEquals(messages.get(0),
                 "Messagehandler initialized in HTML import 1");
-        Assert.assertEquals(messages.get(1),
+        Assertions.assertEquals(messages.get(1),
                 "Messagehandler initialized in HTML import 2");
-        Assert.assertEquals(messages.get(2), "script1 is loaded");
-        Assert.assertEquals(messages.get(3), "script2 is loaded");
+        Assertions.assertEquals(messages.get(2), "script1 is loaded");
+        Assertions.assertEquals(messages.get(3), "script2 is loaded");
 
     }
 

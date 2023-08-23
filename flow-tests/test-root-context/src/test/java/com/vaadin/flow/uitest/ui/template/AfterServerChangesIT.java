@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.template;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -51,9 +51,9 @@ public class AfterServerChangesIT extends ChromeBrowserTest {
 
     private void assertAfterServerUpdate(TestBenchElement element, int i) {
         WebElement count = element.$(TestBenchElement.class).id("count");
-        Assert.assertEquals(String.valueOf(i), count.getText());
+        Assertions.assertEquals(String.valueOf(i), count.getText());
 
         WebElement delta = element.$(TestBenchElement.class).id("delta");
-        Assert.assertEquals(Boolean.TRUE.toString(), delta.getText());
+        Assertions.assertEquals(Boolean.TRUE.toString(), delta.getText());
     }
 }

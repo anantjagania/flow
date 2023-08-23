@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -31,6 +31,6 @@ public class ReturnChannelIT extends ChromeBrowserTest {
 
         button.click();
 
-        Assert.assertEquals("Click registered: hello", button.getText());
+        Assertions.assertEquals("Click registered: hello", button.getText());
     }
 }

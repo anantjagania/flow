@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -30,10 +30,10 @@ public class WaitForVaadinIT extends ChromeBrowserTest {
         WebElement message = findElement(By.id("message"));
         WebElement button = findElement(By.tagName("button"));
 
-        Assert.assertEquals("Not updated", message.getText());
+        Assertions.assertEquals("Not updated", message.getText());
 
         button.click();
 
-        Assert.assertEquals("Updated", message.getText());
+        Assertions.assertEquals("Updated", message.getText());
     }
 }

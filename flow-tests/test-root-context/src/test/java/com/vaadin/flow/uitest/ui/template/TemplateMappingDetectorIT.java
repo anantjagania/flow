@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -55,25 +55,25 @@ public class TemplateMappingDetectorIT extends ChromeBrowserTest {
             TestBenchElement container, boolean templateInTemplate) {
         TestBenchElement mappedComponent = container.$(TestBenchElement.class)
                 .id("detector1");
-        Assert.assertEquals("Template mapped: true", mappedComponent.getText());
+        Assertions.assertEquals("Template mapped: true", mappedComponent.getText());
 
         TestBenchElement standaloneComponent = container
                 .$(TestBenchElement.class).id("detector2");
 
-        Assert.assertEquals("Template mapped: false",
+        Assertions.assertEquals("Template mapped: false",
                 standaloneComponent.getText());
 
         TestBenchElement standaloneComposite = container
                 .$(TestBenchElement.class).id("detector3");
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Composite template mapped: false Template mapped: false",
                 standaloneComposite.getText());
 
         TestBenchElement theTemplateItself = container.$(TestBenchElement.class)
                 .id("detector4");
 
-        Assert.assertEquals("The template itself: " + templateInTemplate,
+        Assertions.assertEquals("The template itself: " + templateInTemplate,
                 theTemplateItself.getText());
     }
 

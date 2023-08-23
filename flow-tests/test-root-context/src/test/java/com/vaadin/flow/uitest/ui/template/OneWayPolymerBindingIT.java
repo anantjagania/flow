@@ -16,10 +16,10 @@
 
 package com.vaadin.flow.uitest.ui.template;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assertions.assertTrue;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -52,14 +52,14 @@ public class OneWayPolymerBindingIT extends ChromeBrowserTest {
                 .id("messageDiv").getText();
         String titleDivText = template.$(TestBenchElement.class).id("titleDiv")
                 .getText();
-        Assert.assertEquals(OneWayPolymerBindingView.MESSAGE, messageDivText);
-        Assert.assertEquals("", titleDivText);
+        Assertions.assertEquals(OneWayPolymerBindingView.MESSAGE, messageDivText);
+        Assertions.assertEquals("", titleDivText);
     }
 
     private void checkTemplateModel(TestBenchElement template) {
-        assertTrue(template.$(TestBenchElement.class)
+Assertions.assertTrue(template.$(TestBenchElement.class)
                 .attribute("id", "titleDivConditional").all().size() > 0);
-        Assert.assertEquals(0, template.$(TestBenchElement.class)
+        Assertions.assertEquals(0, template.$(TestBenchElement.class)
                 .attribute("id", "nonExistingProperty").all().size());
     }
 
@@ -69,8 +69,8 @@ public class OneWayPolymerBindingIT extends ChromeBrowserTest {
         String titleDivText = template.$(TestBenchElement.class).id("titleDiv")
                 .getText();
 
-        Assert.assertEquals(OneWayPolymerBindingView.NEW_MESSAGE,
+        Assertions.assertEquals(OneWayPolymerBindingView.NEW_MESSAGE,
                 changedMessageDivText);
-        Assert.assertEquals("", titleDivText);
+        Assertions.assertEquals("", titleDivText);
     }
 }

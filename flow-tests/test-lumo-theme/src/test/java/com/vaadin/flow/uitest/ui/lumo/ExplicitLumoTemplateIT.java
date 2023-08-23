@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.lumo;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -29,7 +29,7 @@ public class ExplicitLumoTemplateIT extends AbstractThemedTemplateIT {
         open();
 
         WebElement html = findElement(By.tagName("html"));
-        Assert.assertEquals(Lumo.DARK, html.getAttribute("theme"));
+        Assertions.assertEquals(Lumo.DARK, html.getAttribute("theme"));
     }
 
     @Override

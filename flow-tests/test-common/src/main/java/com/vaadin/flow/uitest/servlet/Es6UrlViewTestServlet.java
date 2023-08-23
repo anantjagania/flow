@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.uitest.servlet;
 
-import javax.servlet.annotation.WebServlet;
+import jakarta.servlet.annotation.WebServlet;
 import java.util.Properties;
 
 import com.vaadin.flow.function.DeploymentConfiguration;

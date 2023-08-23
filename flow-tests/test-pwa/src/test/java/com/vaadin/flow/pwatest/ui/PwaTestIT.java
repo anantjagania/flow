@@ -27,8 +27,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -45,11 +45,11 @@ public class PwaTestIT extends ChromeBrowserTest {
         WebElement head = findElement(By.tagName("head"));
 
         // test mobile capable
-        Assert.assertEquals(1, head
+        Assertions.assertEquals(1, head
                 .findElements(By.name("apple-mobile-web-app-capable")).size());
 
         // test theme color
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 1, head
                         .findElements(By
                                 .xpath("//meta[@name='theme-color'][@content='"
@@ -57,7 +57,7 @@ public class PwaTestIT extends ChromeBrowserTest {
                         .size());
 
         // test theme color for apple mobile
-        Assert.assertEquals(1, head.findElements(
+        Assertions.assertEquals(1, head.findElements(
                 By.xpath("//meta[@name='apple-mobile-web-app-status-bar-style']"
                         + "[@content='" + ParentLayout.THEME_COLOR + "']"))
                 .size());
@@ -78,17 +78,17 @@ public class PwaTestIT extends ChromeBrowserTest {
         // test web manifest
         List<WebElement> elements = head
                 .findElements(By.xpath("//link[@rel='manifest'][@href]"));
-        Assert.assertEquals(1, elements.size());
+        Assertions.assertEquals(1, elements.size());
         String href = elements.get(0).getAttribute("href");
-        Assert.assertTrue(href + " didn't respond with resource", exists(href));
+        Assertions.assertTrue(href + " didn't respond with resource", exists(href));
         // Verify user values in manifest.webmanifest
         JSONObject manifest = readJsonFromUrl(href);
-        Assert.assertEquals(ParentLayout.PWA_NAME, manifest.getString("name"));
-        Assert.assertEquals(ParentLayout.PWA_SHORT_NAME,
+        Assertions.assertEquals(ParentLayout.PWA_NAME, manifest.getString("name"));
+        Assertions.assertEquals(ParentLayout.PWA_SHORT_NAME,
                 manifest.getString("short_name"));
-        Assert.assertEquals(ParentLayout.BG_COLOR,
+        Assertions.assertEquals(ParentLayout.BG_COLOR,
                 manifest.getString("background_color"));
-        Assert.assertEquals(ParentLayout.THEME_COLOR,
+        Assertions.assertEquals(ParentLayout.THEME_COLOR,
                 manifest.getString("theme_color"));
 
         // test service worker initialization
@@ -96,20 +96,20 @@ public class PwaTestIT extends ChromeBrowserTest {
                 .filter(webElement -> webElement.getAttribute("innerHTML")
                         .startsWith("if ('serviceWorker' in navigator)"))
                 .collect(Collectors.toList());
-        Assert.assertEquals(1, elements.size());
+        Assertions.assertEquals(1, elements.size());
 
         String serviceWorkerInit = elements.get(0).getAttribute("innerHTML");
         Pattern pattern = Pattern
                 .compile("navigator.serviceWorker.register\\('([^']+)'\\)");
         Matcher matcher = pattern.matcher(serviceWorkerInit);
-        Assert.assertTrue("Service worker initialization missing",
+        Assertions.assertTrue("Service worker initialization missing",
                 matcher.find());
 
         String serviceWorkerUrl = matcher.group(1).startsWith("http")
                 ? matcher.group(1)
                 : getRootURL() + "/" + matcher.group(1);
 
-        Assert.assertTrue("Service worker not served at: " + serviceWorkerUrl,
+        Assertions.assertTrue("Service worker not served at: " + serviceWorkerUrl,
                 exists(serviceWorkerUrl));
 
         String serviceWorkerJS = readStringFromUrl(serviceWorkerUrl);
@@ -118,17 +118,17 @@ public class PwaTestIT extends ChromeBrowserTest {
         matcher = pattern.matcher(serviceWorkerJS);
         // Test that all precache resources are available
         while (matcher.find()) {
-            Assert.assertTrue(
+            Assertions.assertTrue(
                     matcher.group(1) + " didn't respond with resource",
                     exists(matcher.group(1)));
         }
     }
 
     private void checkIcons(List<WebElement> icons, int expected) {
-        Assert.assertEquals(expected, icons.size());
+        Assertions.assertEquals(expected, icons.size());
         for (WebElement element : icons) {
             String href = element.getAttribute("href");
-            Assert.assertTrue(href + " didn't respond with resource",
+            Assertions.assertTrue(href + " didn't respond with resource",
                     exists(href));
         }
     }

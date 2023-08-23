@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -31,10 +31,10 @@ public class ChangeInjectedComponentTextIT extends ChromeBrowserTest {
 
         WebElement injected = $("update-injected-component-text").first()
                 .$(TestBenchElement.class).id("injected");
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "New text value doesn't replace the content of the element",
                 "new text", injected.getText());
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "The 'setText()' method should remove all children from the injected component",
                 0, injected.findElements(By.cssSelector("*")).size());
     }

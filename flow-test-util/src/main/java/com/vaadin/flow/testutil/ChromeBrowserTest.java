@@ -18,7 +18,7 @@ package com.vaadin.flow.testutil;
 import java.lang.management.ManagementFactory;
 import java.util.List;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.BeforeClass;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;

@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -37,8 +37,8 @@ public class PreserveOnRefreshShortcutIT extends ChromeBrowserTest {
         new Actions(getDriver()).sendKeys(Keys.ENTER).build().perform();
         List<WebElement> infos = findElements(By.className("info"));
 
-        Assert.assertEquals(1, infos.size());
-        Assert.assertEquals("Clicked", infos.get(0).getText());
+        Assertions.assertEquals(1, infos.size());
+        Assertions.assertEquals("Clicked", infos.get(0).getText());
 
         open();
 
@@ -47,8 +47,8 @@ public class PreserveOnRefreshShortcutIT extends ChromeBrowserTest {
         new Actions(getDriver()).sendKeys(Keys.ENTER).build().perform();
         infos = findElements(By.className("info"));
 
-        Assert.assertEquals(2, infos.size());
-        Assert.assertEquals("Clicked", infos.get(1).getText());
+        Assertions.assertEquals(2, infos.size());
+        Assertions.assertEquals("Clicked", infos.get(1).getText());
 
     }
 

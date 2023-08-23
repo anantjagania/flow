@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -34,7 +34,7 @@ public class PreserveOnRefreshReAddIT extends ChromeBrowserTest {
         WebElement container = findElement(By.id("container"));
 
         // self check
-        Assert.assertEquals("Another Text", container.getText());
+        Assertions.assertEquals("Another Text", container.getText());
 
         open();
 
@@ -43,6 +43,6 @@ public class PreserveOnRefreshReAddIT extends ChromeBrowserTest {
         checkLogsForErrors(
                 msg -> msg.contains("sockjs-node") || msg.contains("[WDS]"));
         container = findElement(By.id("container"));
-        Assert.assertEquals("Text", container.getText());
+        Assertions.assertEquals("Text", container.getText());
     }
 }

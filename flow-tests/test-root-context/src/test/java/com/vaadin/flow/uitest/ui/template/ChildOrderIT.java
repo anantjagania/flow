@@ -18,10 +18,9 @@ package com.vaadin.flow.uitest.ui.template;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -40,7 +39,7 @@ public class ChildOrderIT extends ChromeBrowserTest {
 
     private TestBenchElement root;
 
-    @Before
+    @BeforeEach
     public void init() {
         open();
         waitForElementPresent(By.id("root"));
@@ -213,7 +212,7 @@ public class ChildOrderIT extends ChromeBrowserTest {
         String texts = container.getText();
         texts = texts.replace("\n", " ");
         String expected = Stream.of(nodes).collect(Collectors.joining(" "));
-        Assert.assertEquals(expected, texts);
+        Assertions.assertEquals(expected, texts);
     }
 
 }

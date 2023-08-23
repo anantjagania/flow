@@ -18,10 +18,9 @@ package com.vaadin.flow.uitest.ui.template;
 import java.util.List;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -42,7 +41,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
     private TestBenchElement root;
     private TestBenchElement message;
 
-    @Before
+    @BeforeEach
     public void init() {
         open();
         waitForElementPresent(By.id("root"));
@@ -71,7 +70,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
         TestBenchElement container = root.$(TestBenchElement.class)
                 .id("containerWithElementChildren");
         List<WebElement> divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(2, divs.size());
+        Assertions.assertEquals(2, divs.size());
 
         TestBenchElement button = root.$(TestBenchElement.class)
                 .id(buttonToClick);
@@ -81,8 +80,8 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
 
         assertMessageEndsWith(expectedMessage);
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
-        Assert.assertEquals(expectedInnerText,
+        Assertions.assertEquals(0, divs.size());
+        Assertions.assertEquals(expectedInnerText,
                 container.getAttribute("innerText"));
     }
 
@@ -109,7 +108,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
                 .id("containerWithElementChildren");
 
         List<WebElement> divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(2, divs.size());
+        Assertions.assertEquals(2, divs.size());
 
         TestBenchElement addTextNode = root.$(TestBenchElement.class)
                 .id("addTextNodeToContainer1");
@@ -127,8 +126,8 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
 
         assertMessageEndsWith(expectedMessage);
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
-        Assert.assertEquals(expectedInnerText,
+        Assertions.assertEquals(0, divs.size());
+        Assertions.assertEquals(expectedInnerText,
                 container.getAttribute("innerText"));
     }
 
@@ -154,7 +153,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
         TestBenchElement container = root.$(TestBenchElement.class)
                 .id("containerWithElementChildren");
         List<WebElement> divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(2, divs.size());
+        Assertions.assertEquals(2, divs.size());
 
         TestBenchElement add = root.$(TestBenchElement.class)
                 .id("addChildToContainer1");
@@ -165,7 +164,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
         assertMessageEndsWith("Div 'Server div 1' attached.");
 
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(3, divs.size());
+        Assertions.assertEquals(3, divs.size());
 
         TestBenchElement button = root.$(TestBenchElement.class)
                 .id(buttonToClick);
@@ -175,8 +174,8 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
 
         assertMessageEndsWith(expectedMessage);
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
-        Assert.assertEquals(expectedInnerText,
+        Assertions.assertEquals(0, divs.size());
+        Assertions.assertEquals(expectedInnerText,
                 container.getAttribute("innerText"));
     }
 
@@ -199,13 +198,13 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
         TestBenchElement container = root.$(TestBenchElement.class)
                 .id("containerWithMixedChildren");
 
-        Assert.assertThat(container.getText(),
+        MatcherAssert.assertThat(container.getText(),
                 CoreMatchers.allOf(CoreMatchers.containsString("Some text 1"),
                         CoreMatchers.containsString("Some text 2"),
                         CoreMatchers.containsString("Some text 3")));
 
         List<WebElement> divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(2, divs.size());
+        Assertions.assertEquals(2, divs.size());
 
         TestBenchElement button = root.$(TestBenchElement.class)
                 .id(buttonToClick);
@@ -215,8 +214,8 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
 
         assertMessageEndsWith(expectedMessage);
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
-        Assert.assertEquals(expectedInnerText,
+        Assertions.assertEquals(0, divs.size());
+        Assertions.assertEquals(expectedInnerText,
                 container.getAttribute("innerText"));
     }
 
@@ -243,13 +242,13 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
                 .id("containerWithClientSideChildren");
 
         List<WebElement> divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
+        Assertions.assertEquals(0, divs.size());
 
         TestBenchElement add = root.$(TestBenchElement.class)
                 .id("addClientSideChild");
         add.click();
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(1, divs.size());
+        Assertions.assertEquals(1, divs.size());
 
         TestBenchElement button = root.$(TestBenchElement.class)
                 .id(buttonToClick);
@@ -259,8 +258,8 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
 
         assertMessageEndsWith(expectedMessage);
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
-        Assert.assertEquals(expectedInnerText,
+        Assertions.assertEquals(0, divs.size());
+        Assertions.assertEquals(expectedInnerText,
                 container.getAttribute("innerText"));
     }
 
@@ -287,13 +286,13 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
                 .id("containerWithClientSideChildren");
 
         List<WebElement> divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
+        Assertions.assertEquals(0, divs.size());
 
         TestBenchElement addClientNode = root.$(TestBenchElement.class)
                 .id("addClientSideChild");
         addClientNode.click();
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(1, divs.size());
+        Assertions.assertEquals(1, divs.size());
 
         TestBenchElement addServerNode = root.$(TestBenchElement.class)
                 .id("addChildToContainer3");
@@ -303,7 +302,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
         assertMessageEndsWith("Div 'Server div 1' attached.");
 
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(2, divs.size());
+        Assertions.assertEquals(2, divs.size());
         TestBenchElement button = root.$(TestBenchElement.class)
                 .id(buttonToClick);
         oldTtext = message.getText();
@@ -312,8 +311,8 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
 
         assertMessageEndsWith(expectedMessage);
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
-        Assert.assertEquals(expectedInnerText,
+        Assertions.assertEquals(0, divs.size());
+        Assertions.assertEquals(expectedInnerText,
                 container.getAttribute("innerText"));
     }
 
@@ -336,7 +335,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
             String buttonToClick, String expectedMessage,
             String expectedInnerText) {
         List<WebElement> divs = root.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
+        Assertions.assertEquals(0, divs.size());
 
         TestBenchElement add = root.$(TestBenchElement.class)
                 .id("addChildToSlot");
@@ -353,8 +352,8 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
 
         assertMessageEndsWith(expectedMessage);
         divs = root.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
-        Assert.assertEquals(expectedInnerText, root.getAttribute("innerText"));
+        Assertions.assertEquals(0, divs.size());
+        Assertions.assertEquals(expectedInnerText, root.getAttribute("innerText"));
     }
 
     @Test
@@ -378,7 +377,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
                 .id("nestedContainer");
 
         List<WebElement> divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
+        Assertions.assertEquals(0, divs.size());
 
         TestBenchElement add = root.$(TestBenchElement.class)
                 .id("addChildToNestedContainer");
@@ -388,7 +387,7 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
         assertMessageEndsWith("Div 'Server div 1' attached.");
 
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(1, divs.size());
+        Assertions.assertEquals(1, divs.size());
 
         TestBenchElement button = root.$(TestBenchElement.class)
                 .id(buttonToClick);
@@ -403,12 +402,12 @@ public class ClearNodeChildrenIT extends ChromeBrowserTest {
 
         container = root.$(TestBenchElement.class).id("containerWithContainer");
         divs = container.findElements(By.tagName("div"));
-        Assert.assertEquals(0, divs.size());
-        Assert.assertEquals(expectedInnerText, container.getText());
+        Assertions.assertEquals(0, divs.size());
+        Assertions.assertEquals(expectedInnerText, container.getText());
     }
 
     private void assertMessageEndsWith(String text) {
-        Assert.assertThat(message.getText(), CoreMatchers.endsWith(text));
+        MatcherAssert.assertThat(message.getText(), CoreMatchers.endsWith(text));
     }
 
     private void waitForMessageToChange(String oldText) {

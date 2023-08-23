@@ -1,9 +1,8 @@
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testcategory.IgnoreOSGi;
@@ -16,7 +15,7 @@ public class PropertiesUpdatedBeforeChangeEventsIT extends ChromeBrowserTest {
     private WebElement secondPropDiv;
     private WebElement serverSetTextDiv;
 
-    @Before
+    @BeforeEach
     public void init() {
         open();
         firstPropInput = getElementById("first-prop-input");
@@ -33,8 +32,8 @@ public class PropertiesUpdatedBeforeChangeEventsIT extends ChromeBrowserTest {
     }
 
     private void assertTextsCorrect(String expected) {
-        Assert.assertEquals(expected, secondPropDiv.getText());
-        Assert.assertEquals(secondPropDiv.getText(),
+        Assertions.assertEquals(expected, secondPropDiv.getText());
+        Assertions.assertEquals(secondPropDiv.getText(),
                 serverSetTextDiv.getText());
     }
 

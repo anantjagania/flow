@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebElement;
 
@@ -33,15 +33,15 @@ public class HiddenTemplateIT extends ChromeBrowserTest {
         TestBenchElement template = $(TestBenchElement.class).id("template");
         WebElement child = template.$(TestBenchElement.class)
                 .id("hidden-child");
-        Assert.assertNotNull(child.getAttribute("hidden"));
+        Assertions.assertNotNull(child.getAttribute("hidden"));
 
         WebElement visibility = template.$(TestBenchElement.class)
                 .id("visibility");
         visibility.click();
-        Assert.assertNotNull(child.getAttribute("hidden"));
+        Assertions.assertNotNull(child.getAttribute("hidden"));
 
         visibility.click();
-        Assert.assertNotNull(child.getAttribute("hidden"));
+        Assertions.assertNotNull(child.getAttribute("hidden"));
     }
 
     @Test
@@ -51,14 +51,14 @@ public class HiddenTemplateIT extends ChromeBrowserTest {
         TestBenchElement template = $(TestBenchElement.class).id("template");
 
         WebElement child = template.$(TestBenchElement.class).id("child");
-        Assert.assertNull(child.getAttribute("hidden"));
+        Assertions.assertNull(child.getAttribute("hidden"));
 
         WebElement visibility = template.$(TestBenchElement.class)
                 .id("visibility");
         visibility.click();
-        Assert.assertNotNull(child.getAttribute("hidden"));
+        Assertions.assertNotNull(child.getAttribute("hidden"));
 
         visibility.click();
-        Assert.assertNull(child.getAttribute("hidden"));
+        Assertions.assertNull(child.getAttribute("hidden"));
     }
 }

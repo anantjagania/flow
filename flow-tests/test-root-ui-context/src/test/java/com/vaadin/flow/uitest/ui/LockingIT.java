@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -27,7 +27,7 @@ public class LockingIT extends ChromeBrowserTest {
         waitForElementPresent(By.id("message"));
 
         WebElement message = findElement(By.id("message"));
-        Assert.assertEquals("Unexpected text content in Message", text,
+        Assertions.assertEquals("Unexpected text content in Message", text,
                 message.getText());
     }
 }

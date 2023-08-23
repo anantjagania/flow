@@ -18,8 +18,8 @@ package com.vaadin.flow.uitest.ui;
 import java.util.List;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.By;
@@ -32,11 +32,11 @@ public class UIElementIT extends ChromeBrowserTest {
 
         List<WebElement> bodyChildrenAddedViaJs = findElements(
                 By.className("body-child"));
-        Assert.assertEquals(1, bodyChildrenAddedViaJs.size());
+        Assertions.assertEquals(1, bodyChildrenAddedViaJs.size());
 
         findElement(By.tagName("button")).click();
 
         bodyChildrenAddedViaJs = findElements(By.className("body-child"));
-        Assert.assertEquals(2, bodyChildrenAddedViaJs.size());
+        Assertions.assertEquals(2, bodyChildrenAddedViaJs.size());
     }
 }

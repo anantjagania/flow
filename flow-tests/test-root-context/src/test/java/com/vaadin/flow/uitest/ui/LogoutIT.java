@@ -15,9 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
@@ -38,7 +37,7 @@ public class LogoutIT extends ChromeBrowserTest {
                         "Take note of any unsaved data, and click here or press ESC key to continue."));
 
         // There can't be any error dialog
-        Assert.assertFalse(isElementPresent(By.className("v-system-error")));
+        Assertions.assertFalse(isElementPresent(By.className("v-system-error")));
 
         // The base href view should be shown
         waitForElementPresent(By.tagName("a"));

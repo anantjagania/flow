@@ -16,8 +16,8 @@
 
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 
 import com.vaadin.flow.testcategory.IgnoreOSGi;
@@ -44,8 +44,8 @@ public class DomRepeatIT extends ChromeBrowserTest {
             String repeatIndex = template.$(TestBenchElement.class)
                     .id(DomRepeatView.REPEAT_INDEX_ID).getText();
 
-            Assert.assertEquals(eventIndex, repeatIndex);
-            Assert.assertEquals(i, Integer.parseInt(repeatIndex));
+            Assertions.assertEquals(eventIndex, repeatIndex);
+            Assertions.assertEquals(i, Integer.parseInt(repeatIndex));
         }
     }
 }

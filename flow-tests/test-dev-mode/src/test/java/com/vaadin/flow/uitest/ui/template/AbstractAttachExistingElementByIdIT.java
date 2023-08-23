@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -30,20 +30,20 @@ public abstract class AbstractAttachExistingElementByIdIT
             String placeholder) {
         WebElement input = getInput(id);
 
-        Assert.assertEquals(initialLabelText, getLabel(id).getText());
+        Assertions.assertEquals(initialLabelText, getLabel(id).getText());
 
-        Assert.assertEquals(placeholder, input.getAttribute("placeholder"));
+        Assertions.assertEquals(placeholder, input.getAttribute("placeholder"));
 
         input.sendKeys("Harley!");
         input.sendKeys(Keys.ENTER);
 
-        Assert.assertEquals("Text from input Harley!", getLabel(id).getText());
+        Assertions.assertEquals("Text from input Harley!", getLabel(id).getText());
 
         // Reset values to defaults
         $(TestBenchElement.class).id(id).$(TestBenchElement.class).id("button")
                 .click();
 
-        Assert.assertEquals("default", getLabel(id).getText());
+        Assertions.assertEquals("default", getLabel(id).getText());
     }
 
     protected TestBenchElement getInput(String id) {

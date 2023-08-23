@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -30,16 +30,16 @@ public class InvisibleDefaultPropertyValueIT extends ChromeBrowserTest {
 
         // template is initially invisible
         TestBenchElement template = $("default-property").first();
-        Assert.assertEquals(Boolean.TRUE.toString(),
+        Assertions.assertEquals(Boolean.TRUE.toString(),
                 template.getAttribute("hidden"));
 
         // The element is not bound -> not value for "text" property
         WebElement text = template.$(TestBenchElement.class).id("text");
-        Assert.assertEquals("", text.getText());
+        Assertions.assertEquals("", text.getText());
 
         // "message" property has default cleint side value
         WebElement message = template.$(TestBenchElement.class).id("message");
-        Assert.assertEquals("msg", message.getText());
+        Assertions.assertEquals("msg", message.getText());
 
         // Show email value which has default property defined on the client
         // side
@@ -48,26 +48,26 @@ public class InvisibleDefaultPropertyValueIT extends ChromeBrowserTest {
 
         WebElement emailValue = $(TestBenchElement.class).id("email-value");
         // default property is not sent to the server side
-        Assert.assertEquals("", emailValue.getText());
+        Assertions.assertEquals("", emailValue.getText());
 
         // make the element visible
         WebElement button = $(TestBenchElement.class).id("set-visible");
         button.click();
 
         // properties that has server side values are updated
-        Assert.assertEquals("foo", text.getText());
+        Assertions.assertEquals("foo", text.getText());
 
         WebElement name = template.$(TestBenchElement.class).id("name");
-        Assert.assertEquals("bar", name.getText());
+        Assertions.assertEquals("bar", name.getText());
 
-        Assert.assertEquals("updated-message", message.getText());
+        Assertions.assertEquals("updated-message", message.getText());
 
         WebElement email = template.$(TestBenchElement.class).id("email");
-        Assert.assertEquals("foo@example.com", email.getText());
+        Assertions.assertEquals("foo@example.com", email.getText());
 
         // Now check the email value on the server side
         showEmail = $(TestBenchElement.class).id("show-email");
         showEmail.click();
-        Assert.assertEquals("foo@example.com", emailValue.getText());
+        Assertions.assertEquals("foo@example.com", emailValue.getText());
     }
 }

@@ -20,9 +20,9 @@ import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 import com.vaadin.flow.di.Lookup;
 import com.vaadin.flow.server.VaadinServletContext;
@@ -139,7 +139,7 @@ public interface ClassLoaderAwareServletContainerInitializer
      * @param set
      *            the Set of application classes that extend, implement, or have
      *            been annotated with the class types specified by the
-     *            {@link javax.servlet.annotation.HandlesTypes HandlesTypes}
+     *            {@link jakarta.servlet.annotation.HandlesTypes HandlesTypes}
      *            annotation, or <tt>null</tt> if there are no matches, or this
      *            <tt>ServletContainerInitializer</tt> has not been annotated
      *            with <tt>HandlesTypes</tt>

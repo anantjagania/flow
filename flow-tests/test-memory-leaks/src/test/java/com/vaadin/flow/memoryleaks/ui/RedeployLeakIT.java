@@ -32,9 +32,9 @@ import org.eclipse.jetty.webapp.MetaInfConfiguration;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.webapp.WebInfConfiguration;
 import org.eclipse.jetty.webapp.WebXmlConfiguration;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -92,7 +92,7 @@ public class RedeployLeakIT extends AbstractTestBenchTest {
         RemoteWebDriver driver = new RemoteWebDriver(Browser.CHROME.getDesiredCapabilities());
         try {
             driver.get("http://"+ getCurrentHostAddress() + ":7778/");
-            Assert.assertNotNull(driver.findElement(By.id("hello")));
+            Assertions.assertNotNull(driver.findElement(By.id("hello")));
         } finally {
             driver.close();
             driver.quit();
@@ -130,7 +130,7 @@ public class RedeployLeakIT extends AbstractTestBenchTest {
 
         testReference = new WeakReference<>(
                 Class.forName(testClass, true, context.getClassLoader()));
-        Assert.assertNotNull(testReference.get());
+        Assertions.assertNotNull(testReference.get());
 
     }
 
@@ -149,7 +149,7 @@ public class RedeployLeakIT extends AbstractTestBenchTest {
                 }
             }
 
-            Assert.assertNull(testReference.get());
+            Assertions.assertNull(testReference.get());
 
         } finally {
             server.stop();

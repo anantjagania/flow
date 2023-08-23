@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.template.collections;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -40,24 +40,24 @@ public class TwoWayListBindingIT extends ChromeBrowserTest {
                 .$(DivElement.class).first().findElements(By.id("input"));
 
         // self check
-        Assert.assertEquals(2, fields.size());
+        Assertions.assertEquals(2, fields.size());
 
         fields.get(0).clear();
         fields.get(0).sendKeys("baz");
         fields.get(0).sendKeys(Keys.TAB);
 
-        Assert.assertEquals("[baz, bar]", getLastInfoMessage());
+        Assertions.assertEquals("[baz, bar]", getLastInfoMessage());
 
         fields.get(1).sendKeys("foo");
         fields.get(1).sendKeys(Keys.TAB);
 
-        Assert.assertEquals("[baz, barfoo]", getLastInfoMessage());
+        Assertions.assertEquals("[baz, barfoo]", getLastInfoMessage());
     }
 
     private String getLastInfoMessage() {
         List<WebElement> messages = findElements(By.className("messages"));
         // self check
-        Assert.assertTrue(messages.size() > 0);
+        Assertions.assertTrue(messages.size() > 0);
         return messages.get(messages.size() - 1).getText();
     }
 }

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.scroll;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.component.html.testbench.NativeButtonElement;
@@ -37,11 +37,11 @@ public class ServerRequestScrollIT extends ChromeBrowserTest {
 
         int scrollY = getScrollY();
 
-        Assert.assertTrue(scrollY > 0);
+        Assertions.assertTrue(scrollY > 0);
 
         button.click();
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "Scroll position after the server request is changed", scrollY,
                 getScrollY());
     }

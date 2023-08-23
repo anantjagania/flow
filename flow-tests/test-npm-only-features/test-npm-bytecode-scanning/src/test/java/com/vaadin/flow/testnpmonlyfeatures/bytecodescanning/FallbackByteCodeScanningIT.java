@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.testnpmonlyfeatures.bytecodescanning;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -33,7 +33,7 @@ public class FallbackByteCodeScanningIT extends ChromeBrowserTest {
 
         // in production mode with fallback chunk component should be
         // initialized
-        Assert.assertFalse("component expected initialized in production mode",
+        Assertions.assertFalse("component expected initialized in production mode",
                 component.$("button").all().isEmpty());
     }
 

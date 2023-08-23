@@ -15,9 +15,8 @@
  */
 package com.vaadin.flow.webcomponent;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -63,27 +62,27 @@ public class ApplicationThemeComponentIT extends ChromeBrowserTest {
         validateEmbeddedComponent($("themed-component").id("second"), "second");
 
         final WebElement body = findElement(By.tagName("body"));
-        Assert.assertNotEquals(
+        Assertions.assertNotEquals(
             "url(\"" + getRootURL() + "/path/VAADIN/static/themes/reusable-theme/img/bg.jpg\")",
             body.getCssValue("background-image"));
 
-        Assert.assertNotEquals("Ostrich", body.getCssValue("font-family"));
+        Assertions.assertNotEquals("Ostrich", body.getCssValue("font-family"));
 
         Assert
             .assertEquals("Embedded style should not match external component",
                 "rgba(0, 0, 255, 1)",
                 $(SpanElement.class).id("overflow").getCssValue("color"));
                 getDriver().get(getRootURL() + "/themes/reusable-theme/img/bg.jpg");
-        Assert.assertFalse("app-theme background file should be served",
+        Assertions.assertFalse("app-theme background file should be served",
             driver.getPageSource().contains("Could not navigate"));
     }
 
     private void validateEmbeddedComponent(TestBenchElement themedComponent, String target) {
-        Assert.assertEquals(target + " didn't contain the background image",
+        Assertions.assertEquals(target + " didn't contain the background image",
             "url(\"" + getRootURL() + "/VAADIN/static/themes/reusable-theme/img/bg.jpg\")",
             themedComponent.getCssValue("background-image"));
 
-        Assert.assertEquals(target + " didn't contain font-family", "Ostrich",
+        Assertions.assertEquals(target + " didn't contain font-family", "Ostrich",
             themedComponent.getCssValue("font-family"));
 
         final TestBenchElement embeddedComponent = themedComponent
@@ -111,13 +110,13 @@ public class ApplicationThemeComponentIT extends ChromeBrowserTest {
             .id(MY_POLYMER_ID);
         TestBenchElement input = myField.$("div")
                 .attribute("part", "input-field").first();
-        Assert.assertEquals("Polymer text field should have red background",
+        Assertions.assertEquals("Polymer text field should have red background",
             "rgba(255, 0, 0, 1)", input.getCssValue("background-color"));
 
         myField = embeddedComponent.$(TestBenchElement.class).id(MY_LIT_ID);
         final SpanElement radio = myField.$(SpanElement.class)
             .attribute("part", "radio").first();
-        Assert.assertEquals("Lit radiobutton should have red background",
+        Assertions.assertEquals("Lit radiobutton should have red background",
             "rgba(255, 0, 0, 1)", radio.getCssValue("background-color"));
     }
 
@@ -131,16 +130,16 @@ public class ApplicationThemeComponentIT extends ChromeBrowserTest {
 
         final SpanElement handElement = embeddedComponent.$(SpanElement.class)
             .id(HAND_ID);
-        Assert.assertEquals("Font family faulty", "\"Font Awesome 5 Free\"",
+        Assertions.assertEquals("Font family faulty", "\"Font Awesome 5 Free\"",
             handElement.getCssValue("font-family"));
-        Assert.assertEquals("Font weight faulty", "900",
+        Assertions.assertEquals("Font weight faulty", "900",
             handElement.getCssValue("font-weight"));
-        Assert.assertEquals("display value faulty", "inline-block",
+        Assertions.assertEquals("display value faulty", "inline-block",
             handElement.getCssValue("display"));
 
         getDriver().get(getRootURL()
             + "/path/VAADIN/static/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2");
-        Assert.assertFalse("Font resource should be available",
+        Assertions.assertFalse("Font resource should be available",
             driver.getPageSource().contains("HTTP ERROR 404 Not Found"));
     }
 
@@ -152,7 +151,7 @@ public class ApplicationThemeComponentIT extends ChromeBrowserTest {
         Object ostrichFontStylesFound = getCommandExecutor().executeScript(
                 "let target = document;" + FIND_FONT_FACE_RULE_SCRIPT);
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "Expected Ostrich font to be applied to document root element",
                 (Boolean) ostrichFontStylesFound);
     }
@@ -166,7 +165,7 @@ public class ApplicationThemeComponentIT extends ChromeBrowserTest {
                         + "('themed-component')[0].shadowRoot;"
                         + FIND_FONT_FACE_RULE_SCRIPT);
 
-        Assert.assertFalse(
+        Assertions.assertFalse(
                 "Expected no Ostrich font to be applied to embedded component",
                 (Boolean) ostrichFontStylesFoundForEmbedded);
     }

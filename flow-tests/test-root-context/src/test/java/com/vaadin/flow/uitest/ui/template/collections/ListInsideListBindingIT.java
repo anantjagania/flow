@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.template.collections;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebElement;
 
@@ -49,7 +49,7 @@ public class ListInsideListBindingIT extends ChromeBrowserTest {
             List<TestBenchElement> currentMessages = template
                     .$(TestBenchElement.class).attribute("class", "submsg")
                     .all();
-            Assert.assertEquals("Wrong amount of nested messages",
+            Assertions.assertEquals("Wrong amount of nested messages",
                     initialSize - i, currentMessages.size());
 
             WebElement messageToRemove = currentMessages.iterator().next();
@@ -58,7 +58,7 @@ public class ListInsideListBindingIT extends ChromeBrowserTest {
 
             String removedMessageLabelText = template.$(TestBenchElement.class)
                     .id("removedMessage").getText();
-            Assert.assertEquals("Expected removed message text to appear",
+            Assertions.assertEquals("Expected removed message text to appear",
                     "Removed message: " + messageToRemoveText,
                     removedMessageLabelText);
         }
@@ -69,9 +69,9 @@ public class ListInsideListBindingIT extends ChromeBrowserTest {
         template.$(TestBenchElement.class).id("updateAllElements").click();
         List<TestBenchElement> msgs = template.$(TestBenchElement.class)
                 .attribute("class", "submsg").all();
-        Assert.assertEquals("Wrong amount of nested messages", initialSize,
+        Assertions.assertEquals("Wrong amount of nested messages", initialSize,
                 msgs.size());
-        msgs.forEach(msg -> Assert.assertEquals("Message was not updated",
+        msgs.forEach(msg -> Assertions.assertEquals("Message was not updated",
                 ListInsideListBindingView.UPDATED_TEXT, msg.getText()));
     }
 }

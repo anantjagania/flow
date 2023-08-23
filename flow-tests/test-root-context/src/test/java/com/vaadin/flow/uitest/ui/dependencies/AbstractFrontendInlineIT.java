@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.dependencies;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -37,14 +37,14 @@ public abstract class AbstractFrontendInlineIT extends ChromeBrowserTest {
         WebElement templateElement = $(TestBenchElement.class).id("template")
                 .$(DivElement.class).id("frontend-inline");
 
-        Assert.assertEquals("Inline HTML loaded via frontent protocol",
+        Assertions.assertEquals("Inline HTML loaded via frontent protocol",
                 templateElement.getText());
 
         String color = templateElement.getCssValue("color");
-        Assert.assertEquals("rgba(0, 128, 0, 1)", color);
+        Assertions.assertEquals("rgba(0, 128, 0, 1)", color);
 
         WebElement js = findElement(By.id("js"));
-        Assert.assertEquals("Inlined JS", js.getText());
+        Assertions.assertEquals("Inlined JS", js.getText());
     }
 
 }

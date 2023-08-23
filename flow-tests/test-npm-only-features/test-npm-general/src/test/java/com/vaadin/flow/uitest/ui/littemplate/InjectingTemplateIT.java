@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.littemplate;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 import com.vaadin.testbench.TestBenchElement;
@@ -32,6 +32,6 @@ public class InjectingTemplateIT extends ChromeBrowserTest {
 
         TestBenchElement container = template.$(TestBenchElement.class)
                 .id("container");
-        Assert.assertEquals("number", container.getText());
+        Assertions.assertEquals("number", container.getText());
     }
 }

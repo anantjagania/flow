@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -27,10 +27,10 @@ public class InMemoryChildrenIT extends ChromeBrowserTest {
     public void inMemoryElementInJs() {
         open();
 
-        Assert.assertFalse(isElementPresent(By.id("in-memory")));
+        Assertions.assertFalse(isElementPresent(By.id("in-memory")));
 
         findElement(By.id("copy")).click();
 
-        Assert.assertTrue(isElementPresent(By.id("in-memory")));
+        Assertions.assertTrue(isElementPresent(By.id("in-memory")));
     }
 }

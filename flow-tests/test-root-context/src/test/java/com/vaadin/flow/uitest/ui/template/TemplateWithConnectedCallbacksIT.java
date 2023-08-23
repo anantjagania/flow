@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -46,7 +46,7 @@ public class TemplateWithConnectedCallbacksIT extends ChromeBrowserTest {
         TestBenchElement messageElement = element.$(TestBenchElement.class)
                 .id("connectedMessage");
 
-        Assert.assertEquals("Connected (checked from server side)",
+        Assertions.assertEquals("Connected (checked from server side)",
                 messageElement.getText());
     }
 

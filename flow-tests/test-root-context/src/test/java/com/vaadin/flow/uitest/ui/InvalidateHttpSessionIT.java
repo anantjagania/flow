@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -35,7 +35,7 @@ public class InvalidateHttpSessionIT extends ChromeBrowserTest {
                 By.id("invalidated-session-id")).getText();
 
         String sessionId = findElement(By.id("current-session-id")).getText();
-        Assert.assertNotEquals(sessionId, invalidatedSessionId);
+        Assertions.assertNotEquals(sessionId, invalidatedSessionId);
     }
 
 }

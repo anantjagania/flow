@@ -15,7 +15,7 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class AttachExistingElementByIdIT
         extends AbstractAttachExistingElementByIdIT {

@@ -1,8 +1,8 @@
 package com.vaadin.flow.uitest.ui.template.collections;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assertions.assertFalse;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

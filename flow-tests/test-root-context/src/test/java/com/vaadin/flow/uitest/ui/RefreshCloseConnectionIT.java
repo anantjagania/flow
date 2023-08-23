@@ -5,8 +5,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,7 +23,7 @@ public class RefreshCloseConnectionIT extends ChromeBrowserTest {
         open(param);
 
         waitUntil(driver -> getLastLog() != null);
-        Assert.assertEquals("Init", getLastLog());
+        Assertions.assertEquals("Init", getLastLog());
 
         open(param);
 
@@ -33,8 +33,8 @@ public class RefreshCloseConnectionIT extends ChromeBrowserTest {
         Set<String> set = logs.stream().map(element -> element.getText())
                 .collect(Collectors.toSet());
 
-        Assert.assertTrue(set.contains("Refresh"));
-        Assert.assertTrue(set.contains("Push"));
+        Assertions.assertTrue(set.contains("Refresh"));
+        Assertions.assertTrue(set.contains("Push"));
     }
 
     private String getLastLog() {

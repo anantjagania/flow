@@ -20,8 +20,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -85,13 +85,13 @@ public class ListBindingIT extends ChromeBrowserTest {
         msgs.get(1).click();
 
         // Assert that the message was gotten correctly on the server side
-        Assert.assertEquals("Couldn't validate element click selection.",
+        Assertions.assertEquals("Couldn't validate element click selection.",
                 template.$(TestBenchElement.class).id("selection").getText(),
                 "Clicked message: " + msgs.get(1).getText());
     }
 
     private void checkInitialState(TestBenchElement template) {
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 Collections.singletonList(ListBindingView.INITIAL_STATE),
                 getMessages(template));
     }
@@ -101,13 +101,13 @@ public class ListBindingIT extends ChromeBrowserTest {
         resetState(template);
         template.$(TestBenchElement.class).id(handlerName).click();
 
-        Assert.assertEquals(Arrays.asList(expectedMessages),
+        Assertions.assertEquals(Arrays.asList(expectedMessages),
                 getMessages(template));
     }
 
     private void resetState(TestBenchElement template) {
         template.$(TestBenchElement.class).id("reset").click();
-        Assert.assertEquals(ListBindingView.RESET_STATE, getMessages(template));
+        Assertions.assertEquals(ListBindingView.RESET_STATE, getMessages(template));
     }
 
     private List<String> getMessages(TestBenchElement template) {

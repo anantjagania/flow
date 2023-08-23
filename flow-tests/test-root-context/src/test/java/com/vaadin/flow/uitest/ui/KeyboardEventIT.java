@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -13,22 +13,22 @@ public class KeyboardEventIT extends ChromeBrowserTest {
         open();
 
         // make sure both elements are present
-        Assert.assertTrue(isElementPresent(By.id("input")));
-        Assert.assertTrue(isElementPresent(By.id("paragraph")));
+        Assertions.assertTrue(isElementPresent(By.id("input")));
+        Assertions.assertTrue(isElementPresent(By.id("paragraph")));
 
         WebElement input = findElement(By.id("input"));
         WebElement paragraph = findElement(By.id("paragraph"));
 
         input.sendKeys("q");
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "q:KeyQ",
                 paragraph.getText()
         );
 
         input.sendKeys("%");
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "%:Digit5",
                 paragraph.getText()
         );
@@ -38,7 +38,7 @@ public class KeyboardEventIT extends ChromeBrowserTest {
         // arrow right
         input.sendKeys("\uE014");
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "ArrowRight:ArrowRight",
                 paragraph.getText()
         );
@@ -46,7 +46,7 @@ public class KeyboardEventIT extends ChromeBrowserTest {
         // physical * key
         input.sendKeys("\uE024");
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "*:NumpadMultiply",
                 paragraph.getText()
         );
@@ -61,10 +61,10 @@ public class KeyboardEventIT extends ChromeBrowserTest {
         WebElement paragraph = findElement(By.id("keyUpParagraph"));
 
         input.sendKeys("q");
-        Assert.assertEquals("q", paragraph.getText());
+        Assertions.assertEquals("q", paragraph.getText());
 
         sendInvalidKeyUp.click();
 
-        Assert.assertEquals("q", paragraph.getText());
+        Assertions.assertEquals("q", paragraph.getText());
     }
 }

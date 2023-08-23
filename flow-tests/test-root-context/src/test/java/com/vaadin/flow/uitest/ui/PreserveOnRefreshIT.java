@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -31,11 +31,11 @@ public class PreserveOnRefreshIT extends AbstractStreamResourceIT {
         final String newNotificationId = getString(NOTIFICATION_ID);
         final int attachCount = getInt(ATTACHCOUNTER_ID);
 
-        Assert.assertEquals("Component contents expected identical",
+        Assertions.assertEquals("Component contents expected identical",
                 componentId, newComponentId);
-        Assert.assertEquals("Notification contents expected identical",
+        Assertions.assertEquals("Notification contents expected identical",
                 notificationId, newNotificationId);
-        Assert.assertEquals("Expected two attaches", 2, attachCount);
+        Assertions.assertEquals("Expected two attaches", 2, attachCount);
 
         assertDownloadedContent();
     }
@@ -60,11 +60,11 @@ public class PreserveOnRefreshIT extends AbstractStreamResourceIT {
         final String newNotificationId = getString(NOTIFICATION_ID);
         final int attachCount = getInt(ATTACHCOUNTER_ID);
 
-        Assert.assertNotEquals("Component contents expected different",
+        Assertions.assertNotEquals("Component contents expected different",
                 componentId, newComponentId);
-        Assert.assertNotEquals("Notification contents expected different",
+        Assertions.assertNotEquals("Notification contents expected different",
                 notificationId, newNotificationId);
-        Assert.assertEquals("Expected one attach", 1, attachCount);
+        Assertions.assertEquals("Expected one attach", 1, attachCount);
     }
 
     @Test
@@ -88,11 +88,11 @@ public class PreserveOnRefreshIT extends AbstractStreamResourceIT {
         final String newNotificationId = getString(NOTIFICATION_ID);
         final int attachCount = getInt(ATTACHCOUNTER_ID);
 
-        Assert.assertNotEquals("Component contents expected different",
+        Assertions.assertNotEquals("Component contents expected different",
                 componentId, newComponentId);
-        Assert.assertNotEquals("Notification contents expected different",
+        Assertions.assertNotEquals("Notification contents expected different",
                 notificationId, newNotificationId);
-        Assert.assertEquals("Expected one attach", 1, attachCount);
+        Assertions.assertEquals("Expected one attach", 1, attachCount);
 
         assertDownloadedContent();
     }
@@ -117,7 +117,7 @@ public class PreserveOnRefreshIT extends AbstractStreamResourceIT {
             List<String> lines = IOUtils.readLines(stream,
                     StandardCharsets.UTF_8);
             String text = lines.stream().collect(Collectors.joining());
-            Assert.assertEquals("foo", text);
+            Assertions.assertEquals("foo", text);
         }
     }
 }

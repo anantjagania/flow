@@ -1,6 +1,6 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import static com.vaadin.flow.uitest.ui.DialogShortcutView.REUSABLE_DIALOG_ID;

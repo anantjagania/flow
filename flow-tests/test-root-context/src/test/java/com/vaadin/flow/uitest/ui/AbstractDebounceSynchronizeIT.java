@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -34,7 +34,7 @@ public abstract class AbstractDebounceSynchronizeIT extends ChromeBrowserTest {
     }
 
     protected void assertMessages(String... expectedMessages) {
-        Assert.assertArrayEquals(expectedMessages,
+        Assertions.assertArrayEquals(expectedMessages,
                 findElements(By.cssSelector("#messages p")).stream()
                         .map(WebElement::getText)
                         .map(text -> text.replaceFirst("Value: ", ""))

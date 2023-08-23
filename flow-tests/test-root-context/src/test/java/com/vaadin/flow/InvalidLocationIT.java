@@ -16,8 +16,8 @@
 
 package com.vaadin.flow;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -28,7 +28,7 @@ public class InvalidLocationIT extends ChromeBrowserTest {
     public void invalidCharactersOnPath_UiNotServed() {
         open();
 
-        Assert.assertTrue("Faulty URL didn't return 400 error page.",
+        Assertions.assertTrue("Faulty URL didn't return 400 error page.",
                 getDriver().getPageSource().contains("400"));
     }
 

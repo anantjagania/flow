@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.testnpmonlyfeatures.bytecodescanning;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -33,7 +33,7 @@ public class FullCPScanningIT extends ChromeBrowserTest {
 
         // in dev mode we use complete bundle by default, so component
         // should be initialized and shown
-        Assert.assertFalse("component expected initialized in dev mode",
+        Assertions.assertFalse("component expected initialized in dev mode",
                 component.$("button").all().isEmpty());
     }
 

@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.uitest.ui.template;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -122,8 +122,8 @@ public class TemplatesVisibilityIT extends ChromeBrowserTest {
 
         WebElement grandChildProp = grandChild.$(TestBenchElement.class)
                 .id("prop");
-        Assert.assertNotEquals("bar", grandChildFooProp.getText());
-        Assert.assertNotEquals("foo", grandChildProp.getText());
+        Assertions.assertNotEquals("bar", grandChildFooProp.getText());
+        Assertions.assertNotEquals("foo", grandChildProp.getText());
 
         // make grand child template visible
         findElement(By.id("grand-child-visibility")).click();
@@ -145,7 +145,7 @@ public class TemplatesVisibilityIT extends ChromeBrowserTest {
         WebElement subTemplateProp = subTemplate.$(TestBenchElement.class)
                 .id("prop");
 
-        Assert.assertEquals("bar", subTemplateProp.getText());
+        Assertions.assertEquals("bar", subTemplateProp.getText());
 
         // make sub template invisible
         findElement(By.id("sub-template-visibility")).click();
@@ -154,20 +154,20 @@ public class TemplatesVisibilityIT extends ChromeBrowserTest {
         findElement(By.id("client-side-update-property")).click();
 
         // The property value has not changed
-        Assert.assertEquals("bar", subTemplateProp.getText());
+        Assertions.assertEquals("bar", subTemplateProp.getText());
 
         // make template visible
         findElement(By.id("sub-template-visibility")).click();
 
         // One more check : the property value is still the same
-        Assert.assertEquals("bar", subTemplateProp.getText());
+        Assertions.assertEquals("bar", subTemplateProp.getText());
 
         // change the sub template property via client side one more time
         // (now the component is visible)
         findElement(By.id("client-side-update-property")).click();
 
         // Now the property value should be changed
-        Assert.assertEquals("baz", subTemplateProp.getText());
+        Assertions.assertEquals("baz", subTemplateProp.getText());
     }
 
     private WebElement assertInitialPropertyValues(
@@ -176,11 +176,11 @@ public class TemplatesVisibilityIT extends ChromeBrowserTest {
         WebElement grandChildProp = grandChild.$(TestBenchElement.class)
                 .id("prop");
 
-        Assert.assertNotEquals("bar", subTemplateProp.getText());
+        Assertions.assertNotEquals("bar", subTemplateProp.getText());
 
-        Assert.assertNotEquals("bar", grandChildFooProp.getText());
+        Assertions.assertNotEquals("bar", grandChildFooProp.getText());
 
-        Assert.assertNotEquals("foo", grandChildProp.getText());
+        Assertions.assertNotEquals("foo", grandChildProp.getText());
         return grandChildProp;
     }
 
@@ -190,6 +190,6 @@ public class TemplatesVisibilityIT extends ChromeBrowserTest {
         // This is the result of JS execution
         waitUntil(driver -> "bar".equals(grandChildFooProp.getText()));
         // This is the value for the grand child received from the server side
-        Assert.assertEquals("foo", grandChildProp.getText());
+        Assertions.assertEquals("foo", grandChildProp.getText());
     }
 }

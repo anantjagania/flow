@@ -15,9 +15,9 @@
  */
 package com.vaadin.flow.testutil;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -92,20 +92,20 @@ public abstract class AbstractValidationTest extends AbstractComponentIT {
 
     private void assertInvalid() {
         String invalid = field.getAttribute("invalid");
-        Assert.assertTrue("The element should be in invalid state",
+        Assertions.assertTrue("The element should be in invalid state",
                 Boolean.parseBoolean(invalid));
 
         String errorMessage = field.getAttribute("errorMessage");
-        Assert.assertEquals("Invalidated from server", errorMessage);
+        Assertions.assertEquals("Invalidated from server", errorMessage);
     }
 
     private void assertValid() {
         String invalid = field.getAttribute("invalid");
-        Assert.assertFalse("The element should be in valid state",
+        Assertions.assertFalse("The element should be in valid state",
                 Boolean.parseBoolean(invalid));
 
         String errorMessage = field.getAttribute("errorMessage");
-        Assert.assertEquals("", errorMessage);
+        Assertions.assertEquals("", errorMessage);
     }
 
     private void setValue(String value) {

@@ -18,9 +18,9 @@ package com.vaadin.flow.uitest.ui.dependencies;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -33,7 +33,7 @@ public class ExternalJavaScriptIT extends ChromeBrowserTest {
     private final static String EXPECTED_SRC_FOR_NO_PROTOCOL =
             "http:" + ComponentWithExternalJavaScript.SOME_RANDOM_EXTERNAL_JS_URL_WITHOUT_PROTOCOL;
 
-    @Before
+    @BeforeEach
     public void init() {
         open();
         waitForElementPresent(By.tagName("div"));
@@ -42,14 +42,14 @@ public class ExternalJavaScriptIT extends ChromeBrowserTest {
     @Test
     public void javaScriptAnnotation_externalJs_shouldBeAddedToPage() {
         List<WebElement> scriptTags = findElements(By.tagName("script"));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "External JS annotated with @JavaScript annotation should be added as a script tag with text/javascript type to the page!",
                 scriptTags.stream().anyMatch(
                         scriptTag -> ComponentWithExternalJavaScript.SOME_RANDOM_EXTERNAL_JS_URL
                                 .equals(scriptTag.getAttribute("src"))
                                 && "text/javascript".equals(
                                         scriptTag.getAttribute("type"))));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "External JS without protocol annotated with @JavaScript annotation should be added as a script tag with text/javascript type to the page!",
                 scriptTags.stream().anyMatch(
                         scriptTag -> EXPECTED_SRC_FOR_NO_PROTOCOL
@@ -64,14 +64,14 @@ public class ExternalJavaScriptIT extends ChromeBrowserTest {
         waitForElementPresent(By.id("componentWithExternalJavaScript"));
 
         List<WebElement> scriptTags = findElements(By.tagName("script"));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "When a component is added to the page, external JS annotated with @JavaScript annotation in the component should be added as a script tag with text/javascript type to the page!",
                 scriptTags.stream().anyMatch(
                         scriptTag -> ComponentWithExternalJavaScript.SOME_RANDOM_EXTERNAL_JS_URL
                                 .equals(scriptTag.getAttribute("src"))
                                 && "text/javascript".equals(
                                         scriptTag.getAttribute("type"))));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "When a component is added to the page, external JS without protocol annotated with @JavaScript annotation in the component should be added as a script tag with text/javascript type to the page!",
                 scriptTags.stream().anyMatch(
                         scriptTag -> EXPECTED_SRC_FOR_NO_PROTOCOL

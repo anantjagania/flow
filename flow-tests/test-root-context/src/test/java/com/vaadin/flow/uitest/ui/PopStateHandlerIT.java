@@ -1,7 +1,7 @@
 package com.vaadin.flow.uitest.ui;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
@@ -134,7 +134,7 @@ public class PopStateHandlerIT extends ChromeBrowserTest {
     }
 
     private void verifyInsideServletLocation(String pathAfterServletMapping) {
-        Assert.assertEquals("Invalid URL",
+        Assertions.assertEquals("Invalid URL",
                 getRootURL() + "/view/" + pathAfterServletMapping,
                 getDriver().getCurrentUrl());
     }
@@ -144,7 +144,7 @@ public class PopStateHandlerIT extends ChromeBrowserTest {
     }
 
     private void verifyPopStateEvent(String location) {
-        Assert.assertEquals("Invalid server side event location", location,
+        Assertions.assertEquals("Invalid server side event location", location,
                 findElement(By.id("location")).getText());
     }
 }

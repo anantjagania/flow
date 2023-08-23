@@ -17,8 +17,8 @@ package com.vaadin.flow.uitest.ui.template;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -35,7 +35,7 @@ public class PolymerModelPropertiesIT extends ChromeBrowserTest {
         open();
 
         WebElement initial = findElement(By.id("property-value"));
-        Assert.assertEquals("Property value:foo, model value: foo",
+        Assertions.assertEquals("Property value:foo, model value: foo",
                 initial.getText());
 
         TestBenchElement template = $(TestBenchElement.class).id("template");
@@ -48,7 +48,7 @@ public class PolymerModelPropertiesIT extends ChromeBrowserTest {
                 By.id("property-update-event"));
         WebElement propertyUpdate = propertyUpdates
                 .get(propertyUpdates.size() - 1);
-        Assert.assertEquals("Property value:x, model value: x",
+        Assertions.assertEquals("Property value:x, model value: x",
                 propertyUpdate.getText());
 
         // now move focus out of the input and check that value change event is
@@ -57,7 +57,7 @@ public class PolymerModelPropertiesIT extends ChromeBrowserTest {
 
         List<WebElement> valueUpdates = findElements(By.id("value-update"));
         WebElement valueUpdate = valueUpdates.get(valueUpdates.size() - 1);
-        Assert.assertEquals("Property value:x, model value: x",
+        Assertions.assertEquals("Property value:x, model value: x",
                 valueUpdate.getText());
     }
 }

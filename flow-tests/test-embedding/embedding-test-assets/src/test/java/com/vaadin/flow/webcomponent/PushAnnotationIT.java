@@ -15,8 +15,8 @@
  */
 package com.vaadin.flow.webcomponent;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.testbench.TestBenchElement;
 
@@ -32,7 +32,7 @@ public class PushAnnotationIT extends EmbeddingChromeBrowserTest {
         open();
 
         int initialUpdateCount = getUpdateCount();
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "The initial update count should be less than maximum 50, but it has value "
                         + initialUpdateCount,
                 initialUpdateCount < 50);
@@ -41,7 +41,7 @@ public class PushAnnotationIT extends EmbeddingChromeBrowserTest {
 
         int nextUpdateCount = getUpdateCount();
 
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 "The next interim update count should be less than maximum 50, but it has value "
                         + nextUpdateCount,
                 nextUpdateCount < 50);
@@ -49,7 +49,7 @@ public class PushAnnotationIT extends EmbeddingChromeBrowserTest {
         waitUntil(driver -> getUpdateCount() == 50, 5);
 
         int updateCount = getUpdateCount();
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 "The update count should have reached the maximum 50, but it " +
                         "has value "
                         + updateCount,

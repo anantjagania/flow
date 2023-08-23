@@ -3,7 +3,7 @@ package com.vaadin.flow.uitest.ui.push;
 import java.util.Locale;
 import java.util.Map;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -41,7 +41,7 @@ abstract class PushConfigurationTest extends ChromeBrowserTest {
 
         int counter = getServerCounter();
         Thread.sleep(2000);
-        Assert.assertEquals("Server count changed without push enabled",
+        Assertions.assertEquals("Server count changed without push enabled",
                 counter, getServerCounter());
     }
 
